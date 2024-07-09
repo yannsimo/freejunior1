@@ -11,22 +11,22 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
-
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+SECRET_KEY =  config('SECRET_KEY')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ftr+!#=(zmff91&956_x#vdhxdh@&#vc5sx*6-7rc(4h$lbdub'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 #ALLOWED_HOSTS = ['54.87.17.222']
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -124,8 +124,8 @@ USE_TZ = True
 
 
 
-AWS_ACCESS_KEY_ID = ''
-AWS_SECRET_ACCESS_KEY = ''
+AWS_ACCESS_KEY_ID = 'AKIA4MTWNWMLZ4KXQEUX'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'django-freejunior'
 
 
