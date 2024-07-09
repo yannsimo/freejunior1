@@ -144,7 +144,7 @@ def confirmationMessage(request):
         'email': email,
         'student_name':student_name,
     }
-    return render(request, 'StudentApp/ConfirmationMessage.html', context)
+    return render(request, 'StudentApp/confirmationMessage.html', context)
 
 def confirmationMessageAvis(request):
     email = request.GET.get('email')
