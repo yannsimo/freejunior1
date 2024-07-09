@@ -5,99 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="301adbfd-a33d-42d3-aa42-55bd41c00de0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/FreeJunior1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/FormsEtudiant.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/formseditionprofile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/templates/Accounts/edit_student_profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/templates/Accounts/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/templates/Accounts/student_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/CommentForm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/ContactForm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/FormsEntreprise.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/model_helpers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/navigation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/Accueil.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/ConfirmationEntreprise.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/ConfirmationInscription.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/Entreprise_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/ErreurMessage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/PageEntreprise.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/PageEtudiant.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/confirmationMessage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/confirmationMessageAvis.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/contactavis.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/mission_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/mission_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/privacy_policy.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/student_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/student_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/terms_of_service.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StudentApp/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ebdjango/.ebextensions/django.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.rtl.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.rtl.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.rtl.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.rtl.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.rtl.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.rtl.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.rtl.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.rtl.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-utilities.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-utilities.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-utilities.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-utilities.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-utilities.rtl.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-utilities.rtl.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-utilities.rtl.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-utilities.rtl.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.rtl.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.rtl.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.rtl.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.rtl.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/custom.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/Free (2).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/Free.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/etudiant-diplome-examens.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/jeunes-freelance.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/mascotteFreeJunior.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/profil (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/profil.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/student (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/student.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/student_preview_rev_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.esm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.esm.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.esm.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.esm.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,9 +23,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2iwEpEEOsR6oERHpSTK6P9TdLEL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -128,7 +36,7 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/PC/PycharmProjects/tests/FreeJunior1/FreeJunior1/static"
   }
 }]]></component>
