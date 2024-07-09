@@ -1,0 +1,120 @@
+   {% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block title %}
+{{ student.user.first_name }} {{ student.user.last_name }}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <!-- Affiche la photo de l'étudiant -->
+                {% if student.photo %}
+                <img src="{{ student.photo.url }}" class="card-img-top" alt="{{ student.user.first_name }} {{ student.user.last_name }}">
+                {% else %}
+                <img src="{% static 'img/student_preview_rev_1.png' %}" class="card-img-top" alt="{{ student.user.first_name }} {{ student.user.last_name }}">
+                {% endif %}
+                <div class="card-body text-center">
+                    <h2 class="card-title text-primary">{{ student.user.first_name }} {{ student.user.last_name }}</h2>
+                    <hr class="my-4">
+                    <p class="card-text"><strong>Prix horaire :</strong> <span class="badge badge-success">{{ student.hourly_rate }} €/heure</span></p>
+                    <p class="card-text"><strong>École :</strong> <span class="badge badge-info">{{ student.school.name }}</span></p>
+                    <p class="card-text"><strong>Niveau d'étude :</strong> <span class="badge badge-secondary">{{ student.study_level }}</span></p>
+                    <p class="card-text"><strong>Filière :</strong> <span class="badge badge-warning">{{ student.program.name }}</span></p>
+                    <p class="card-text"><strong>Compétences :</strong> <span class="badge badge-danger">{{ student.related_subject.name }}</span></p>
+                    <p class="card-text"><strong>Spécialité :</strong> <span class="badge badge-primary">{{ student.specialty.name }}</span></p>
+                    <p class="card-text"><strong>Description :</strong><br>{{ student.description|linebreaks|safe }}</p>
+                    <p class="card-text"><strong>Curriculum Vitae (CV) :</strong>
+                    {% if student.cv %}
+                    <a href="{{ student.cv.url }}" target="_blank" class="btn btn-outline-primary btn-sm">Télécharger le CV</a>
+                    {% else %}
+                    <span class="text-muted">Non disponible</span>
+                    {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Contactez {{ student.user.first_name }} {{ student.user.last_name }}</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{% url 'contact_student' student.id %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="your_name">Votre nom</label>
+                            <input type="text" class="form-control" id="your_name" name="your_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="your_email">Votre email</label>
+                            <input type="email" class="form-control" id="your_email" name="your_email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                        <button type="button" class="btn btn-secondary" onclick="window.history.back()">Retour</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h3>Commentaires</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        {% for comment in comments %}
+                        <li class="media mb-3 comment-list-item">
+                            <img src="{% static 'img/profil.jpg' %}" class="mr-3 rounded-circle comment-img" alt="Commenter photo">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1 comment-header">{{ comment.company_name }} - <span class="comment-title">{{ comment.mission_title }}</span></h5>
+                                <p><small class="text-muted">{{ comment.created_at }}</small></p>
+                                <p class="comment-text">{{ comment.text }}</p>
+                            </div>
+                        </li>
+                        {% empty %}
+                        <li class="media">Aucun commentaire pour l'instant !</li>
+                        {% endfor %}
+                    </ul>
+                    <form action="{% url 'student_detail' student.pk %}" method="post" class="form mt-3">
+                        {% csrf_token %}
+                        {% bootstrap_form comment_form %}
+                        {% buttons %}
+                        <button type="submit" class="btn btn-primary">Je poste mon commentaire</button>
+                        {% endbuttons %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .comment-list-item:hover {
+        background-color: #f8f9fa;
+        transition: background-color 0.3s ease;
+    }
+
+    .comment-img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .comment-header {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .comment-title {
+        color: #007bff;
+    }
+
+    .comment-text {
+        font-size: 1rem;
+    }
+</style>
+{% endblock %}

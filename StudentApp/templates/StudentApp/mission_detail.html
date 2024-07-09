@@ -1,0 +1,108 @@
+   {% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Détails de la Mission
+{% endblock %}
+
+{% block content %}
+<style>
+    .card-mission {
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-mission:hover {
+        background-color: #f8f9fa;
+        transform: translateY(-5px);
+    }
+
+    .text-primary {
+        color: #007bff !important;
+    }
+
+    .badge-secondary, .badge-primary, .badge-warning, .badge-info {
+        font-size: 1rem;
+    }
+
+    .company-name {
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #343a40;
+        margin-bottom: 10px;
+    }
+
+    .mission-description {
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .mission-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .btn-primary {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+</style>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card card-mission mb-4 shadow-sm">
+                <div class="card-body">
+                    <h1 class="card-title text-primary">{{ mission.title }}</h1>
+                    <p class="company-name">{{ mission.company.name }}</p>
+                    <p><strong>Date :</strong> {{ mission.date }}</p>
+                    <p><strong>Budget de l'entreprise :</strong>
+                        {% if mission.payment_type == 'cash' %}
+                            {{ mission.cash_amount }} €
+                        {% else %}
+                            {{ mission.equity_offer }} % d'équité
+                        {% endif %}
+                    </p>
+                    <p class="mission-description"><strong>Description :</strong><br>
+                        <span>{{ mission.description }}</span>
+                    </p>
+                    {% if mission.specialty %}
+                    <p><strong>Type de Mission :</strong> <span class="badge badge-primary">{{ mission.specialty.get_human_readable_name|capfirst }}</span></p>
+                    {% else %}
+                    <p><strong>Type de Mission :</strong> <span class="badge badge-secondary">Aucune spécialité</span></p>
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h5 class="text-primary">Postuler à cette mission</h5>
+                        <form method="post" action="{% url 'apply_mission' mission.pk %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="your_name">Votre nom</label>
+                                <input type="text" class="form-control" id="your_name" name="your_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="your_email">Votre email</label>
+                                <input type="email" class="form-control" id="your_email" name="your_email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                        </form>
+                    </div>
+
+                    <div class="mission-footer">
+                        <a href="javascript:history.back()" class="btn btn-secondary">Retour à la page précédente</a>
+                        <a href="{% url 'mission_list' %}" class="btn btn-secondary">Retour à la liste des missions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

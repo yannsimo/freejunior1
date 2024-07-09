@@ -1,0 +1,27 @@
+   {% load static %}
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire de contact </title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      {% if name %}
+        Merci {{ name }}, {{student_name}} a  reçu votre message
+      {% else %}
+        Envoyez-nous un message
+      {% endif %}
+    </header>
+
+    {% if name %}
+    <div class="response">😊 Il vous répondra  très prochainement à l'adresse e-mail suivante : {{ email }}.</div>
+    {% endif %}
+  </div>
+</body>
+</html>

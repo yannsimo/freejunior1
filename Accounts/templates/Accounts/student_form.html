@@ -1,0 +1,36 @@
+  {% extends 'base.html' %}
+
+{% block title %}
+    {% if user_form.instance.pk %}Modifier l'Étudiant{% else %}Ajouter un Étudiant{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="mb-3">
+            <a href="javascript:history.go(-1)" class="btn btn-secondary">Retour</a>
+        </div>
+        <h1 class="text-center mb-4">{% if user_form.instance.pk %}Modifier l'Étudiant{% else %}Inscrivez-vous{% endif %}</h1>
+        <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="card">
+                <div class="card-header">
+                    <h2>Informations Utilisateur</h2>
+                </div>
+                <div class="card-body">
+                    {{ user_form.as_p }}
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h2>Informations Étudiant</h2>
+                </div>
+                <div class="card-body">
+                    {{ student_form.as_p }}
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary btn-lg">Sauvegarder</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

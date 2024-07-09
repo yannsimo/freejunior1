@@ -1,0 +1,159 @@
+   {% load static %}
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil - FreeJunior</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #007bff;
+      color: white;
+    }
+    .mascot {
+      display: block;
+      margin: 10px auto;
+      width: 300px;
+      height: auto;
+    }
+    .info-section {
+      text-align: center;
+      padding: 20px;
+      margin-top: 10px;
+    }
+    .info-section h2 {
+      color: #007bff;
+    }
+    .info-section p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #555;
+    }
+    .value-proposition {
+      text-align: left;
+      margin-top: 20px;
+    }
+    .value-proposition ul {
+      list-style: none;
+      padding: 0;
+    }
+    .value-proposition ul li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      color: #555;
+    }
+    .value-proposition ul li i {
+      color: #007bff;
+      margin-right: 10px;
+    }
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      margin-left: 10px;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .col-md-6 {
+      flex: 1;
+      padding: 10px;
+      box-sizing: border-box;
+      min-width: 300px;
+    }
+    .pourquoi-block {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .pourquoi-block i {
+      font-size: 2rem;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+    .pourquoi-block h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .divider {
+      width: 50px;
+      height: 4px;
+      background-color: #007bff;
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+    .pourquoi-block p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #555;
+    }
+    .pourquoi-block p i {
+      color: #007bff;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bienvenue chez FreeJunior</h1>
+  </header>
+  <div class="container">
+    <img src="{% static 'img/mascotteFreeJunior.jpg' %}" alt="FreeJunior Mascot" class="mascot">
+    <div class="info-section">
+      <h2>Première plateforme de freelance pour étudiant </h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="pourquoi-block">
+          <i class="fas fa-lightbulb"></i>
+          <h3>Pour les étudiants :</h3>
+          <div class="divider"></div>
+          <p><i class="fas fa-star"></i> Profitez de notre solution exclusive pour gagner de l'argent et  en expérience sur des projets réels.</p>
+          <p><i class="fas fa-chart-line"></i> Obtenez des résultats concrets et démarquez-vous sur le marché du travail.</p>
+          <p><i class="fas fa-certificate"></i> Développez vos compétences et bénéficiez d'un gain professionnel significatif.</p>
+          <a href="{% url 'page_etudiant' %}" class="btn">Je suis un talent</a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="pourquoi-block">
+          <i class="fas fa-user-tie"></i>
+          <h3>Pour les entreprises :</h3>
+          <div class="divider"></div>
+          <p><i class="fas fa-rocket"></i> Découvrez une nouvelle façon d'accéder à des talents innovants et motivés.</p>
+          <p><i class="fas fa-money-bill-wave"></i> Collaborez avec des étudiants talentueux à des tarifs avantageux pour des économies significatives.</p>
+          <p><i class="fas fa-trophy"></i> Garantissez des résultats de qualité avec une solution flexible pour vos besoins en freelance.</p>
+          <a href="{% url 'page_company' %}" class="btn">Je recherche un talent</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

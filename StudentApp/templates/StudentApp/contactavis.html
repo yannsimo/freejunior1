@@ -1,0 +1,65 @@
+   {% extends 'base.html' %}
+
+{% block title %}
+Contact
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Contactez-nous</h2>
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.telephone.label_tag }}
+            {{ form.telephone }}
+            <div class="invalid-feedback">
+                Veuillez entrer votre numéro de téléphone.
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.your_email.label_tag }}
+            {{ form.your_email }}
+            <div class="invalid-feedback">
+                Veuillez entrer votre email.
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.categoriecontact.label_tag }}
+            {{ form.categoriecontact }}
+            <div class="invalid-feedback">
+                Veuillez sélectionner l'objet de votre appel.
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.message.label_tag }}
+            {{ form.message }}
+            <div class="invalid-feedback">
+                Veuillez entrer votre message.
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Envoyer le message</button>
+            <button type="button" class="btn btn-secondary" onclick="window.history.back()">Retour</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('needs-validation');
+            Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+{% endblock %}

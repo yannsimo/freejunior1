@@ -1,0 +1,182 @@
+   <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soumettre une Mission - FreeJunior</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0,123,255,0.25);
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .btn-primary:active {
+            background-color: #004085;
+            border-color: #004085;
+            transform: translateY(0);
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #5a6268;
+            transform: translateY(-2px);
+        }
+        .btn-secondary:active {
+            background-color: #4e555b;
+            border-color: #4e555b;
+            transform: translateY(0);
+        }
+        #cash_fields, #equity_fields {
+            margin-top: 20px;
+            display: none;
+        }
+        .form-section {
+            margin-bottom: 40px;
+        }
+        .form-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+    </style>
+    <script>
+        function togglePaymentOptions() {
+            var paymentType = document.getElementById("id_payment_type").value;
+            var cashFields = document.getElementById("cash_fields");
+            var equityFields = document.getElementById("equity_fields");
+
+            if (paymentType === "cash") {
+                cashFields.style.display = "block";
+                equityFields.style.display = "none";
+            } else if (paymentType === "equity") {
+                cashFields.style.display = "none";
+                equityFields.style.display = "block";
+            } else {
+                cashFields.style.display = "none";
+                equityFields.style.display = "none";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            togglePaymentOptions();
+            document.getElementById("id_payment_type").addEventListener("change", togglePaymentOptions);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Soumettre une Mission</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-section">
+                <h2>Informations sur l'Entreprise</h2>
+                <div class="form-group">
+                    <label for="id_name">Nom de l'entreprise</label>
+                    {{ entreprise_form.name }}
+                </div>
+                <div class="form-group">
+                    <label for="id_email">Email</label>
+                    {{ entreprise_form.email }}
+                </div>
+                <div class="form-group">
+                    <label for="id_contact_info">Téléphone</label>
+                    {{ entreprise_form.contact_info }}
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Détails de la Mission</h2>
+                <div class="form-group">
+                    <label for="id_title">Titre de la Mission</label>
+                    {{ mission_form.title }}
+                </div>
+                <div class="form-group">
+                    <label for="id_mission_type">Type de Mission</label>
+                    {{ mission_form.specialty_name }}
+                </div>
+                <div class="form-group">
+                    <label for="id_description">Description</label>
+                    {{ mission_form.description }}
+                </div>
+                <div class="form-group">
+                    <label for="id_payment_type">Type de Paiement</label>
+                    {{ mission_form.payment_type }}
+                </div>
+                <div id="cash_fields">
+                    <div class="form-group">
+                        <label for="id_cash_amount">Montant en Cash (€)</label>
+                        {{ mission_form.cash_amount }}
+                    </div>
+                </div>
+                <div id="equity_fields">
+                    <div class="form-group">
+                        <label for="id_equity_offer">Offre d'Équité (en %)</label>
+                        {{ mission_form.equity_offer }}
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Soumettre</button>
+            <a href="javascript:history.back()" class="btn btn-secondary btn-lg btn-block mt-2">Retour</a>
+        </form>
+    </div>
+</body>
+</html>

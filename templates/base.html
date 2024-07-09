@@ -1,0 +1,268 @@
+   <!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeJunior - {% block title %}{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <!-- Optionnel: ajouter des feuilles de style personnalisées ici -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <style>
+        .comment-img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .comment-header {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .comment-title {
+            font-size: 1rem;
+            font-weight: normal;
+            color: #666;
+        }
+
+        .comment-text {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .comment-text p {
+            margin: 0.5rem 0;
+        }
+
+ @media (min-width: 768px) {
+    .nav-item.active .nav-link {
+        border-bottom: 2px solid #007bff; /* Ajouter une bordure en bas pour souligner l'élément actif */
+    }
+}
+     .separator .separator-line {
+      width: 1px;
+    display: inline-block;
+    height: 40px; /* Ajustez cette valeur pour la hauteur de la barre */
+    background-color: #ccc;
+    margin: auto 15px;
+     vertical-align: middle;
+}
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    .separator .separator-line {
+        display: none; /* Cache la barre verticale sur les petits écrans */
+    }
+}
+ footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+}
+
+.footer-section {
+  flex: 1;
+  margin: 20px;
+  min-width: 250px;
+}
+
+.footer-section h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #f8f9fa;
+}
+
+.footer-section form {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li i {
+  margin-right: 10px;
+}
+
+.footer-section a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer-section input[type="email"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.footer-section button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.footer-section button:hover {
+  background-color: #0056b3;
+}
+
+.footer-bottom {
+  background-color: #222;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-socials {
+  margin-top: 10px;
+}
+
+.footer-socials a {
+  color: #fff;
+  margin: 0 10px;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.footer-socials a:hover {
+  color: #007bff;
+}
+.footer-border{
+   margin-top:250px;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section {
+    margin: 10px 0;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'accueil' %}">
+            <img src="{% static 'img/Free.png' %}" alt="FreeJunior Logo"> FreeJunior
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse  navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                {% for item in navigation_items %}
+                    <li class="nav-item {% if item.active %}active{% endif %}">
+                        <a class="nav-link" href="{{ item.url }}">{{ item.name }}</a>
+                    </li>
+                {% endfor %}
+
+               <li class="nav-item separator">
+            <span class="nav-link separator-line"></span>
+           </li>
+                {% if user.is_authenticated %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'edit_student_profile' %}">{{user.first_name}}</a>
+                     </li>
+                      <li class="nav-item">
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link nav-link">Déconnexion</button>
+                        </form>
+                    </li>
+                {% else %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Connexion</a>
+                      </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student_form' %}">Inscription</a>
+                      </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        {% block content %}
+
+        <!-- Le contenu de la page sera inséré ici -->
+        {% endblock %}
+    </div>
+
+    <!-- Bootstrap JS et dépendances -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer class="footer-border">
+  <div class="footer-container">
+    <div class="footer-section about">
+      <h2>À Propos</h2>
+      <p>
+        FreeJunior est une plateforme qui connecte les entreprises avec des étudiants talentueux pour des missions freelance. Notre mission est de fournir des opportunités de croissance et d'expérience aux étudiants tout en répondant aux besoins des entreprises.
+      </p>
+    </div>
+    <div class="footer-section links">
+      <h2>Liens Utiles</h2>
+      <ul>
+        <li><a href="{% url 'terms_of_service' %}">Conditions d'Utilisation</a></li>
+        <li><a href="{% url 'privacy_policy' %}">Politique de Confidentialité</a></li>
+      </ul>
+    </div>
+    <div class="footer-section contact">
+      <h2>Contact</h2>
+      <ul>
+        <li><i class="fas fa-map-marker-alt"></i> Grenoble, France</li>
+        <li><i class="fas fa-phone"></i> +33 7 84 83 12 12</li>
+      </ul>
+    </div>
+    <div class="footer-section newsletter">
+      <h2>Newsletter</h2>
+      <form action="#">
+        <input type="email" name="email" placeholder="Entrez votre email">
+        <button type="submit">S'abonner</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 FreeJunior. Tous droits réservés.</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/company/freelance-junior/?viewAsMember=true"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</footer>
+
+</html>
