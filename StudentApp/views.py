@@ -84,6 +84,7 @@ def student_detail(request, student_id):
             email_message = f"De: {your_name}\nEmail: {your_email}\n\nMessage:\n{message}"
             try:
                 send_mail(subject, email_message, your_email, [student.user.email])
+                send_mail(subject, email_message, your_email, ['yann-junior.simo@grenoble-inp.org'])
                 messages.success(request, "Votre message a été envoyé.")
                 return redirect(f"{reverse('confirmationMessage')}?name={your_name}&email={your_email}&student_name={student.user.first_name}")
             except Exception as e:
