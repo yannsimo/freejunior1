@@ -6,7 +6,6 @@ admin.site.register(Specialty)
 admin.site.register(Program)
 admin.site.register(Subject)
 admin.site.register(Student)
-
 admin.site.register(Company)
 admin.site.register(Mission)
 admin.site.register(Comment)
