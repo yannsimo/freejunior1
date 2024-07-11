@@ -215,8 +215,8 @@ class Mission(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='missions')
     specialty= models.ForeignKey(Specialty, on_delete=models.CASCADE, null=True)
     payment_type = models.CharField(max_length=6, choices=PAYMENT_CHOICES,null=True)
-    cash_amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-    equity_offer = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    cash_amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True,default=0)
+    equity_offer = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True,default=0)
 
 
     def __str__(self):

@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Optionnel: ajouter des feuilles de style personnalisées ici -->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <style>
@@ -195,37 +195,54 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse  navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                {% for item in navigation_items %}
-                    <li class="nav-item {% if item.active %}active{% endif %}">
-                        <a class="nav-link" href="{{ item.url }}">{{ item.name }}</a>
-                    </li>
-                {% endfor %}
+ <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto align-items-center">
+        {% for item in navigation_items %}
+            <li class="nav-item {% if item.active %}active{% endif %}">
+                <a class="nav-link" href="{{ item.url }}">
+                    <i class="fas fa-{{ item.icon }} mr-1"></i>
+                    {{ item.name }}
+                </a>
+            </li>
+        {% endfor %}
 
-               <li class="nav-item separator">
+        <li class="nav-item separator">
             <span class="nav-link separator-line"></span>
-           </li>
-                {% if user.is_authenticated %}
-                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'edit_student_profile' %}">{{user.first_name}}</a>
-                     </li>
-                      <li class="nav-item">
-                        <form method="post" action="{% url 'logout' %}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-link nav-link">Déconnexion</button>
-                        </form>
-                    </li>
-                {% else %}
-                      <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Connexion</a>
-                      </li>
-                <li class="nav-item">
-                        <a class="nav-link" href="{% url 'student_form' %}">Inscription</a>
-                      </li>
-                {% endif %}
-            </ul>
-        </div>
+        </li>
+
+        {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-circle mr-1"></i>
+                    {{user.first_name}}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="{% url 'edit_student_profile' %}">
+                        <i class="fas fa-user-edit mr-2"></i>Éditer le profil
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Déconnexion
+                        </button>
+                    </form>
+                </div>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">
+                    <i class="fas fa-sign-in-alt mr-1"></i>Connexion
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-outline-primary ml-2" href="{% url 'student_form' %}">
+                    <i class="fas fa-user-plus mr-1"></i>Inscription
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
     </nav>
 
     <div class="container mt-4">

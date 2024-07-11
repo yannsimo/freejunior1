@@ -33,7 +33,7 @@ class StudentRegistrationForm(forms.ModelForm):
         widget=forms.Textarea(attrs={
             'class': 'form-control',
             'placeholder': (
-                "Décrivez-vous brièvement. Voici quelques points à inclure pour atteindre les 100 mots : \n"
+                "Décrivez-vous brièvement. Voici quelques points à inclure pour atteindre les 20 mots : \n"
                 "- Qui êtes-vous et quel est votre parcours académique ? \n"
                 "- Quelles sont les stages que vous avez effectués ? \n"
                 "- Sur quels projets avez-vous travaillé ? \n"
@@ -72,8 +72,8 @@ class StudentRegistrationForm(forms.ModelForm):
     def clean_description(self):
         description_text = self.cleaned_data.get('description')
         word_count = len(description_text.split())
-        if word_count < 100:
-            raise ValidationError('La description doit contenir au moins 100 mots.')
+        if word_count < 2:
+            raise ValidationError('La description doit contenir au moins 20 mots.')
         return description_text
 
     def save(self, commit=True):

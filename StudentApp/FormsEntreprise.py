@@ -57,24 +57,11 @@ class MissionForm(forms.ModelForm):
 
     class Meta:
         model = Mission
-        fields = ['title', 'specialty_name', 'description', 'payment_type', 'cash_amount', 'equity_offer']
+        fields = ['title', 'specialty_name', 'description', 'payment_type']
         widgets = {
-            'cash_amount': forms.NumberInput(attrs={'step': '0.01', 'class': 'form-control'}),
-            'equity_offer': forms.NumberInput(attrs={'step': '0.01', 'class': 'form-control'}),
             'company': forms.Select(attrs={'class': 'form-control'}),
         }
 
-    def clean(self):
-        cleaned_data = super().clean()
-        payment_type = cleaned_data.get('payment_type')
-        cash_amount = cleaned_data.get('cash_amount')
-        equity_offer = cleaned_data.get('equity_offer')
-
-        if payment_type == 'cash' and not cash_amount:
-            self.add_error('cash_amount', 'Le montant en cash est requis pour ce type de paiement.')
-        elif payment_type == 'equity' and not equity_offer:
-            self.add_error('equity_offer', 'L\'offre d\'équité est requise pour ce type de paiement.')
-        return cleaned_data
 
     def save(self, commit=True):
         specialty_name = self.cleaned_data.get('specialty_name')

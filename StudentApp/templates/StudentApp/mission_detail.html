@@ -60,11 +60,11 @@ Détails de la Mission
                     <h1 class="card-title text-primary">{{ mission.title }}</h1>
                     <p class="company-name">{{ mission.company.name }}</p>
                     <p><strong>Date :</strong> {{ mission.date }}</p>
-                    <p><strong>Budget de l'entreprise :</strong>
+                    <p><strong>Type de paiement :</strong>
                         {% if mission.payment_type == 'cash' %}
-                            {{ mission.cash_amount }} €
+                            paiement  en cash   €
                         {% else %}
-                            {{ mission.equity_offer }} % d'équité
+                            paiement en part % d'entreprise
                         {% endif %}
                     </p>
                     <p class="mission-description"><strong>Description :</strong><br>
