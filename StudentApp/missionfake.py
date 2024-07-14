@@ -12,7 +12,6 @@ from StudentApp.FormsEntreprise import EntrepriseForm, MissionForm
 from StudentApp.models import Company, Mission, Specialty
 
 # Configurez votre clé API OpenAI
-openai.api_key = 'sk-None-F4z3uFjJoE94vtGOPcFoT3BlbkFJvnaV1CY4mHRSBWaR1j40'
 
 
 def get_detailed_description(title, specialty):

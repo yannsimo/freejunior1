@@ -23,7 +23,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 # Configuration de l'API OpenAI
-client = OpenAI(api_key='')
+
 # Instances de Faker pour différentes locales
 fake_fr = Faker('fr_FR')
 fake_african = Faker('en_US')  # Using en_US as a representation of African names in Faker
