@@ -10,6 +10,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from StudentApp.models import Student , Comment, Mission
 from django.core.mail import send_mail
 from .CommentForm import CreateComment
+# Dans un script ou une vue Django où vous souhaitez supprimer les faux profils
+
+from .utils import delete_fake_students
+
+# Appeler la fonction pour supprimer les faux profils
+#delete_fake_students()
 
 
 def student_list(request, speciality_name=model_helpers.student_speciality_all.slug()):
@@ -203,10 +209,11 @@ def submit_mission_view(request):
             mission.save()
             print("formulaire valide")
             messages.success(request, 'Votre mission a été soumise avec succès!')
-            return redirect('submit_mission')
+            return redirect('confirmationEntreprise')
     else:
         entreprise_form = EntrepriseForm()
         mission_form = MissionForm()
+        print("formulaire non  valide")
 
 
     return render(request, 'StudentApp/Entreprise_form.html', {

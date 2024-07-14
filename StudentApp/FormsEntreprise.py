@@ -42,33 +42,37 @@ class MissionForm(forms.ModelForm):
         required=True,
         widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Décrivez brièvement la mission'})
     )
-    payment_type = forms.ChoiceField(
-        label="Type de paiement",
-        choices=PAYMENT_CHOICES,
-        required=True,
-        widget=forms.Select(attrs={'class': 'form-control', 'id': 'id_payment_type'})
-    )
     specialty_name = forms.ChoiceField(
         label="Type de Mission",
         choices=SPECIALTY_CHOICES,
         required=True,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
+    payment_type = forms.ChoiceField(
+        label="Type de paiement",
+        choices=PAYMENT_CHOICES,
+        required=True,
+        widget=forms.Select(attrs={'class': 'form-control', 'id': 'id_payment_type'})
+    )
 
     class Meta:
         model = Mission
-        fields = ['title', 'specialty_name', 'description', 'payment_type']
-        widgets = {
-            'company': forms.Select(attrs={'class': 'form-control'}),
-        }
+        fields = ['title', 'description', 'specialty_name', 'payment_type']
 
+    def __init__(self, *args, **kwargs):
+        self.company = kwargs.pop('company', None)
+        super().__init__(*args, **kwargs)
 
     def save(self, commit=True):
-        specialty_name = self.cleaned_data.get('specialty_name')
         with transaction.atomic():
-            specialty, created = Specialty.objects.get_or_create(name=specialty_name)
             mission = super().save(commit=False)
+            if self.company:
+                mission.company = self.company
+
+            specialty_name = self.cleaned_data.get('specialty_name')
+            specialty, _ = Specialty.objects.get_or_create(name=specialty_name)
             mission.specialty = specialty
+
             if commit:
                 mission.save()
         return mission

@@ -83,11 +83,11 @@ Liste des missions
                     </h5>
                     <p class="company-name" >{{  mission.title }}</p>
                     <p><strong>Date :</strong> {{ mission.date }}</p>
-                    <p><strong>Budget de l'entreprise :</strong>
+                    <p><strong>Type de paiement :</strong>
                         {% if mission.payment_type == 'cash' %}
-                            {{ mission.cash_amount }} €
+                            paiement  en cash   €
                         {% else %}
-                            {{ mission.equity_offer }} % des parts de mon entreprise
+                            paiement en part % d'entreprise
                         {% endif %}
                     </p>
                     <p class="mission-description"><strong>Description :</strong><br>

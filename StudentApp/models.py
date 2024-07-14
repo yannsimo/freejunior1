@@ -137,7 +137,7 @@ SPECIALTY_CHOICES = [
 
 PAYMENT_CHOICES = [
     ('cash', 'Cash'),
-    ('equity', 'Parts d\'entreprise'),
+    ('equity', 'Parts d\'entreprise')
 ]
 
 class School(models.Model):
@@ -179,8 +179,7 @@ class Student(models.Model):
         ('Bac+3', 'Bac+3'),
         ('Bac+4', 'Bac+4'),
         ('Bac+5', 'Bac+5'),
-        ('Bac+6', 'Bac+6'),
-        ('Bac+7', 'Bac+7'),
+
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     study_level = models.CharField(max_length=5, choices=STUDY_LEVEL_CHOICES, null=True)
@@ -215,19 +214,9 @@ class Mission(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='missions')
     specialty= models.ForeignKey(Specialty, on_delete=models.CASCADE, null=True)
     payment_type = models.CharField(max_length=6, choices=PAYMENT_CHOICES,null=True)
-    cash_amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True,default=0)
-    equity_offer = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True,default=0)
-
 
     def __str__(self):
         return self.title
-
-    def save(self, *args, **kwargs):
-        if self.payment_type == 'cash':
-            self.equity_offer = None
-        elif self.payment_type == 'equity':
-            self.cash_amount = None
-        super().save(*args, **kwargs)
 class Comment(models.Model):
     STATUS_VISIBLE = 'visible'
     STATUS_HIDDEN = 'hidden'
