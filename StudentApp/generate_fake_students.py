@@ -10,7 +10,8 @@ from faker import Faker
 from openai import OpenAI
 import unicodedata
 import requests
-
+from dotenv import load_dotenv
+load_dotenv()
 # Configuration Django
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'FreeJunior.settings')
@@ -22,7 +23,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 # Configuration de l'API OpenAI
-client = OpenAI(api_key='sk-None-F4z3uFjJoE94vtGOPcFoT3BlbkFJvnaV1CY4mHRSBWaR1j40')
+client = OpenAI(api_key='')
 # Instances de Faker pour différentes locales
 fake_fr = Faker('fr_FR')
 fake_african = Faker('en_US')  # Using en_US as a representation of African names in Faker
