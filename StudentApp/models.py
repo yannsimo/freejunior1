@@ -136,7 +136,7 @@ SPECIALTY_CHOICES = [
 ]
 
 PAYMENT_CHOICES = [
-    ('cash', 'Cash'),
+    ('cash', 'argent'),
     ('equity', 'Parts d\'entreprise')
 ]
 

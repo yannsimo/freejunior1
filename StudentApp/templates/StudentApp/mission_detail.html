@@ -62,9 +62,9 @@ Détails de la Mission
                     <p><strong>Date :</strong> {{ mission.date }}</p>
                     <p><strong>Type de paiement :</strong>
                         {% if mission.payment_type == 'cash' %}
-                            paiement  en cash   €
+                            Le paiement sera effectué en argent (€).
                         {% else %}
-                            paiement en part % d'entreprise
+                            Le paiement sera effectué sous forme de parts de l'entreprise (%).
                         {% endif %}
                     </p>
                     <p class="mission-description"><strong>Description :</strong><br>
