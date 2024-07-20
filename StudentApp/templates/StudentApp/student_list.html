@@ -163,12 +163,17 @@
     }
 </style>
 <script>
-    tippy('.filiere-tooltip, .ecole-tooltip, .specialty-tooltip', {
+ tippy('.filiere-tooltip, .ecole-tooltip, .skill-tooltip, .specialty-tooltip', {
     content(reference) {
         return reference.getAttribute('title');
     },
     placement: 'top',
+    trigger: 'mouseenter focus', // Affiche l'infobulle sur hover et focus (pour les appareils non-tactiles)
+    touch: ['hold', 500], // Affiche l'infobulle sur long press (pour les appareils tactiles)
+    hideOnClick: true, // Cache l'infobulle lorsqu'on clique/touche en dehors
+    delay: [0, 100], // Délai d'apparition et de disparition de l'infobulle
 });
+
 </script>
 
 <div class="container mt-5">
