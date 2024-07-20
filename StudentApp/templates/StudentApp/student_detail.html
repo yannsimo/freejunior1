@@ -1,45 +1,50 @@
-   {% extends 'base.html' %}
+ {% extends 'base.html' %}
 {% load static %}
 {% load bootstrap4 %}
+
 {% block title %}
-{{ student.user.first_name }} {{ student.user.last_name }}
+    {{ student.user.first_name }} {{ student.user.last_name }}
 {% endblock %}
 
 {% block content %}
 <div class="container mt-4">
     <div class="row">
+        <!-- Profil de l'étudiant -->
         <div class="col-md-4">
-            <div class="card mb-4">
-                <!-- Affiche la photo de l'étudiant -->
+            <div class="card mb-4 shadow-sm">
                 {% if student.photo %}
-                <img src="{{ student.photo.url }}" class="card-img-top" alt="{{ student.user.first_name }} {{ student.user.last_name }}">
+                    <img src="{{ student.photo.url }}" class="card-img-top" alt="{{ student.user.first_name }} {{ student.user.last_name }}">
                 {% else %}
-                <img src="{% static 'img/student_preview_rev_1.png' %}" class="card-img-top" alt="{{ student.user.first_name }} {{ student.user.last_name }}">
+                    <img src="{% static 'img/student_preview_rev_1.png' %}" class="card-img-top" alt="{{ student.user.first_name }} {{ student.user.last_name }}">
                 {% endif %}
                 <div class="card-body text-center">
                     <h2 class="card-title text-primary">{{ student.user.first_name }} {{ student.user.last_name }}</h2>
                     <hr class="my-4">
                     <p class="card-text"><strong>Prix horaire :</strong> <span class="badge badge-success">{{ student.hourly_rate }} €/heure</span></p>
                     <p class="card-text"><strong>École :</strong> <span class="badge badge-info ecole-tooltip" title="{{ student.school.name }}">{{ student.school.name | truncatechars:50 }}</span></p>
-                    <p class="card-text"><strong>Niveau d'étude :</strong> <span class="badge badge-secondary" >{{ student.study_level }}</span></p>
+                    <p class="card-text"><strong>Niveau d'étude :</strong> <span class="badge badge-secondary">{{ student.study_level }}</span></p>
                     <p class="card-text"><strong>Filière :</strong> <span class="badge badge-warning filiere-tooltip" title="{{ student.program.name }}">{{ student.program.name|truncatechars:50 }}</span></p>
                     <p class="card-text"><strong>Compétences :</strong> <span class="badge badge-danger skill-tooltip" title="{{ student.related_subject.name }}">{{ student.related_subject.name|truncatechars:50 }}</span></p>
                     <p class="card-text"><strong>Spécialité :</strong> <span class="badge badge-primary specialty-tooltip">{{ student.specialty.get_human_readable_name|truncatechars:50 }}</span></p>
                     <p class="card-text"><strong>Description :</strong><br>{{ student.description|linebreaks|safe }}</p>
-                    <p class="card-text"><strong>Curriculum Vitae (CV) :</strong>
-                    {% if student.cv %}
-                    <a href="{{ student.cv.url }}" target="_blank" class="btn btn-outline-primary btn-sm">Télécharger le CV</a>
-                    {% else %}
-                    <span class="text-muted">Non disponible</span>
-                    {% endif %}
+                    <p class="card-text">
+                        <strong>Curriculum Vitae (CV) :</strong>
+                        {% if student.cv %}
+                            <a href="{{ student.cv.url }}" target="_blank" class="btn btn-outline-primary btn-sm mt-2">Télécharger le CV</a>
+                        {% else %}
+                            <span class="text-muted">Non disponible</span>
+                        {% endif %}
                     </p>
                 </div>
             </div>
         </div>
+
+        <!-- Formulaire de contact et commentaires -->
         <div class="col-md-8">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h3>Contactez {{ student.user.first_name }} {{ student.user.last_name }}</h3>
+            <!-- Formulaire de contact -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Contactez {{ student.user.first_name }} {{ student.user.last_name }}</h3>
                 </div>
                 <div class="card-body">
                     <form method="post" action="{% url 'contact_student' student.id %}">
@@ -61,30 +66,32 @@
                     </form>
                 </div>
             </div>
-            <div class="card mt-4">
-                <div class="card-header">
-                    <h3>Commentaires</h3>
+
+            <!-- Section commentaires -->
+            <div class="card mt-4 shadow-sm">
+                <div class="card-header bg-secondary text-white">
+                    <h3 class="mb-0">Commentaires</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-unstyled">
                         {% for comment in comments %}
-                        <li class="media mb-3 comment-list-item">
-                            <img src="{% static 'img/profil.jpg' %}" class="mr-3 rounded-circle comment-img" alt="Commenter photo">
-                            <div class="media-body">
-                                <h5 class="mt-0 mb-1 comment-header">{{ comment.company_name }} - <span class="comment-title">{{ comment.mission_title }}</span></h5>
-                                <p><small class="text-muted">{{ comment.created_at }}</small></p>
-                                <p class="comment-text">{{ comment.text }}</p>
-                            </div>
-                        </li>
+                            <li class="media mb-4 comment-list-item p-3 rounded">
+                                <img src="{% static 'img/profil.jpg' %}" class="mr-3 rounded-circle comment-img" alt="Commenter photo">
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-1 comment-header">{{ comment.company_name }} - <span class="comment-title">{{ comment.mission_title }}</span></h5>
+                                    <p><small class="text-muted">{{ comment.created_at }}</small></p>
+                                    <p class="comment-text">{{ comment.text }}</p>
+                                </div>
+                            </li>
                         {% empty %}
-                        <li class="media">Aucun commentaire pour l'instant !</li>
+                            <li class="media">Aucun commentaire pour l'instant !</li>
                         {% endfor %}
                     </ul>
-                    <form action="{% url 'student_detail' student.pk %}" method="post" class="form mt-3">
+                    <form action="{% url 'student_detail' student.pk %}" method="post" class="form mt-4">
                         {% csrf_token %}
                         {% bootstrap_form comment_form %}
                         {% buttons %}
-                        <button type="submit" class="btn btn-primary">Je poste mon commentaire</button>
+                            <button type="submit" class="btn btn-primary">Je poste mon commentaire</button>
                         {% endbuttons %}
                     </form>
                 </div>
@@ -92,48 +99,72 @@
         </div>
     </div>
 </div>
-<script>
-    tippy('.filiere-tooltip, .ecole-tooltip, .skill-tooltip, .specialty-tooltip', {
-    content(reference) {
-        return reference.getAttribute('title');
-    },
-    placement: 'top',
-    trigger: 'mouseenter focus', // Affiche l'infobulle sur hover et focus (pour les appareils non-tactiles)
-    touch: ['hold', 500], // Affiche l'infobulle sur long press (pour les appareils tactiles)
-    hideOnClick: true, // Cache l'infobulle lorsqu'on clique/touche en dehors
-    delay: [0, 100], // Délai d'apparition et de disparition de l'infobulle
-});
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+
+    tippy('.filiere-tooltip, .ecole-tooltip, .skill-tooltip, .specialty-tooltip', {
+        content(reference) {
+            return reference.getAttribute('title');
+        },
+        placement: 'top',
+        trigger: isTouchDevice ? 'click' : 'mouseenter focus',
+        touch: isTouchDevice ? 'hold' : true,
+        touchHold: isTouchDevice,
+        hideOnClick: true,
+        interactive: true,
+        delay: [0, 100],
+        duration: [300, 250],
+        onShow(instance) {
+            setTimeout(() => {
+                instance.hide();
+            }, 3000);
+        },
+    });
+});
 </script>
+
 <style>
     .badge {
-    max-width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-}
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+    .comment-list-item {
+        transition: background-color 0.3s ease;
+        border: 1px solid #e9ecef;
+    }
     .comment-list-item:hover {
         background-color: #f8f9fa;
-        transition: background-color 0.3s ease;
     }
-
     .comment-img {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
     }
-
     .comment-header {
         font-weight: bold;
         font-size: 1.1rem;
     }
-
     .comment-title {
         color: #007bff;
     }
-
     .comment-text {
         font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+    .card {
+        border: none;
+        transition: box-shadow 0.3s ease-in-out;
+    }
+    .card:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+    .card-header {
+        border-bottom: none;
     }
 </style>
 {% endblock %}
