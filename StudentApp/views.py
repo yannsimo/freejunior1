@@ -9,7 +9,10 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from StudentApp.models import Student , Comment, Mission
 from django.core.mail import send_mail
+from .models import Article
 from .CommentForm import CreateComment
+
+
 # Dans un script ou une vue Django où vous souhaitez supprimer les faux profils
 
 from .utils import delete_fake_students
@@ -220,3 +223,10 @@ def submit_mission_view(request):
         'entreprise_form': entreprise_form,
         'mission_form': mission_form
     })
+def article_list(request):
+    articles = Article.objects.all()
+    return render(request, 'article_list.html', {'articles': articles})
+
+def article_detail(request, pk):
+    article = Article.objects.get(pk=pk)
+    return render(request, 'article_detail.html', {'article': article})

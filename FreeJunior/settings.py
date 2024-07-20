@@ -161,3 +161,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'yannjuniorsim@gmail.com'
 EMAIL_HOST_PASSWORD = 'vnyranwgtptuhrcm'
+
+
+#Linkedin
+LINKEDIN_EMAIL = 'yannjuniorsim@gmail.com'
+LINKEDIN_PASSWORD = 'Lavitesse123*'

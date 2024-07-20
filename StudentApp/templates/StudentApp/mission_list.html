@@ -1,98 +1,213 @@
-   {% extends 'base.html' %}
+ {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-Liste des missions
-{% endblock %}
+
+{% block title %}Liste des missions{% endblock %}
 
 {% block content %}
 <style>
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #2c3e50;
+        --accent-color: #e74c3c;
+        --background-color: #ecf0f1;
+        --text-color: #34495e;
+    }
+
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        font-family: 'Roboto', sans-serif;
+    }
+
     .mission-list-item {
-        border: 1px solid #ddd;
-        margin-bottom: 20px;
-        padding: 20px;
-        border-radius: 10px;
+        border: none;
+        margin-bottom: 30px;
+        padding: 25px;
+        border-radius: 15px;
         transition: all 0.3s ease;
         background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
     .mission-list-item:hover {
-        background-color: #f8f9fa;
         transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     }
 
     .text-primary {
-        color: #007bff !important;
+        color: var(--primary-color) !important;
     }
 
     .text-secondary {
-        color: #6c757d !important;
+        color: var(--secondary-color) !important;
     }
 
-    .badge-secondary, .badge-primary {
-        font-size: 1rem;
+    .badge {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        border-radius: 50px;
+        font-weight: 500;
+    }
+
+    .badge-primary {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+
+    .badge-secondary {
+        background-color: var(--secondary-color);
+        color: #fff;
     }
 
     .company-name {
-        font-weight: bold;
-         color: #1CDDDD;
-        font-size: 2rem;
-        margin-bottom: 10px;
-
-
+        font-weight: 700;
+        color: var(--accent-color);
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+        letter-spacing: -0.5px;
     }
 
     .mission-description {
-        color: #555;
-        margin-bottom: 15px;
+        color: var(--text-color);
+        margin-bottom: 20px;
+        line-height: 1.6;
     }
 
     .mission-footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-top: 20px;
     }
 
     .btn-info {
-        font-size: 0.9rem;
-        padding: 5px 10px;
+        font-size: 1rem;
+        padding: 10px 20px;
+        border-radius: 50px;
+        background-color: var(--primary-color);
+        border: none;
+        transition: all 0.3s ease;
+        color: #fff;
+    }
+
+    .btn-info:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-2px);
+    }
+
+    .sidebar-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--secondary-color);
+    }
+
+    .list-group-item {
+        border: none;
+        padding: 10px 0;
+        background-color: transparent;
+    }
+
+    .list-group-item a {
+        color: var(--text-color);
+        transition: all 0.3s ease;
+    }
+
+    .list-group-item a:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+
+    @media (max-width: 991px) {
+        .sidebar-title {
+            font-size: 1.3rem;
+        }
+        .company-name {
+            font-size: 1.8rem;
+        }
+        .badge {
+            font-size: 0.8rem;
+            padding: 6px 10px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .mission-list-item {
+            padding: 20px;
+        }
+        .company-name {
+            font-size: 1.5rem;
+        }
+        .mission-description {
+            font-size: 0.9rem;
+        }
+        .btn-info {
+            font-size: 0.9rem;
+            padding: 8px 16px;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .container {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .mission-list-item {
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .company-name {
+            font-size: 1.3rem;
+        }
+        .mission-description {
+            font-size: 0.8rem;
+        }
+        .badge {
+            font-size: 0.7rem;
+            padding: 5px 8px;
+        }
+        .btn-info {
+            font-size: 0.8rem;
+            padding: 6px 12px;
+        }
     }
 </style>
-<div class="container mt-4">
+
+<div class="container mt-5">
     <div class="row">
-        <div class="col-sm-3">
-            <h5 class="text-primary">Type de mission</h5>
+        <div class="col-lg-3 col-md-4 mb-4">
+            <h5 class="sidebar-title">Type de mission</h5>
             <ul class="list-group list-unstyled">
                 <li class="list-group-item">
-                    <a href="{% url 'mission_list' %}" class="badge badge-secondary">Toutes</a>
+                    <a href="{% url 'mission_list' %}">Toutes</a>
                 </li>
                 {% for cat in specialities %}
                 <li class="list-group-item">
-                    <a href="{% url 'mission_list_filter' cat.name %}" class="badge badge-secondary">{{ cat.get_human_readable_name|capfirst }}</a>
+                    <a href="{% url 'mission_list_filter' cat.name %}">{{ cat.get_human_readable_name|capfirst }}</a>
                 </li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="col-sm-9">
-            <h1 class="mb-4 text-primary">Liste des missions {% if speciality %}  {{ speciality.get_human_readable_name }}{% endif %}</h1>
-            <ul class="list-group">
+        <div class="col-lg-9 col-md-8">
+            <h1 class="mb-5 text-primary">Liste des missions {% if speciality %} {{ speciality.get_human_readable_name }}{% endif %}</h1>
+            <div class="mission-list">
                 {% for mission in missions %}
-                <li class="list-group-item mission-list-item mb-4 shadow-sm">
-                    <h5 class="text-primary">
-                        <a href="{% url 'mission_detail' mission.pk %}" class="btn btn-info">{{ mission.company.name  }}</a>
-                    </h5>
-                    <p class="company-name" >{{  mission.title }}</p>
+                <div class="mission-list-item">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="text-primary mb-0">
+                            <a href="{% url 'mission_detail' mission.pk %}" class="btn btn-info">{{ mission.company.name }}</a>
+                        </h5>
+                        <span class="badge {% if mission.disponible %}badge-primary{% else %}badge-secondary{% endif %}">
+                            {{ mission.disponible|yesno:"Candidature ouverte,Candidature fermée" }}
+                        </span>
+                    </div>
+
+                    <h2 class="company-name">{{ mission.title }}</h2>
                     <p><strong>Date :</strong> {{ mission.date }}</p>
-                    <p><strong>Type de paiement :</strong>
-                        {% if mission.payment_type == 'cash' %}
-                            Le paiement sera effectué en argent (€).
-                        {% else %}
-                            Le paiement sera effectué sous forme de parts de l'entreprise (%).
-                        {% endif %}
-                    </p>
+                    <p><strong>Fourchette de prix :</strong> {{ mission.cash_amount_min }} € - {{mission.cash_amount_max}} €</p>
 
                     <p class="mission-description"><strong>Description :</strong><br>
-                        <span>{{ mission.description|slice:":70" }}...</span>
+                        {{ mission.description|slice:":100" }}...
                     </p>
                     <div class="mission-footer">
                         {% if mission.specialty %}
@@ -102,14 +217,13 @@ Liste des missions
                         {% endif %}
                         <a href="{% url 'mission_detail' mission.pk %}" class="btn btn-info">Postuler</a>
                     </div>
-                </li>
-
+                </div>
                 {% empty %}
-                <li class="list-group-item">
-                    <p class="text-center">Aucune mission n'est enregistrée.</p>
-                </li>
+                <div class="alert alert-info">
+                    <p class="text-center mb-0">Aucune mission n'est enregistrée.</p>
+                </div>
                 {% endfor %}
-            </ul>
+            </div>
         </div>
     </div>
 </div>

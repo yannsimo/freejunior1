@@ -20,11 +20,11 @@
                     <h2 class="card-title text-primary">{{ student.user.first_name }} {{ student.user.last_name }}</h2>
                     <hr class="my-4">
                     <p class="card-text"><strong>Prix horaire :</strong> <span class="badge badge-success">{{ student.hourly_rate }} €/heure</span></p>
-                    <p class="card-text"><strong>École :</strong> <span class="badge badge-info">{{ student.school.name }}</span></p>
-                    <p class="card-text"><strong>Niveau d'étude :</strong> <span class="badge badge-secondary">{{ student.study_level }}</span></p>
-                    <p class="card-text"><strong>Filière :</strong> <span class="badge badge-warning">{{ student.program.name }}</span></p>
-                    <p class="card-text"><strong>Compétences :</strong> <span class="badge badge-danger">{{ student.related_subject.name }}</span></p>
-                    <p class="card-text"><strong>Spécialité :</strong> <span class="badge badge-primary">{{ student.specialty.name }}</span></p>
+                    <p class="card-text"><strong>École :</strong> <span class="badge badge-info ecole-tooltip" title="{{ student.school.name }}">{{ student.school.name | truncatechars:50 }}</span></p>
+                    <p class="card-text"><strong>Niveau d'étude :</strong> <span class="badge badge-secondary" >{{ student.study_level }}</span></p>
+                    <p class="card-text"><strong>Filière :</strong> <span class="badge badge-warning filiere-tooltip" title="{{ student.program.name }}">{{ student.program.name|truncatechars:50 }}</span></p>
+                    <p class="card-text"><strong>Compétences :</strong> <span class="badge badge-danger skill-tooltip" title="{{ student.related_subject.name }}">{{ student.related_subject.name|truncatechars:50 }}</span></p>
+                    <p class="card-text"><strong>Spécialité :</strong> <span class="badge badge-primary specialty-tooltip">{{ student.specialty.get_human_readable_name|truncatechars:50 }}</span></p>
                     <p class="card-text"><strong>Description :</strong><br>{{ student.description|linebreaks|safe }}</p>
                     <p class="card-text"><strong>Curriculum Vitae (CV) :</strong>
                     {% if student.cv %}
@@ -92,8 +92,22 @@
         </div>
     </div>
 </div>
-
+<script>
+    tippy('.filiere-tooltip, .ecole-tooltip, .skill-tooltip, .specialty-tooltip', {
+    content(reference) {
+        return reference.getAttribute('title');
+    },
+    placement: 'top',
+});
+</script>
 <style>
+    .badge {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
     .comment-list-item:hover {
         background-color: #f8f9fa;
         transition: background-color 0.3s ease;

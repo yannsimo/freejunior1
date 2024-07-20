@@ -22,4 +22,6 @@ urlpatterns = [
     path('terms/', views.terms_of_service, name='terms_of_service'),
     path('privacy/', views.privacy_policy, name='privacy_policy'),
     path('submit_mission/', views.submit_mission_view, name='submit_mission'),
+    path('articles/', views.article_list, name='article_list'),
+    path('articles/<int:pk>/', views.article_detail, name='article_detail'),
 ]

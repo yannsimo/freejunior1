@@ -50,8 +50,8 @@ class StudentRegistrationForm(forms.ModelForm):
                          widget=forms.FileInput(attrs={'class': 'form-control-file'}))
 
     school_name = forms.CharField(label="Nom de l'école où vous étudiez", max_length=255, required=True,
-                                  widget=forms.TextInput(
-                                      attrs={'class': 'form-control', 'placeholder': 'Entrez le nom de votre école'}))
+                                  widget=forms.Textarea(
+                                      attrs={'class': 'form-control', 'placeholder': 'Entrez le nom de votre école', 'rows': 5}))
     specialty_name = forms.ChoiceField(
         label="Spécialité que vous souhaitez exercer sur ce site ",
         choices=SPECIALTY_CHOICES,
@@ -61,9 +61,9 @@ class StudentRegistrationForm(forms.ModelForm):
     program_name = forms.CharField(label="Nom de votre filière universitaire", max_length=255, required=True,
                                    widget=forms.TextInput(attrs={'class': 'form-control',
                                                                  'placeholder': 'Entrez le nom de votre filière'}))
-    subject_name = forms.CharField(label="Listez vos compétences ", max_length=255, required=True,
-                                   widget=forms.TextInput(
-                                       attrs={'class': 'form-control', 'placeholder': 'Listez vos compétences'}))
+    subject_name = forms.CharField(label="Listez vos compétences ", max_length=1000, required=True,
+                                   widget=forms.Textarea(
+                                       attrs={'class': 'form-control', 'placeholder': 'Listez vos compétences','rows': 5}))
 
     class Meta:
         model = Student

@@ -1,13 +1,12 @@
-   <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
-     <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-3LT3GH3ZEC');
-</script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3LT3GH3ZEC');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soumettre une Mission - FreeJunior</title>
@@ -166,6 +165,22 @@
                 <div class="form-group">
                     <label for="id_payment_type">Type de Paiement</label>
                     {{ mission_form.payment_type }}
+                </div>
+                <div id="cash_fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="id_cash_amount_min">Montant minimum en Cash (€)</label>
+                        {{ mission_form.cash_amount_min }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_cash_amount_max">Montant maximum en Cash (€)</label>
+                        {{ mission_form.cash_amount_max }}
+                    </div>
+                </div>
+                <div id="equity_fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="id_equity_offer">Offre d'Équité (en %)</label>
+                        {{ mission_form.equity_offer }}
+                    </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary btn-lg btn-block">Soumettre</button>

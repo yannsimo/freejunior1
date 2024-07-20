@@ -1,111 +1,236 @@
-   {% extends 'base.html' %}
+ {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-Liste des Étudiants
-{% endblock %}
+
+{% block title %}Liste des Étudiants{% endblock %}
 
 {% block content %}
 <style>
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #2c3e50;
+        --accent-color: #e74c3c;
+        --background-color: #ecf0f1;
+        --text-color: #34495e;
+    }
+
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        font-family: 'Roboto', sans-serif;
+    }
+
     .card-student {
-        border: 1px solid #ddd;
-        margin-bottom: 20px;
-        border-radius: 10px;
+        border: none;
+        margin-bottom: 30px;
+        border-radius: 15px;
         transition: all 0.3s ease;
         background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
     .card-student:hover {
-        background-color: #f8f9fa;
         transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     }
 
     .text-primary {
-        color: #007bff !important;
+        color: var(--primary-color) !important;
     }
 
-    .badge-secondary, .badge-primary, .badge-warning, .badge-info {
-        font-size: 1rem;
+    .badge {
+         max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+    .badge-primary {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+
+    .badge-secondary {
+        background-color: var(--secondary-color);
+        color: #fff;
+    }
+
+
+    .badge-warning {
+        background-color: #f39c12;
+        color: #fff;
+    }
+
+    .badge-info {
+        background-color: #3498db;
+        color: #fff;
     }
 
     .card-title a {
+        color: var(--primary-color);
         text-decoration: none;
+        transition: all 0.3s ease;
     }
 
     .card-title a:hover {
-        text-decoration: underline;
+        color: var(--secondary-color);
+        text-decoration: none;
     }
 
     .card-text {
-        color: #555;
-        margin-bottom: 10px;
+        color: var(--text-color);
+        margin-bottom: 15px;
+        line-height: 1.6;
     }
 
     .text-info {
-        font-weight: bold;
+        color: var(--primary-color) !important;
+        font-weight: 500;
     }
 
     .img-fluid {
         max-width: 100%;
         height: auto;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .sidebar-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--secondary-color);
+    }
+
+    .list-group-item {
+        border: none;
+        padding: 10px 0;
+        background-color: transparent;
+    }
+
+    .list-group-item a {
+        color: var(--text-color);
+        transition: all 0.3s ease;
+    }
+
+    .list-group-item a:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+
+    @media (max-width: 991px) {
+        .sidebar-title {
+            font-size: 1.3rem;
+        }
+        .card-title {
+            font-size: 1.3rem;
+        }
+        .badge {
+            font-size: 0.8rem;
+            padding: 6px 10px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .card-student {
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-size: 1.2rem;
+        }
+        .card-text {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .container {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .card-student {
+            margin-bottom: 15px;
+        }
+        .card-title {
+            font-size: 1.1rem;
+        }
+        .card-text {
+            font-size: 0.8rem;
+        }
+        .badge {
+            font-size: 0.7rem;
+            padding: 5px 8px;
+        }
     }
 </style>
-<div class="container mt-4">
+<script>
+    tippy('.filiere-tooltip, .ecole-tooltip, .specialty-tooltip', {
+    content(reference) {
+        return reference.getAttribute('title');
+    },
+    placement: 'top',
+});
+</script>
+
+<div class="container mt-5">
     <div class="row">
-        <div class="col-sm-3">
-            <h5 class="text-primary">Spécialités</h5>
+        <div class="col-lg-3 col-md-4 mb-4">
+            <h5 class="sidebar-title">Spécialités</h5>
             <ul class="list-group list-unstyled">
                 <li class="list-group-item">
-                    <a href="{% url 'student_list' %}" class="badge badge-secondary">
-                        toutes
-                    </a>
+                    <a href="{% url 'student_list' %}">Toutes</a>
                 </li>
                 {% for cat in specialities %}
                 <li class="list-group-item">
-                    <a href="{% url 'student_list_filter' cat.name %}" class="badge badge-secondary">
-                        {{ cat.get_human_readable_name|capfirst }}
-                    </a>
+                    <a href="{% url 'student_list_filter' cat.name %}">{{ cat.get_human_readable_name|capfirst }}</a>
                 </li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="col-sm-9">
-            <h1 class="mb-4 text-primary">Liste des Étudiants {% if speciality %}  {{ speciality.get_human_readable_name }}{% endif %}</h1>
+        <div class="col-lg-9 col-md-8">
+            <h1 class="mb-5 text-primary">Liste des Étudiants {% if speciality %} {{ speciality.get_human_readable_name }}{% endif %}</h1>
             <div class="row">
                 {% for student in students %}
-                <div class="col-md-4">
-                    <div class="card card-student mb-4 shadow-sm">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card card-student">
                         {% if student.photo %}
                         <img src="{{ student.photo.url }}" class="img-fluid" alt="{{ student.user.first_name }} {{ student.user.last_name }}">
                         {% else %}
                         <img src="{% static 'img/student_preview_rev_1.png' %}" class="img-fluid" alt="{{ student.user.first_name }} {{ student.user.last_name }}">
                         {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="{% url 'student_detail' student.pk %}" class="text-primary">{{ student.user.first_name }} {{ student.user.last_name }}</a></h5>
-                            <p class="card-text">
-                                <strong>Filière :</strong> <span class="badge badge-warning">{{ student.program.name }}</span>
-                            </p>
-                            <p class="card-text">
-                                <strong>École :</strong> <span class="badge badge-info">{{ student.school.name }}</span>
-                            </p>
-                            <p class="card-text">
-                                <strong>Description :</strong><br>
-                                <span class="text-muted">{{ student.description|slice:":70" }}...</span>
-                                <a href="{% url 'student_detail' student.pk %}" class="text-info">[En savoir plus ...]</a>
-                            </p>
-                            {% if student.specialty %}
-                            <a href="{% url 'student_list_filter' student.specialty.name %}" class="badge badge-primary">{{ student.specialty.get_human_readable_name|capfirst }}</a>
-                            {% else %}
-                            <span class="badge badge-secondary">Aucune spécialité</span>
-                            {% endif %}
-                        </div>
+                         <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'student_detail' student.pk %}">{{ student.user.first_name }} {{ student.user.last_name }}</a></h5>
+                        <p class="card-text">
+                            <strong>Filière :</strong>
+                            <span class="badge badge-warning filiere-tooltip" title="{{ student.program.name }}">
+                                {{ student.program.name|truncatechars:20 }}
+                            </span>
+                        </p>
+                        <p class="card-text">
+                            <strong>École :</strong>
+                            <span class="badge badge-info ecole-tooltip" title="{{ student.school.name }}">
+                                {{ student.school.name|truncatechars:20 }}
+                            </span>
+                        </p>
+                        <p class="card-text">
+                            <strong>Description :</strong><br>
+                            <span>{{ student.description|truncatechars:70 }}</span>
+                            <a href="{% url 'student_detail' student.pk %}" class="text-info">[En savoir plus]</a>
+                        </p>
+                        {% if student.specialty %}
+                        <a href="{% url 'student_list_filter' student.specialty.name %}" class="badge badge-primary specialty-tooltip" title="{{ student.specialty.get_human_readable_name }}">
+                            {{ student.specialty.get_human_readable_name|truncatechars:20|capfirst }}
+                        </a>
+                        {% else %}
+                        <span class="badge badge-secondary">Aucune spécialité</span>
+                        {% endif %}
+                    </div>
                     </div>
                 </div>
                 {% empty %}
                 <div class="col-md-12">
-                    <p class="text-center">Aucun étudiant n'est enregistré.</p>
+                    <div class="alert alert-info">
+                        <p class="text-center mb-0">Aucun étudiant n'est enregistré.</p>
+                    </div>
                 </div>
                 {% endfor %}
             </div>

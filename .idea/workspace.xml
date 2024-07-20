@@ -5,8 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="301adbfd-a33d-42d3-aa42-55bd41c00de0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Mesbots/generate_articles.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mesbots/linkedin_scraper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mesbots/linkedin_scraper_connection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mesbots/linkedin_scraper_connection_demande.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mesbots/linkedin_scraper_recu_email.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mesbots/linkedin_scraper_send.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StudentApp/management/commands/reformat_subject_names.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/article_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/article_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StudentApp/templates/StudentApp/Accueil.html" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/Accueil.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounts/FormsEtudiant.py" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/FormsEtudiant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FreeJunior/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FreeJunior/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/FormsEntreprise.py" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/FormsEntreprise.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/templates/StudentApp/ConfirmationEntreprise.html" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/ConfirmationEntreprise.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/templates/StudentApp/ConfirmationInscription.html" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/ConfirmationInscription.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/templates/StudentApp/Entreprise_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/Entreprise_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/templates/StudentApp/confirmationMessage.html" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/confirmationMessage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/templates/StudentApp/confirmationMessageAvis.html" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/confirmationMessageAvis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/templates/StudentApp/generate_fake_students.py" beforeDir="false" afterPath="$PROJECT_DIR$/Mesbots/generate_fake_students.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/templates/StudentApp/mission_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/mission_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/templates/StudentApp/mission_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/mission_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/templates/StudentApp/missionfake.py" beforeDir="false" afterPath="$PROJECT_DIR$/Mesbots/missionfake.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/templates/StudentApp/student_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/student_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/templates/StudentApp/student_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/templates/StudentApp/student_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/StudentApp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,22 +59,50 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/PC/PycharmProjects/tests/FreeJunior1/FreeJunior1/StudentApp/templates/StudentApp"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;min__max&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/PycharmProjects/tests/FreeJunior1/FreeJunior1/StudentApp/management&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\PycharmProjects\tests\FreeJunior1\FreeJunior1\StudentApp\management" />
+      <recent name="C:\Users\PC\PycharmProjects\tests\FreeJunior1\FreeJunior1\StudentApp" />
       <recent name="C:\Users\PC\PycharmProjects\tests\FreeJunior1\FreeJunior1\StudentApp\templates\StudentApp" />
       <recent name="C:\Users\PC\PycharmProjects\tests\FreeJunior1\FreeJunior1\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\PycharmProjects\tests\FreeJunior1\FreeJunior1\StudentApp" />
+      <recent name="C:\Users\PC\PycharmProjects\tests\FreeJunior1\FreeJunior1\Mesbots" />
       <recent name="C:\Users\PC\PycharmProjects\tests\FreeJunior1\FreeJunior1\StudentApp\templates\StudentApp" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="linkedin_scraper " type="PythonConfigurationType" factoryName="Python">
+      <module name="FreeJunior1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Mesbots" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Mesbots/botlinkedin.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

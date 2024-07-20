@@ -60,12 +60,8 @@ Détails de la Mission
                     <h1 class="card-title text-primary">{{ mission.title }}</h1>
                     <p class="company-name">{{ mission.company.name }}</p>
                     <p><strong>Date :</strong> {{ mission.date }}</p>
-                    <p><strong>Type de paiement :</strong>
-                        {% if mission.payment_type == 'cash' %}
-                            Le paiement sera effectué en argent (€).
-                        {% else %}
-                            Le paiement sera effectué sous forme de parts de l'entreprise (%).
-                        {% endif %}
+                    <p><strong>Fourchette de prix :</strong>
+                        {{ mission.cash_amount_min}}  € - {{mission.cash_amount_max}} €
                     </p>
                     <p class="mission-description"><strong>Description :</strong><br>
                         <span>{{ mission.description }}</span>

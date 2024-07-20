@@ -1,0 +1,795 @@
+2024-07-17 09:10:46,397 - INFO - ====== WebDriver manager ======
+2024-07-17 09:10:48,403 - INFO - Get LATEST chromedriver version for google-chrome
+2024-07-17 09:10:48,490 - INFO - Get LATEST chromedriver version for google-chrome
+2024-07-17 09:10:48,556 - INFO - Driver [C:\Users\PC\.wdm\drivers\chromedriver\win64\126.0.6478.182\chromedriver-win32/chromedriver.exe] found in cache
+2024-07-17 09:10:50,294 - INFO - Accès à la page de connexion LinkedIn...
+2024-07-17 09:10:53,448 - INFO - Tentative de connexion...
+2024-07-17 09:10:55,535 - INFO - Attente de la page d'accueil...
+2024-07-17 09:10:57,769 - ERROR - Une erreur est survenue : Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x0046E483]
+	(No symbol) [0x004FA06F]
+	(No symbol) [0x0050C3D6]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:10:57,769 - INFO - Fermeture du navigateur...
+2024-07-17 09:11:28,687 - INFO - ====== WebDriver manager ======
+2024-07-17 09:11:31,168 - INFO - Get LATEST chromedriver version for google-chrome
+2024-07-17 09:11:31,262 - INFO - Get LATEST chromedriver version for google-chrome
+2024-07-17 09:11:31,336 - INFO - Driver [C:\Users\PC\.wdm\drivers\chromedriver\win64\126.0.6478.182\chromedriver-win32/chromedriver.exe] found in cache
+2024-07-17 09:11:32,881 - INFO - Accès à la page de connexion LinkedIn...
+2024-07-17 09:11:38,182 - INFO - Tentative de connexion...
+2024-07-17 09:11:38,609 - INFO - Attente de la page d'accueil...
+2024-07-17 09:11:44,398 - ERROR - Une erreur est survenue : Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x0046E483]
+	(No symbol) [0x004FA06F]
+	(No symbol) [0x0050C3D6]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:11:44,398 - INFO - Fermeture du navigateur...
+2024-07-17 09:11:58,375 - INFO - ====== WebDriver manager ======
+2024-07-17 09:12:00,783 - INFO - Get LATEST chromedriver version for google-chrome
+2024-07-17 09:12:00,850 - INFO - Get LATEST chromedriver version for google-chrome
+2024-07-17 09:12:00,911 - INFO - Driver [C:\Users\PC\.wdm\drivers\chromedriver\win64\126.0.6478.182\chromedriver-win32/chromedriver.exe] found in cache
+2024-07-17 09:12:02,499 - INFO - Accès à la page de connexion LinkedIn...
+2024-07-17 09:12:08,675 - INFO - Tentative de connexion...
+2024-07-17 09:12:11,172 - INFO - Attente de la page d'accueil...
+2024-07-17 09:12:30,591 - INFO - Accès à la page de recherche pour 'MydigitalSchool'...
+2024-07-17 09:12:35,723 - INFO - Attente des résultats de recherche...
+2024-07-17 09:12:38,335 - INFO - Défilement 1/3...
+2024-07-17 09:12:41,678 - INFO - Recherche des liens de profil...
+2024-07-17 09:12:42,833 - INFO - Profils trouvés : 17
+2024-07-17 09:12:49,614 - INFO - Accès au profil : https://www.linkedin.com/in/maxime-lemasson-2a69a31b8?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADKxK94BNW0vRJfftTgmeX_d84-A-rKPJnM
+2024-07-17 09:13:29,691 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:13:58,290 - INFO - Bouton de connexion trouvé et cliqué.
+2024-07-17 09:14:35,664 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:14:35,664 - WARNING - Bouton d'envoi non trouvé ou non cliquable.
+2024-07-17 09:15:20,411 - INFO - Accès au profil : https://www.linkedin.com/in/nathan-kutiwulu-mamoso-a75b3a231?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADoC0HkBucZdOEvZLSaTWQdfw7_rcsFKKJs
+2024-07-17 09:16:02,405 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:16:07,862 - INFO - Bouton de connexion trouvé et cliqué.
+2024-07-17 09:16:44,589 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:16:44,589 - WARNING - Bouton d'envoi non trouvé ou non cliquable.
+2024-07-17 09:17:41,424 - INFO - Accès au profil : https://www.linkedin.com/in/ACoAADCpveEBwBKzvA91OX70cojbssTTNwb2LdQ?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADCpveEBwBKzvA91OX70cojbssTTNwb2LdQ
+2024-07-17 09:18:17,907 - INFO - Fermeture du navigateur...
+2024-07-17 09:18:21,942 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020E9F641730>: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée')': /session/7aede049bf41b58259eeb1af9edfff12
+2024-07-17 09:18:28,117 - INFO - 
+Script interrompu par l'utilisateur.
+2024-07-17 09:26:03,416 - INFO - ====== WebDriver manager ======
+2024-07-17 09:26:06,086 - INFO - Get LATEST chromedriver version for google-chrome
+2024-07-17 09:26:06,154 - INFO - Get LATEST chromedriver version for google-chrome
+2024-07-17 09:26:06,220 - INFO - Driver [C:\Users\PC\.wdm\drivers\chromedriver\win64\126.0.6478.182\chromedriver-win32/chromedriver.exe] found in cache
+2024-07-17 09:26:08,037 - INFO - Accès à la page de connexion LinkedIn...
+2024-07-17 09:26:13,311 - INFO - Tentative de connexion...
+2024-07-17 09:26:15,714 - INFO - Attente de la page d'accueil...
+2024-07-17 09:26:43,541 - INFO - Accès à la page de recherche pour 'MydigitalSchool'...
+2024-07-17 09:26:48,630 - INFO - Attente des résultats de recherche...
+2024-07-17 09:26:51,209 - INFO - Défilement 1/3...
+2024-07-17 09:26:55,176 - INFO - Recherche des liens de profil...
+2024-07-17 09:26:56,405 - INFO - Profils trouvés : 17
+2024-07-17 09:26:59,365 - INFO - Accès au profil : https://www.linkedin.com/in/marcdecourreges?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAtCw4EBSn8-m93FVVymHz-XBJojgerUjiM
+2024-07-17 09:27:40,912 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:28:17,363 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:28:50,249 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:29:24,695 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:29:57,955 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:30:34,134 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:30:34,134 - WARNING - Aucun bouton de connexion trouvé.
+2024-07-17 09:31:24,976 - INFO - Accès au profil : https://www.linkedin.com/in/arnaud-roussel-584238215?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADZRVDQBCeoMlo46bfJtvkLb5-NKDZnYBUY
+2024-07-17 09:32:08,912 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:32:43,824 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:33:17,960 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:33:51,908 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:34:26,239 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:35:01,660 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:35:01,660 - WARNING - Aucun bouton de connexion trouvé.
+2024-07-17 09:35:39,955 - INFO - Accès au profil : https://www.linkedin.com/in/nathan-kutiwulu-mamoso-a75b3a231?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADoC0HkBucZdOEvZLSaTWQdfw7_rcsFKKJs
+2024-07-17 09:36:22,916 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:36:58,173 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:37:31,052 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:38:07,188 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:38:41,749 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:38:51,609 - INFO - Fermeture du navigateur...
+2024-07-17 09:38:51,617 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectionResetError(10054, 'Une connexion existante a dû être fermée par l’hôte distant', None, 10054, None)': /session/88542126bba3b9be4b9d23b3a4f82de1
+2024-07-17 09:38:57,778 - INFO - 
+Script interrompu par l'utilisateur.
+2024-07-17 09:46:56,778 - INFO - ====== WebDriver manager ======
+2024-07-17 09:46:58,903 - INFO - Get LATEST chromedriver version for google-chrome
+2024-07-17 09:46:58,997 - INFO - Get LATEST chromedriver version for google-chrome
+2024-07-17 09:46:59,052 - INFO - Driver [C:\Users\PC\.wdm\drivers\chromedriver\win64\126.0.6478.182\chromedriver-win32/chromedriver.exe] found in cache
+2024-07-17 09:47:00,604 - INFO - Accès à la page de connexion LinkedIn...
+2024-07-17 09:47:04,214 - INFO - Tentative de connexion...
+2024-07-17 09:47:06,263 - INFO - Attente de la page d'accueil...
+2024-07-17 09:47:31,836 - INFO - Accès à la page de recherche pour 'MydigitalSchool'...
+2024-07-17 09:47:37,132 - INFO - Attente des résultats de recherche...
+2024-07-17 09:47:39,170 - INFO - Défilement 1/3...
+2024-07-17 09:47:41,468 - INFO - Recherche des liens de profil...
+2024-07-17 09:47:42,648 - INFO - Profils trouvés : 16
+2024-07-17 09:47:45,795 - INFO - Accès au profil : https://www.linkedin.com/in/mathieu-bonnin-7365ba1aa?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADDa3poBywPVSvZ3lkX13J4k2uPaFL3TnQc
+2024-07-17 09:48:21,932 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:48:43,172 - INFO - Bouton de connexion trouvé et cliqué.
+2024-07-17 09:49:16,298 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:49:16,298 - WARNING - Bouton d'envoi non trouvé ou non cliquable.
+2024-07-17 09:49:34,912 - INFO - Accès au profil : https://www.linkedin.com/in/beno%C3%AEt-giovangrandi-31968411?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAJpvMUBVy3H1WIEA-gMYXUuE2IVfnYb9mw
+2024-07-17 09:50:10,147 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:50:42,903 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:51:14,982 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:51:49,055 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:52:21,347 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:52:54,707 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:52:54,707 - WARNING - Aucun bouton de connexion trouvé.
+2024-07-17 09:53:12,271 - INFO - Accès au profil : https://www.linkedin.com/in/maelya-lecerf?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAD7l65cBPtWYtWWGiXeflxtBgWIYccO3az4
+2024-07-17 09:53:47,669 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:54:20,539 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:54:52,668 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:55:26,511 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:55:59,124 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:56:33,113 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:56:33,113 - WARNING - Aucun bouton de connexion trouvé.
+2024-07-17 09:56:51,474 - INFO - Accès au profil : https://www.linkedin.com/in/ACoAACOio1ABkw_KQVwIe_SVJQzRhtW19n3ovig?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACOio1ABkw_KQVwIe_SVJQzRhtW19n3ovig
+2024-07-17 09:57:26,614 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:58:00,696 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:58:33,172 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 09:59:06,796 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 09:59:39,974 - ERROR - Erreur après 3 tentatives : Message: 
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x004D2C65]
+	(No symbol) [0x004D2D3B]
+	(No symbol) [0x0050EC82]
+	(No symbol) [0x004F39E4]
+	(No symbol) [0x0050CB24]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 10:00:13,535 - ERROR - Erreur après 3 tentatives : Message: 
+
+2024-07-17 10:00:13,535 - WARNING - Aucun bouton de connexion trouvé.
+2024-07-17 10:00:28,665 - INFO - Session expirée, reconnexion...
+2024-07-17 10:00:28,665 - INFO - Accès à la page de connexion LinkedIn...
+2024-07-17 10:00:28,669 - ERROR - Une erreur est survenue : Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x005FC203+27395]
+	(No symbol) [0x00593E04]
+	(No symbol) [0x00491B7F]
+	(No symbol) [0x0046E483]
+	(No symbol) [0x004FA06F]
+	(No symbol) [0x0050C3D6]
+	(No symbol) [0x004F3736]
+	(No symbol) [0x004C7541]
+	(No symbol) [0x004C80BD]
+	GetHandleVerifier [0x008B3AB3+2876339]
+	GetHandleVerifier [0x00907F7D+3221629]
+	GetHandleVerifier [0x0067D674+556916]
+	GetHandleVerifier [0x0068478C+585868]
+	(No symbol) [0x0059CE44]
+	(No symbol) [0x00599858]
+	(No symbol) [0x005999F7]
+	(No symbol) [0x0058BF4E]
+	BaseThreadInitThunk [0x76CCFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x773580CE+286]
+	RtlGetAppContainerNamedObjectPath [0x7735809E+238]
+
+2024-07-17 10:00:28,669 - INFO - Fermeture du navigateur...
+2024-07-17 10:00:30,926 - INFO - 
+Script interrompu par l'utilisateur.

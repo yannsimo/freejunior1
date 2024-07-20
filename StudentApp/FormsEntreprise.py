@@ -30,6 +30,7 @@ class EntrepriseForm(forms.ModelForm):
             raise ValidationError("Le numéro de téléphone doit contenir uniquement des chiffres.")
         return contact_info
 
+
 class MissionForm(forms.ModelForm):
     title = forms.CharField(
         label="Ecrire le titre de la mission",
@@ -54,14 +55,49 @@ class MissionForm(forms.ModelForm):
         required=True,
         widget=forms.Select(attrs={'class': 'form-control', 'id': 'id_payment_type'})
     )
+    cash_amount_min = forms.DecimalField(
+        label="Montant minimum en Cash (€)",
+        required=False,
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Montant minimum'})
+    )
+    cash_amount_max = forms.DecimalField(
+        label="Montant maximum en Cash (€)",
+        required=False,
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Montant maximum'})
+    )
+    equity_offer = forms.DecimalField(
+        label="Offre d'Équité (en %)",
+        required=False,
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Pourcentage d\'équité'})
+    )
 
     class Meta:
         model = Mission
-        fields = ['title', 'description', 'specialty_name', 'payment_type']
+        fields = ['title', 'description', 'specialty_name', 'payment_type', 'cash_amount_min', 'cash_amount_max',
+                  'equity_offer']
 
     def __init__(self, *args, **kwargs):
         self.company = kwargs.pop('company', None)
         super().__init__(*args, **kwargs)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        payment_type = cleaned_data.get('payment_type')
+        cash_amount_min = cleaned_data.get('cash_amount_min')
+        cash_amount_max = cleaned_data.get('cash_amount_max')
+        equity_offer = cleaned_data.get('equity_offer')
+
+        if payment_type == 'cash':
+            if not cash_amount_min:
+                self.add_error('cash_amount_min', 'Le montant minimum en cash est requis pour ce type de paiement.')
+            if not cash_amount_max:
+                self.add_error('cash_amount_max', 'Le montant maximum en cash est requis pour ce type de paiement.')
+            if cash_amount_min and cash_amount_max and cash_amount_min > cash_amount_max:
+                self.add_error('cash_amount_max', 'Le montant maximum doit être supérieur au montant minimum.')
+        elif payment_type == 'equity':
+            if not equity_offer:
+                self.add_error('equity_offer', 'L\'offre d\'équité est requise pour ce type de paiement.')
+        return cleaned_data
 
     def save(self, commit=True):
         with transaction.atomic():

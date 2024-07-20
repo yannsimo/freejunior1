@@ -28,6 +28,20 @@ def login_user(request):
     else:
         form = AuthenticationForm()
     return render(request, "Accounts/login.html", {"form": form})
+def format_text_by_words(text, words_per_line=10):
+    words = text.split()
+    formatted_text = ""
+    line = ""
+
+    for i, word in enumerate(words):
+        if i > 0 and i % words_per_line == 0:
+            formatted_text += line.strip() + '\n'
+            line = ""
+        line += word + " "
+
+    formatted_text += line.strip()
+    return formatted_text
+
 def register_student(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
@@ -38,6 +52,10 @@ def register_student(request):
                 user.save()
                 student = student_form.save(commit=False)
                 student.user = user  # Relier l'utilisateur et l'étudiant
+
+                # Reformater le texte des compétences avant de sauvegarder
+                student.subject_name = format_text_by_words(student.subject_name, words_per_line=10)
+
                 student.save()
 
                 return redirect('confirmationInscription')

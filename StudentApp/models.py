@@ -141,7 +141,7 @@ PAYMENT_CHOICES = [
 ]
 
 class School(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)#à formater
 
     def __str__(self):
         return self.name
@@ -161,14 +161,14 @@ class Specialty(models.Model):
         return dict(SPECIALTY_CHOICES).get(self.name,  self.name)
 
 class Program(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.TextField()
     school = models.ForeignKey(School, on_delete=models.CASCADE, related_name='programs')
 
     def __str__(self):
         return self.name
 
 class Subject(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.TextField()#àformater
     program = models.ForeignKey(Program, on_delete=models.CASCADE, related_name='subjects')
 
     def __str__(self):
@@ -184,9 +184,12 @@ class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     study_level = models.CharField(max_length=5, choices=STUDY_LEVEL_CHOICES, null=True)
     specialty = models.ForeignKey(Specialty, on_delete=models.CASCADE, null=True)
-    school = models.ForeignKey(School, on_delete=models.CASCADE, related_name='students', null=True)
+    school = models.ForeignKey(School, on_delete=models.CASCADE, related_name='students', null=True)#à formater
+
     program = models.ForeignKey(Program, on_delete=models.CASCADE, related_name='students', null=True)
-    related_subject = models.ForeignKey(Subject, on_delete=models.CASCADE, null=True)
+
+    related_subject = models.ForeignKey(Subject, on_delete=models.CASCADE, null=True)# à formater
+
     hourly_rate = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     description = models.TextField(null=True)
     photo = models.ImageField(upload_to='student_photos/', null=True)
@@ -199,7 +202,7 @@ class Student(models.Model):
 
 class Company(models.Model):
     name = models.CharField(max_length=255)
-    email = models.EmailField(unique=True, null=True)
+    email = models.EmailField(null=True)
     contact_info = models.TextField()
     def __str__(self):
         return self.name
@@ -214,7 +217,10 @@ class Mission(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='missions')
     specialty= models.ForeignKey(Specialty, on_delete=models.CASCADE, null=True)
     payment_type = models.CharField(max_length=6, choices=PAYMENT_CHOICES,null=True)
-
+    cash_amount_min = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    cash_amount_max = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    equity_offer = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    disponible = models.BooleanField(default=True)
     def __str__(self):
         return self.title
 class Comment(models.Model):
@@ -237,3 +243,15 @@ class Comment(models.Model):
 
     def __str__(self):
         return '{} - {} (status={})'.format(self.company_name, self.text[:20], self.status)
+
+
+class Article(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    tags = models.CharField(max_length=255)
+    author = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
