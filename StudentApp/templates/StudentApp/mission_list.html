@@ -194,22 +194,45 @@
     }
 
 
-    @media (max-width: 767px) {
-        .mission-list-item {
-            padding: 20px;
-        }
-        .company-name {
-            font-size: 1.5rem;
-        }
-        .mission-description {
-            font-size: 0.9rem;
-        }
-        .btn-info {
-            font-size: 0.9rem;
-            padding: 8px 16px;
-        }
+   @media (min-width: 576px) {
+    .mission-list-item {
+        padding: 25px;
     }
 
+    .company-name {
+        font-size: 1.8rem;
+    }
+
+    .mission-title {
+        font-size: 2rem;
+    }
+
+    .mission-description {
+        font-size: 1rem;
+    }
+
+    .btn-apply, .btn-apply-disabled {
+        width: auto;
+        margin-top: 0;
+    }
+
+    .badge {
+        margin-bottom: 0;
+    }
+}
+@media (min-width: 768px) {
+    .mission-list-item {
+        margin-bottom: 30px;
+    }
+
+    .company-name {
+        font-size: 2rem;
+    }
+
+    .mission-title {
+        font-size: 2.2rem;
+    }
+}
     @media (max-width: 575px) {
         .container {
             padding-left: 10px;
