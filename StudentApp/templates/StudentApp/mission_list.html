@@ -268,7 +268,7 @@
                     </p>
                     <div class="mission-footer">
                         {% if mission.specialty %}
-                        <a href="{% url 'mission_list_filter' mission.specialty.name %}" class="badge badge-primary">{{ mission.specialty.get_human_readable_name|capfirst|truncatechars:40 }}</a>
+                        <a href="{% url 'mission_list_filter' mission.specialty.name %}" class="badge badge-primary">{{ mission.specialty.get_human_readable_name|capfirst|truncatechars:20 }}</a>
                         {% else %}
                         <span class="badge badge-secondary">Aucune spécialité</span>
                         {% endif %}
