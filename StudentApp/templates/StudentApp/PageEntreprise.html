@@ -205,6 +205,13 @@ p {
     float: left;
     text-align: right;
 }
+.pourquoi-block p.highlight {
+    font-weight: bold;
+    color: #333;
+    background-color: #e7f3ff; /* Light background for emphasis */
+    padding: 10px;
+    border-radius: 5px;
+}
 
 .timeline > li:nth-child(even) .timeline-panel-container {
     float: right;
@@ -318,7 +325,7 @@ p {
         </div>
         <div class="col-md-6 order-md-1">
             <h1 class="h3">Faites des économies tout en donnant de l'expérience aux étudiants</h1>
-            <p><strong>45% des étudiants en France travaillent en parallèle de leurs études.</strong> Recruter un junior coûte en moyenne <strong>10 000 €</strong> à une entreprise. Avec FreeJunior, accédez à des talents prometteurs à des tarifs compétitifs et réduisez significativement vos coûts.</p>
+            <p><a href="https://www.letudiant.fr/jobsstages/pourquou-40-des-etudiants-ont-un-emploi-a-cote-de-leurs-etudes.html" target="_blank"><strong>40% des étudiants en France travaillent en parallèle de leurs études.</strong></a> Recruter un junior coûte en moyenne <strong>10 000 €</strong> à une entreprise. Avec FreeJunior, accédez à des talents prometteurs à des tarifs compétitifs et réduisez significativement vos coûts.</p>
             <div class="btn-group mt-2" role="group">
                 <a href="{% url 'student_list' %}" class="btn btn-primary btn-lg">Voir les étudiants</a>
                 <a href="{% url 'submit_mission' %}" class="btn btn-danger btn-lg ml-2">Postez une mission</a>
@@ -337,11 +344,11 @@ p {
                     <i class="fas fa-brain"></i>
                     <h3>Compétences variées et à jour</h3>
                     <div class="divider"></div>
-                    <p>Nos étudiants viennent des meilleures écoles et universités.</p>
+                    <p class="highlight" >Nos étudiants viennent des meilleures écoles et universités<br> ils proposent plusieurs de type de compétences .</p>
                     <p><i class="fas fa-laptop-code"></i> Développement web</p>
                     <p><i class="fas fa-database"></i> Administration de bases de données</p>
                     <p><i class="fas fa-paint-brush"></i> Design graphique</p>
-                    <p>Ils maîtrisent les technologies et tendances actuelles.</p>
+                    <p class="highlight" >Ils maîtrisent les technologies et tendances actuelles.</p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -349,10 +356,9 @@ p {
                     <i class="fas fa-wallet"></i>
                     <h3>Solutions économiques et flexibles</h3>
                     <div class="divider"></div>
-                    <p>Embaucher un étudiant en freelance est économique et flexible.</p>
-                    <p><i class="fas fa-clock"></i> Adaptation de la charge de travail</p>
+                     <p><i class="fas fa-dollar-sign"></i> Embaucher un étudiant en freelance est économique et flexible.</p>
                     <p><i class="fas fa-lightbulb"></i> Parfait pour projets à court terme</p>
-                    <p>Testez de nouvelles idées sans gros investissements.</p>
+                    <p><i class="fas fa-cogs"></i> Testez de nouvelles idées sans gros investissements.</p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -360,10 +366,10 @@ p {
                     <i class="fas fa-chalkboard-teacher"></i>
                     <h3>Formation des futurs professionnels</h3>
                     <div class="divider"></div>
-                    <p>Participez à la formation et au développement de carrières.</p>
-                    <p><i class="fas fa-rocket"></i> Offrez une expérience précieuse</p>
-                    <p><i class="fas fa-lightbulb"></i> Bénéficiez de leur créativité</p>
-                    <p>Contribuez à leur avenir professionnel.</p>
+                       <p><i class="fas fa-user-graduate"></i> Participez à la formation et au développement de carrières.</p>
+                        <p><i class="fas fa-rocket"></i> Offrez une expérience précieuse</p>
+                        <p><i class="fas fa-lightbulb"></i> Bénéficiez de leur créativité</p>
+                        <p><i class="fas fa-briefcase"></i> Contribuez à leur avenir professionnel.</p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -371,10 +377,10 @@ p {
                     <i class="fas fa-user-check"></i>
                     <h3>Recrutement simplifié</h3>
                     <div class="divider"></div>
-                    <p>Découvrez des talents prometteurs pour le futur.</p>
-                    <p><i class="fas fa-search"></i> Évaluez leurs compétences</p>
+                    <p><i class="fas fa-search"></i> Découvrez des talents prometteurs pour le futur.</p>
+                    <p><i class="fas fa-cogs"></i> Évaluez leurs compétences</p>
                     <p><i class="fas fa-handshake"></i> Testez leur éthique de travail</p>
-                    <p>Facilitez vos décisions d'embauche.</p>
+                    <p><i class="fas fa-check-circle"></i> Facilitez vos décisions d'embauche.</p>
                 </div>
             </div>
         </div>

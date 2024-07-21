@@ -5,12 +5,14 @@
 
 {% block content %}
 <style>
-    :root {
+     :root {
         --primary-color: #3498db;
         --secondary-color: #2c3e50;
         --accent-color: #e74c3c;
         --background-color: #ecf0f1;
         --text-color: #34495e;
+        --success-color: #2ecc71;
+        --danger-color: #e74c3c;
     }
 
     body {
@@ -27,11 +29,22 @@
         transition: all 0.3s ease;
         background-color: #fff;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
     }
 
     .mission-list-item:hover {
         transform: translateY(-5px);
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    .mission-list-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background-color: var(--primary-color);
     }
 
     .text-primary {
@@ -58,20 +71,69 @@
         background-color: var(--secondary-color);
         color: #fff;
     }
+    .badge-success {
+        background-color: var(--success-color);
+        color: #fff;
+    }
+     .badge-danger {
+        background-color: var(--danger-color);
+        color: #fff;
+    }
+    .company-name:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
 
     .company-name {
         font-weight: 700;
-        color: var(--accent-color);
-        font-size: 2.2rem;
+        color: var(--secondary-color);
+        font-size: 1.8rem;
         margin-bottom: 15px;
         letter-spacing: -0.5px;
-    }
+        transition: color 0.3s ease;
+}
 
+    .mission-title {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+ .btn-apply {
+    font-size: 1rem;
+    padding: 12px 24px;
+    border-radius: 50px;
+    background-color: var(--accent-color);
+    border: none;
+    transition: all 0.3s ease;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    }
+      .btn-apply:hover {
+        background-color: #c0392b;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
     .mission-description {
         color: var(--text-color);
         margin-bottom: 20px;
         line-height: 1.6;
     }
+    .btn-apply-disabled {
+    font-size: 1rem;
+    padding: 12px 24px;
+    border-radius: 50px;
+    background-color: #95a5a6; /* Couleur grise pour indiquer l'indisponibilité */
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
 
     .mission-footer {
         display: flex;
@@ -130,6 +192,7 @@
             padding: 6px 10px;
         }
     }
+
 
     @media (max-width: 767px) {
         .mission-list-item {
@@ -192,17 +255,15 @@
             <h1 class="mb-5 text-primary">Liste des missions {% if speciality %} {{ speciality.get_human_readable_name }}{% endif %}</h1>
             <div class="mission-list">
                 {% for mission in missions %}
-                <div class="mission-list-item">
+                 <div class="mission-list-item">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h5 class="text-primary mb-0">
-                            <a href="{% url 'mission_detail' mission.pk %}" class="btn btn-info">{{ mission.company.name }}</a>
+                            <a href="{% url 'mission_detail' mission.pk %}" class="company-name">{{ mission.company.name }}</a>
                         </h5>
-                        <span class="badge {% if mission.disponible %}badge-primary{% else %}badge-secondary{% endif %}">
-                            {{ mission.disponible|yesno:"Candidature ouverte,Candidature fermée" }}
-                        </span>
+
                     </div>
 
-                    <h2 class="company-name">{{ mission.title }}</h2>
+                    <h2 class="mission-title">{{ mission.title }}</h2>
                     <p><strong>Date :</strong> {{ mission.date }}</p>
                     <p><strong>Fourchette de prix :</strong> {{ mission.cash_amount_min }} € - {{mission.cash_amount_max}} €</p>
 
@@ -215,7 +276,11 @@
                         {% else %}
                         <span class="badge badge-secondary">Aucune spécialité</span>
                         {% endif %}
-                        <a href="{% url 'mission_detail' mission.pk %}" class="btn btn-info">Postuler</a>
+                        {% if mission.disponible %}
+                            <a href="{% url 'mission_detail' mission.pk %}" class="btn btn-apply">Postuler</a>
+                        {% else %}
+                            <button class="btn btn-apply-disabled" disabled>Candidature fermée</button>
+                        {% endif %}
                     </div>
                 </div>
                 {% empty %}
