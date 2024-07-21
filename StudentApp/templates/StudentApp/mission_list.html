@@ -122,17 +122,17 @@
         line-height: 1.6;
     }
     .btn-apply-disabled {
-    font-size: 1rem;
-    padding: 12px 24px;
-    border-radius: 50px;
-    background-color: #95a5a6; /* Couleur grise pour indiquer l'indisponibilité */
-    border: none;
-    color: #fff;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: not-allowed;
-    opacity: 0.7;
+        font-size: 1rem;
+        padding: 12px 24px;
+        border-radius: 50px;
+        background-color: #95a5a6; /* Couleur grise pour indiquer l'indisponibilité */
+        border: none;
+        color: #fff;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: not-allowed;
+        opacity: 0.7;
 }
 
     .mission-footer {
@@ -187,6 +187,11 @@
         .company-name {
             font-size: 1.8rem;
         }
+        .btn-apply-disabled {
+            font-size: 0.875rem; /* Réduit la taille du texte */
+            padding: 8px 16px; /* Réduit l'espace interne du bouton */
+            border-radius: 40px; /* Réduit légèrement le rayon des coins arrondis */
+        }
         .badge {
             font-size: 0.8rem;
             padding: 6px 10px;
@@ -194,45 +199,8 @@
     }
 
 
-   @media (min-width: 576px) {
-    .mission-list-item {
-        padding: 25px;
-    }
 
-    .company-name {
-        font-size: 1.8rem;
-    }
 
-    .mission-title {
-        font-size: 2rem;
-    }
-
-    .mission-description {
-        font-size: 1rem;
-    }
-
-    .btn-apply, .btn-apply-disabled {
-        width: auto;
-        margin-top: 0;
-    }
-
-    .badge {
-        margin-bottom: 0;
-    }
-}
-@media (min-width: 768px) {
-    .mission-list-item {
-        margin-bottom: 30px;
-    }
-
-    .company-name {
-        font-size: 2rem;
-    }
-
-    .mission-title {
-        font-size: 2.2rem;
-    }
-}
     @media (max-width: 575px) {
         .container {
             padding-left: 10px;
@@ -256,6 +224,11 @@
             font-size: 0.8rem;
             padding: 6px 12px;
         }
+         .btn-apply-disabled {
+            font-size: 0.75rem; /* Réduit davantage la taille du texte */
+            padding: 6px 12px; /* Réduit davantage l'espace interne du bouton */
+            border-radius: 30px; /* Réduit davantage le rayon des coins arrondis */
+    }
     }
 </style>
 
