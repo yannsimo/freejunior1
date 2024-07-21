@@ -242,7 +242,7 @@
                 </li>
                 {% for cat in specialities %}
                 <li class="list-group-item">
-                    <a href="{% url 'mission_list_filter' cat.name %}">{{ cat.get_human_readable_name|capfirst }}</a>
+                    <a href="{% url 'mission_list_filter' cat.name %}">{{ cat.get_human_readable_name|capfirst|truncatechars:20 }}</a>
                 </li>
                 {% endfor %}
             </ul>
