@@ -56,12 +56,12 @@ class MissionForm(forms.ModelForm):
         widget=forms.Select(attrs={'class': 'form-control', 'id': 'id_payment_type'})
     )
     cash_amount_min = forms.DecimalField(
-        label="Montant minimum en Cash (€)",
+        label="Montant minimum  par heure  (€)",
         required=False,
         widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Montant minimum'})
     )
     cash_amount_max = forms.DecimalField(
-        label="Montant maximum en Cash (€)",
+        label="Montant maximum par heure (€)",
         required=False,
         widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Montant maximum'})
     )
