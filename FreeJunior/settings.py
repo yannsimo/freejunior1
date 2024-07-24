@@ -25,7 +25,7 @@ SECRET_KEY =  config('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #ALLOWED_HOSTS = ['54.87.17.222']
 ALLOWED_HOSTS = ['*']
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'StudentApp.apps.StudentappConfig',
      'bootstrap4',
     'Accounts.apps.AccountsConfig',
+    'widget_tweaks',
 ]
 AUTH_USER_MODEL = 'Accounts.User'
 MIDDLEWARE = [
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+
 ]
 
 ROOT_URLCONF = 'FreeJunior.urls'

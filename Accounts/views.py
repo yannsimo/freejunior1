@@ -4,10 +4,12 @@ from django.contrib.auth.views import LoginView
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from Accounts.FormsEtudiant import UserForm, StudentRegistrationForm
+from Accounts.FormsEtudiant import UserRegistrationForm, StudentRegistrationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-
+from django.db import transaction
+from django.contrib.auth import login
+from StudentApp.models import School, Specialty, Program, Subject
 from Accounts.formseditionprofile import UserUpdateForm, StudentUpdateForm
 
 
@@ -42,35 +44,6 @@ def format_text_by_words(text, words_per_line=10):
     formatted_text += line.strip()
     return formatted_text
 
-def register_student(request):
-    if request.method == 'POST':
-        user_form = UserForm(request.POST)
-        student_form = StudentRegistrationForm(request.POST, request.FILES)
-        if user_form.is_valid() and student_form.is_valid():
-            try:
-                user = user_form.save()
-                user.save()
-                student = student_form.save(commit=False)
-                student.user = user  # Relier l'utilisateur et l'étudiant
-
-                # Reformater le texte des compétences avant de sauvegarder
-                student.subject_name = format_text_by_words(student.subject_name, words_per_line=10)
-
-                student.save()
-
-                return redirect('confirmationInscription')
-            except ValidationError as e:
-                student_form.add_error('description', e.message)
-    else:
-        user_form = UserForm()
-        student_form = StudentRegistrationForm()
-
-    context = {
-        'user_form': user_form,
-        'student_form': student_form
-    }
-    return render(request, 'Accounts/student_form.html', context)
-
 
 def logout_user(request):
     logout(request)
@@ -95,3 +68,75 @@ def edit_student_profile(request):
         'student_form': student_form
     }
     return render(request, 'Accounts/edit_student_profile.html', context)
+
+
+def register_student(request):
+    step = request.POST.get('step', '1')
+
+    if step == '1':
+        user_form = UserRegistrationForm(request.POST or None)
+        student_form = StudentRegistrationForm()
+
+        if request.method == 'POST':
+            if user_form.is_valid():
+                # Store user data in session
+                request.session['user_data'] = user_form.cleaned_data
+                return render(request, 'Accounts/register_student_step1.html', {
+                    'user_form': user_form,
+                    'student_form': student_form,
+                    'step': '2'
+                })
+            else:
+                messages.error(request, "Erreur dans le formulaire utilisateur")
+    else:
+        # Retrieve user data from session
+        user_data = request.session.get('user_data')
+        user_form = UserRegistrationForm(user_data)
+        student_form = StudentRegistrationForm(request.POST or None, request.FILES or None)
+
+        if request.method == 'POST':
+            if user_form.is_valid() and student_form.is_valid():
+                with transaction.atomic():
+                    user = user_form.save()
+                    student = student_form.save(commit=False)
+                    student.user = user
+
+                    # Handle School
+                    school_name = student_form.cleaned_data['school_name']
+                    school = School.objects.filter(name=school_name).first()
+                    if not school:
+                        school = School.objects.create(name=school_name)
+
+                    # Handle Specialty
+                    specialty_name = student_form.cleaned_data['specialty_name']
+                    specialty, _ = Specialty.objects.get_or_create(name=specialty_name)
+
+                    # Handle Program
+                    program_name = student_form.cleaned_data['program_name']
+                    program, _ = Program.objects.get_or_create(name=program_name, school=school)
+
+                    # Handle Subject
+                    subject_name = student_form.cleaned_data['subject_name']
+                    subject, _ = Subject.objects.get_or_create(name=subject_name, program=program)
+
+                    # Set related fields
+                    student.school = school
+                    student.specialty = specialty
+                    student.program = program
+                    student.related_subject = subject
+
+                    student.save()
+                    login(request, user)
+                    messages.success(request, 'Inscription réussie !')
+                    return redirect('confirmationInscription')
+            else:
+                if not user_form.is_valid():
+                    messages.error(request, "Erreur dans le formulaire utilisateur")
+                if not student_form.is_valid():
+                    messages.error(request, "Erreur dans le formulaire étudiant")
+
+    return render(request, 'Accounts/register_student_step1.html', {
+        'user_form': user_form,
+        'student_form': student_form,
+        'step': step
+    })

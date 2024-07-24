@@ -1,0 +1,170 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Étudiant - Étape 2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Inscription Étudiant - Étape 2</h2>
+
+        <!-- Barre de progression -->
+        <div class="progress mb-3">
+            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Étape 2 sur 2</div>
+        </div>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Afficher les erreurs globales du formulaire -->
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <!-- Informations Académiques et Professionnelles -->
+            <fieldset>
+                <legend>Informations académiques et professionnelles</legend>
+
+                <!-- Niveau d'études -->
+                <div class="form-group">
+                    <label for="{{ form.study_level.id_for_label }}">
+                        Niveau d'études
+                        <i class="fas fa-graduation-cap" data-toggle="tooltip" title="Sélectionnez votre niveau d'études actuel."></i>
+                    </label>
+                    {{ form.study_level }}
+                    {% if form.study_level.errors %}
+                        <div class="invalid-feedback">{{ form.study_level.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Taux horaire -->
+                <div class="form-group">
+                    <label for="{{ form.hourly_rate.id_for_label }}">
+                        Taux horaire (€/heure)
+                        <i class="fas fa-euro-sign" data-toggle="tooltip" title="Entrez votre taux horaire souhaité en euros."></i>
+                    </label>
+                    {{ form.hourly_rate }}
+                    {% if form.hourly_rate.errors %}
+                        <div class="invalid-feedback">{{ form.hourly_rate.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Brève description -->
+                <div class="form-group">
+                    <label for="{{ form.description.id_for_label }}">
+                        Brève description de vous-même
+                        <i class="fas fa-pencil-alt" data-toggle="tooltip" title="Décrivez-vous brièvement. (Au moins 100 mots)"></i>
+                    </label>
+                    {{ form.description }}
+                    {% if form.description.errors %}
+                        <div class="invalid-feedback">{{ form.description.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Photo de profil -->
+                <div class="form-group">
+                    <label for="{{ form.photo.id_for_label }}">
+                        Photo de profil
+                        <i class="fas fa-camera" data-toggle="tooltip" title="Téléchargez une photo de profil."></i>
+                    </label>
+                    {{ form.photo }}
+                    {% if form.photo.errors %}
+                        <div class="invalid-feedback">{{ form.photo.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Curriculum Vitae (CV) -->
+                <div class="form-group">
+                    <label for="{{ form.cv.id_for_label }}">
+                        Curriculum Vitae (CV)
+                        <i class="fas fa-file-alt" data-toggle="tooltip" title="Téléchargez votre CV en format PDF ou DOC."></i>
+                    </label>
+                    {{ form.cv }}
+                    {% if form.cv.errors %}
+                        <div class="invalid-feedback">{{ form.cv.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Nom de l'école -->
+                <div class="form-group">
+                    <label for="{{ form.school_name.id_for_label }}">
+                        Nom de l'école où vous étudiez
+                        <i class="fas fa-school" data-toggle="tooltip" title="Indiquez le nom de votre école."></i>
+                    </label>
+                    {{ form.school_name }}
+                    {% if form.school_name.errors %}
+                        <div class="invalid-feedback">{{ form.school_name.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Spécialité -->
+                <div class="form-group">
+                    <label for="{{ form.specialty_name.id_for_label }}">
+                        Spécialité que vous souhaitez exercer
+                        <i class="fas fa-cogs" data-toggle="tooltip" title="Choisissez la spécialité que vous souhaitez exercer."></i>
+                    </label>
+                    {{ form.specialty_name }}
+                    {% if form.specialty_name.errors %}
+                        <div class="invalid-feedback">{{ form.specialty_name.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Nom de la filière universitaire -->
+                <div class="form-group">
+                    <label for="{{ form.program_name.id_for_label }}">
+                        Nom de votre filière universitaire
+                        <i class="fas fa-book" data-toggle="tooltip" title="Indiquez le nom de votre filière universitaire."></i>
+                    </label>
+                    {{ form.program_name }}
+                    {% if form.program_name.errors %}
+                        <div class="invalid-feedback">{{ form.program_name.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Liste des compétences -->
+                <div class="form-group">
+                    <label for="{{ form.subject_name.id_for_label }}">
+                        Listez vos compétences
+                        <i class="fas fa-list" data-toggle="tooltip" title="Listez les compétences que vous possédez."></i>
+                    </label>
+                    {{ form.subject_name }}
+                    {% if form.subject_name.errors %}
+                        <div class="invalid-feedback">{{ form.subject_name.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- URL du portfolio -->
+                <div class="form-group">
+                    <label for="{{ form.portfolio_url.id_for_label }}">
+                        URL du portfolio
+                        <i class="fas fa-link" data-toggle="tooltip" title="Entrez l'URL de votre portfolio en ligne, si vous en avez un."></i>
+                    </label>
+                    {{ form.portfolio_url }}
+                    {% if form.portfolio_url.errors %}
+                        <div class="invalid-feedback">{{ form.portfolio_url.errors }}</div>
+                    {% endif %}
+                </div>
+            </fieldset>
+
+            <!-- Boutons de navigation -->
+            <button type="submit" class="btn btn-primary" name="step" value="2">Soumettre</button>
+            <a href="{% url 'register_student' step=1 %}" class="btn btn-secondary">Retour</a>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+ {% load static %}
+ {% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Étudiant</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Inscription Étudiant</h2>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form method="post" enctype="multipart/form-data" action="{% url 'student_form' %}">
+            {% csrf_token %}
+
+            <!-- Champ caché pour l'étape actuelle -->
+            <input type="hidden" name="step" value="{{ step }}">
+
+            <!-- Détermination de la largeur de la barre de progression -->
+               {% with width='50%' aria_valuenow='50' %}
+    {% if step == '2' %}
+        {% with width='100%' aria_valuenow='100' %}
+                <!-- Barre de progression -->
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" style="width: {{ width }};" aria-valuenow="{{ aria_valuenow }}" aria-valuemin="0" aria-valuemax="100">
+                        Étape {{ step }} sur 2
+                    </div>
+                </div>
+            {% endwith %}
+        {% else %}
+                <!-- Barre de progression -->
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" style="width: {{ width }};" aria-valuenow="{{ aria_valuenow }}" aria-valuemin="0" aria-valuemax="100">
+                        Étape {{ step }} sur 2
+                    </div>
+                </div>
+                    {% endif %}
+        {% endwith %}
+            <!-- Formulaire pour l'étape 1 -->
+            {% if step == '1' %}
+                <fieldset>
+                    <legend>Informations personnelles</legend>
+
+                    <!-- Champ pour le nom de famille -->
+                    <div class="form-group">
+                        <label for="{{ form_user.last_name.id_for_label }}">
+                            Nom
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Entrez votre nom de famille"></i>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            {{ user_form.last_name }}
+                            <div class="invalid-feedback">{{ user_form.last_name.errors }}</div>
+                        </div>
+                    </div>
+
+                    <!-- Champ pour le prénom -->
+                    <div class="form-group">
+                        <label for="{{ form_user.first_name.id_for_label }}">
+                            Prénom
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Entrez votre prénom"></i>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            {{ user_form.first_name }}
+                            <div class="invalid-feedback">{{ user_form.first_name.errors }}</div>
+                        </div>
+                    </div>
+
+                    <!-- Champ pour l'email -->
+                    <div class="form-group">
+                        <label for="{{ form_user.email.id_for_label }}">
+                            Email
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Entrez une adresse email valide"></i>
+                        </label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            </div>
+                            {{ user_form.email }}
+                            <div class="invalid-feedback">{{ user_form.email.errors }}</div>
+                        </div>
+                    </div>
+
+                    <!-- Champ pour le mot de passe -->
+                    <div class="form-group">
+                        <label for="{{ form_user.password1.id_for_label }}">
+                            Mot de passe
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Choisissez un mot de passe sécurisé"></i>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            </div>
+                            {{ user_form.password1 }}
+                            <div class="invalid-feedback">{{ user_form.password1.errors }}</div>
+                        </div>
+                    </div>
+
+                    <!-- Champ pour la confirmation du mot de passe -->
+                    <div class="form-group">
+                        <label for="{{ form_user.password2.id_for_label }}">
+                            Confirmez le mot de passe
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Répétez le mot de passe"></i>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            </div>
+                            {{ user_form.password2 }}
+                            <div class="invalid-feedback">{{ user_form.password2.errors }}</div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Bouton pour avancer à l'étape suivante -->
+                <button type="submit" class="btn btn-primary">Suivant</button>
+            {% elif step == '2' %}
+                <!-- Formulaire pour l'étape 2 -->
+                <fieldset>
+                    <legend>Informations supplémentaires</legend>
+
+                    <!-- Champ pour le niveau d'études -->
+                    <div class="form-group">
+                        <label for="{{ form_student.study_level.id_for_label }}">
+                            Niveau d'études
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Choisissez votre niveau d'études"></i>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-graduation-cap"></i></span>
+                            </div>
+                            {{ student_form.study_level|add_class:"select2" }}
+                            <div class="invalid-feedback">{{ student_form.study_level.errors }}</div>
+                        </div>
+                    </div>
+                     <!-- Champ pour le nom de l'école -->
+                    <div class="form-group">
+                        <label for="{{ form_student.school_name.id_for_label }}">
+                            Nom de l'école où vous étudiez
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Entrez le nom de votre école actuelle"></i>
+                        </label>
+                        {{ student_form.school_name }}
+                        <div class="invalid-feedback">{{ student_form.school_name.errors }}</div>
+                    </div>
+                     <!-- Champ pour le nom du programme universitaire -->
+                    <div class="form-group">
+                        <label for="{{ form_student.program_name.id_for_label }}">
+                            Nom du programme universitaire
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Entrez le nom de votre programme universitaire"></i>
+                        </label>
+                        {{ student_form.program_name }}
+                        <div class="invalid-feedback">{{ student_form.program_name.errors }}</div>
+                    </div>
+
+                     <!-- Champ pour la spécialité -->
+                    <div class="form-group">
+                        <label for="{{ form_student.specialty_name.id_for_label }}">
+                            Spécialité
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Indiquez votre spécialité"></i>
+                        </label>
+                        {{ student_form.specialty_name }}
+                        <div class="invalid-feedback">{{ student_form.specialty_name.errors }}</div>
+                    </div>
+
+
+                    <!-- Champ pour les compétences -->
+                    <div class="form-group">
+                        <label for="{{ form_student.subject_name.id_for_label }}">
+                            Listez vos compétences
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Indiquez vos compétences spécifiques"></i>
+                        </label>
+                        {{ student_form.subject_name }}
+                        <div class="invalid-feedback">{{ student_form.subject_name.errors }}</div>
+                    </div>
+
+                    <!-- Champ pour le taux horaire -->
+                    <div class="form-group">
+                        <label for="{{ form_student.hourly_rate.id_for_label }}">
+                            Taux horaire (€/heure)
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Entrez votre taux horaire souhaité en euros"></i>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-euro-sign"></i></span>
+                            </div>
+                            {{ student_form.hourly_rate }}
+                            <div class="invalid-feedback">{{ student_form.hourly_rate.errors }}</div>
+                        </div>
+                    </div>
+                        <!-- Champ pour la brève description -->
+                    <div class="form-group">
+                        <label for="{{ form_student.description.id_for_label }}">
+                            Brève description de vous-même
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Décrivez-vous brièvement (au moins 100 mots)"></i>
+                        </label>
+                        {{ student_form.description }}
+                        <div class="invalid-feedback">{{ student_form.description.errors }}</div>
+                    </div>
+
+                     <!-- Champ pour la photo de profil -->
+                    <div class="form-group">
+                        <label for="{{ form_student.photo.id_for_label }}">
+                            Photo de profil
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Téléchargez une photo de vous-même"></i>
+                        </label>
+                        {{ student_form.photo }}
+                        <div class="invalid-feedback">{{ student_form.photo.errors }}</div>
+                    </div>
+
+                    <!-- Champ pour le CV -->
+                    <div class="form-group">
+                        <label for="{{ form_student.cv.id_for_label }}">
+                            Curriculum Vitae (CV)
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Téléchargez votre CV"></i>
+                        </label>
+                        {{ student_form.cv }}
+                        <div class="invalid-feedback">{{ student_form.cv.errors }}</div>
+                    </div>
+
+                    <!-- Champ pour l'URL du portfolio -->
+                    <div class="form-group">
+                        <label for="{{ form_student.portfolio_url.id_for_label }}">
+                            URL du portfolio
+                            <i class="fas fa-question-circle" data-toggle="tooltip" title="Entrez l'URL de votre portfolio en ligne"></i>
+                        </label>
+                        {{ student_form.portfolio_url }}
+                        <div class="invalid-feedback">{{ student_form.portfolio_url.errors }}</div>
+                    </div>
+                </fieldset>
+
+                <!-- Boutons pour soumettre et revenir -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Soumettre</button>
+                    <a href="{% url 'student_form' %}?step=1" class="btn btn-secondary">Retour</a>
+                </div>
+            {% endif %}
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+            $('.select2').select2();
+        });
+    </script>
+    <script>
+        document.getElementById('id_email').addEventListener('blur', function() {
+            if (!this.value.includes('@')) {
+                this.classList.add('is-invalid');
+                this.nextElementSibling.textContent = 'Veuillez entrer une adresse email valide';
+            } else {
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+                this.nextElementSibling.textContent = '';
+            }
+        });
+    </script>
+</body>
+</html>

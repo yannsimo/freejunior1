@@ -161,14 +161,14 @@ class Specialty(models.Model):
         return dict(SPECIALTY_CHOICES).get(self.name,  self.name)
 
 class Program(models.Model):
-    name = models.TextField()
+    name = models.CharField(max_length=255)
     school = models.ForeignKey(School, on_delete=models.CASCADE, related_name='programs')
 
     def __str__(self):
         return self.name
 
 class Subject(models.Model):
-    name = models.TextField()#àformater
+    name = models.CharField(max_length=255)
     program = models.ForeignKey(Program, on_delete=models.CASCADE, related_name='subjects')
 
     def __str__(self):
@@ -179,22 +179,18 @@ class Student(models.Model):
         ('Bac+3', 'Bac+3'),
         ('Bac+4', 'Bac+4'),
         ('Bac+5', 'Bac+5'),
-
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     study_level = models.CharField(max_length=5, choices=STUDY_LEVEL_CHOICES, null=True)
     specialty = models.ForeignKey(Specialty, on_delete=models.CASCADE, null=True)
     school = models.ForeignKey(School, on_delete=models.CASCADE, related_name='students', null=True)#à formater
-
     program = models.ForeignKey(Program, on_delete=models.CASCADE, related_name='students', null=True)
-
     related_subject = models.ForeignKey(Subject, on_delete=models.CASCADE, null=True)# à formater
-
     hourly_rate = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     description = models.TextField(null=True)
     photo = models.ImageField(upload_to='student_photos/', null=True)
     cv = models.FileField(upload_to='student_cvs/', blank=True, null=True)
-
+    portfolio_url = models.URLField(null=True, blank=True)
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name}"
 
