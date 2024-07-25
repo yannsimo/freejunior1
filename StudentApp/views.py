@@ -130,6 +130,7 @@ def mission_detail(request, mission_id):
             email_message = f"De: {your_name}\nEmail: {your_email}\n\nMessage:\n{message}"
             try:
                 send_mail(subject, email_message, your_email, [mission.company.email])
+                send_mail(subject, email_message, your_email, ['yann-junior.simo@grenoble-inp.org'])
                 messages.success(request, "Votre message a été envoyé.")
             except Exception as e:
                 messages.error(request, "Une erreur s'est produite lors de l'envoi de l'email.")
