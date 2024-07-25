@@ -43,7 +43,7 @@ class StudentUpdateForm(forms.ModelForm):
         widget=forms.Textarea(attrs={
             'class': 'form-control',
             'placeholder': (
-                "Décrivez-vous brièvement. Voici quelques points à inclure pour atteindre les 300 mots : \n"
+                "Décrivez-vous brièvement : \n"
                 "- Qui êtes-vous et quel est votre parcours académique ? \n"
                 "- Quelles sont les stages que vous avez effectués ? \n"
                 "- Sur quels projets avez-vous travaillé ? \n"
@@ -74,16 +74,20 @@ class StudentUpdateForm(forms.ModelForm):
     subject_name = forms.CharField(label="Listez vos compétences ", max_length=255, required=True,
                                    widget=forms.TextInput(
                                        attrs={'class': 'form-control', 'placeholder': 'Listez vos compétences'}))
+    portfolio_url = forms.URLField(
+        label="URL du portfolio", required=False,
+        widget=forms.URLInput(attrs={'class': 'form-control'})
+    )
 
     class Meta:
         model = Student
         fields = ['study_level', 'hourly_rate', 'school_name', 'specialty_name', 'program_name', 'subject_name',
-                  'description', 'photo', 'cv']
+                  'description', 'photo', 'cv','portfolio_url']
 
     def clean_description(self):
         description_text = self.cleaned_data.get('description')
         word_count = len(description_text.split())
-        if word_count < 100:
+        if word_count < 2:
             raise ValidationError('La description doit contenir au moins 100 mots.')
         return description_text
 

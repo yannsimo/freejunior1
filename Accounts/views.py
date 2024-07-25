@@ -49,11 +49,13 @@ def logout_user(request):
     logout(request)
     return redirect("page_company")
 
+
 @login_required
 def edit_student_profile(request):
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
         student_form = StudentUpdateForm(request.POST, request.FILES, instance=request.user.student)
+
         if user_form.is_valid() and student_form.is_valid():
             user_form.save()
             student_form.save()
@@ -68,7 +70,6 @@ def edit_student_profile(request):
         'student_form': student_form
     }
     return render(request, 'Accounts/edit_student_profile.html', context)
-
 
 def register_student(request):
     step = request.POST.get('step', '1')

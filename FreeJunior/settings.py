@@ -42,7 +42,11 @@ INSTALLED_APPS = [
      'bootstrap4',
     'Accounts.apps.AccountsConfig',
     'widget_tweaks',
+    'crispy_forms',
+     'crispy_bootstrap5',
 ]
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 AUTH_USER_MODEL = 'Accounts.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -132,7 +136,6 @@ AWS_STORAGE_BUCKET_NAME = 'django-freejunior'
 
 
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
 
 # Configurations pour les fichiers média
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

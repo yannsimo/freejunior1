@@ -1,65 +1,44 @@
- {% load static %}
+ {% extends 'base.html' %}
 {% load widget_tweaks %}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription Étudiant</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-</head>
-<body>
+{% load static %}
 
-    <div class="container mt-5">
-        <h2 class="mb-4">Inscription Étudiant</h2>
-        {% if messages %}
-        <div class="messages">
-            {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+{% block title %}Inscription Étudiant - StudyFreelance{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 col-lg-6">
+            <h2 class="mb-4 text-primary">Inscription Étudiant</h2>
+
+            {% if messages %}
+            <div class="messages mb-4">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        {% endif %}
-        <form method="post" enctype="multipart/form-data" action="{% url 'student_form' %}">
-            {% csrf_token %}
+            {% endif %}
 
-            <!-- Champ caché pour l'étape actuelle -->
-            <input type="hidden" name="step" value="{{ step }}">
+            <form method="post" enctype="multipart/form-data" action="{% url 'student_form' %}">
+                {% csrf_token %}
+                <input type="hidden" name="step" value="{{ step }}">
 
-            <!-- Détermination de la largeur de la barre de progression -->
-            {% with width='50%' aria_valuenow='50' %}
-                {% if step == '2' %}
-                    {% with width='100%' aria_valuenow='100' %}
-                        <!-- Barre de progression -->
-                        <div class="progress mb-3">
-                            <div class="progress-bar" role="progressbar" style="width: {{ width }};" aria-valuenow="{{ aria_valuenow }}" aria-valuemin="0" aria-valuemax="100">
-                                Étape {{ step }} sur 2
-                            </div>
-                        </div>
-                    {% endwith %}
-                {% else %}
-                    <!-- Barre de progression -->
-                    <div class="progress mb-3">
-                        <div class="progress-bar" role="progressbar" style="width: {{ width }};" aria-valuenow="{{ aria_valuenow }}" aria-valuemin="0" aria-valuemax="100">
-                            Étape {{ step }} sur 2
-                        </div>
+                <!-- Barre de progression -->
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {% if step == '2' %}100%{% else %}50%{% endif %};" aria-valuenow="{% if step == '2' %}100{% else %}50{% endif %}" aria-valuemin="0" aria-valuemax="100">
+                        Étape {{ step }} sur 2
                     </div>
-                {% endif %}
-            {% endwith %}
+                </div>
 
-            <!-- Formulaire pour l'étape 1 -->
-            {% if step == '1' %}
-                <fieldset>
-                    <legend>Informations personnelles</legend>
-
+                {% if step == '1' %}
+                <fieldset class="border p-4 rounded">
+                    <legend class="w-auto px-2">Informations personnelles</legend>
                     {% for field in user_form %}
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="{{ field.id_for_label }}">
                                 {{ field.label }}
                                 <i class="fas fa-question-circle" data-toggle="tooltip" title="{{ field.help_text }}"></i>
@@ -73,25 +52,21 @@
                                 {% render_field field class="form-control" %}
                             </div>
                             {% if field.errors %}
-                                <div class="invalid-feedback d-block">
+                                <div class="invalid-feedback d-block mt-2">
                                     {% for error in field.errors %}
-                                        {{ error }}
+                                        <div>{{ error }}</div>
                                     {% endfor %}
                                 </div>
                             {% endif %}
                         </div>
                     {% endfor %}
                 </fieldset>
-
-                <!-- Bouton pour avancer à l'étape suivante -->
-                <button type="submit" class="btn btn-primary">Suivant</button>
-            {% elif step == '2' %}
-                <!-- Formulaire pour l'étape 2 -->
-                <fieldset>
-                    <legend>Informations supplémentaires</legend>
-
+                <button type="submit" class="btn btn-primary mt-3">Suivant</button>
+                {% elif step == '2' %}
+                <fieldset class="border p-4 rounded">
+                    <legend class="w-auto px-2">Informations supplémentaires</legend>
                     {% for field in student_form %}
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="{{ field.id_for_label }}">
                                 {{ field.label }}
                                 <i class="fas fa-question-circle" data-toggle="tooltip" title="{{ field.help_text }}"></i>
@@ -111,41 +86,55 @@
                                 {% render_field field class="form-control" %}
                             {% endif %}
                             {% if field.errors %}
-                                <div class="invalid-feedback d-block">
+                                <div class="invalid-feedback d-block mt-2">
                                     {% for error in field.errors %}
-                                        {{ error }}
+                                        <div>{{ error }}</div>
                                     {% endfor %}
                                 </div>
                             {% endif %}
                         </div>
                     {% endfor %}
                 </fieldset>
-
-                <!-- Boutons pour soumettre et revenir -->
-                <div class="form-group">
+                <div class="form-group mt-3">
                     <button type="submit" class="btn btn-primary">Soumettre</button>
                     <a href="{% url 'student_form' %}?step=1" class="btn btn-secondary">Retour</a>
                 </div>
-            {% endif %}
-        </form>
+                {% endif %}
+            </form>
+        </div>
+
+        <div class="col-md-12 col-lg-6 mt-4 mt-lg-0">
+            <div class="card shadow-sm border-0">
+                <img src="{% static 'img/freelances.jpg' %}" class="card-img-top img-fluid" alt="Des étudiants travaillent ensemble">
+                <div class="card-body">
+                    <h3 class="card-title text-primary"><i class="fas fa-graduation-cap mr-2"></i>Boostez Votre Carrière avec FreeJunior !</h3>
+                    <p class="card-text">Rejoignez FreeJunior, où plus de la moitié de nos étudiants ont déjà complété une mission avec succès. Profitez de notre réseau de partenaires et d'opportunités professionnelles.</p>
+                    <h4 class="text-success mt-4"><i class="fas fa-trophy mr-2"></i>Ce que nos étudiants disent :</h4>
+                    <ul class="list-group list-group-flush mt-3">
+                        <li class="list-group-item"><i class="fas fa-check text-info mr-2"></i>50% ont déjà complété des missions.</li>
+                        <li class="list-group-item"><i class="fas fa-handshake text-warning mr-2"></i>Partenariats avec des entreprises reconnues.</li>
+                        <li class="list-group-item"><i class="fas fa-star text-success mr-2"></i>1 étudiant sur 8 a reçu des recommandations.</li>
+                        <li class="list-group-item"><i class="fas fa-chart-line text-primary mr-2"></i>Amélioration des compétences pour la majorité.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+{% endblock %}
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('[data-toggle="tooltip"]').tooltip();
-            $('.select2').select2();
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+        $('.select2').select2();
 
-            $('form').on('submit', function() {
-                $(this).find(':input').each(function() {
-                    $(this).removeClass('is-invalid');
-                    $(this).next('.invalid-feedback').remove();
-                });
+        $('form').on('submit', function() {
+            $(this).find(':input').each(function() {
+                $(this).removeClass('is-invalid');
+                $(this).next('.invalid-feedback').remove();
             });
         });
-    </script>
-</body>
-</html>
+    });
+</script>
+{% endblock %}

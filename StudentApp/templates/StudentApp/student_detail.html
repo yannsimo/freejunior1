@@ -17,7 +17,7 @@
                 {% else %}
                     <img src="{% static 'img/student_preview_rev_1.png' %}" class="card-img-top" alt="{{ student.user.first_name }} {{ student.user.last_name }}">
                 {% endif %}
-                <div class="card-body text-center">
+               <div class="card-body text-center">
                     <h2 class="card-title text-primary">{{ student.user.first_name }} {{ student.user.last_name }}</h2>
                     <hr class="my-4">
                     <p class="card-text"><strong>Prix horaire :</strong> <span class="badge badge-success">{{ student.hourly_rate }} €/heure</span></p>
@@ -31,6 +31,14 @@
                         <strong>Curriculum Vitae (CV) :</strong>
                         {% if student.cv %}
                             <a href="{{ student.cv.url }}" target="_blank" class="btn btn-outline-primary btn-sm mt-2">Télécharger le CV</a>
+                        {% else %}
+                            <span class="text-muted">Non disponible</span>
+                        {% endif %}
+                    </p>
+                    <p class="card-text">
+                        <strong>Portfolio :</strong>
+                        {% if student.portfolio %}
+                            <a href="{{ student.portfolio.url }}" target="_blank" class="btn btn-outline-success btn-sm mt-2">Voir le Portfolio</a>
                         {% else %}
                             <span class="text-muted">Non disponible</span>
                         {% endif %}

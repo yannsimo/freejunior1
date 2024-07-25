@@ -1,93 +1,187 @@
-   {% extends 'base.html' %}
+ {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
 
-{% block title %}
-    Modifier le profil
-{% endblock %}
+{% block extra_css %}
 <style>
-    /* custom.css */
-body {
-    font-family: Arial, sans-serif;
-}
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #2ecc71;
+        --background-color: #f5f5f5;
+        --text-color: #333;
+        --border-color: #ddd;
+        --hover-color: #2980b9;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+        --transition-time: 0.3s;
+    }
 
-h1 {
-    margin-bottom: 30px;
-    font-size: 2.5rem;
-    color: #343a40;
-}
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        font-family: 'Arial', sans-serif;
+        padding: 1rem;
+    }
 
-.card-header {
-    font-size: 1.5rem;
-}
+    .profile-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 2rem auto;
+        gap: 2rem;
+    }
 
-.card-body {
-    padding: 20px;
-}
+    .profile-section, .edit-section {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px var(--shadow-color);
+        padding: 2rem;
+        width: 100%;
+        max-width: 48%;
+        transition: transform var(--transition-time);
+    }
 
-.card {
-    border-radius: 10px;
-}
+    .profile-section:hover, .edit-section:hover {
+        transform: translateY(-5px);
+    }
 
-.btn-success {
-    background-color: #28a745;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+    }
 
-.btn-success:hover {
-    background-color: #218838;
-}
+    .info-item {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
 
-.form-control-file {
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    padding: 5px;
-}
+    .info-item i {
+        color: var(--primary-color);
+        font-size: 1.2rem;
+    }
 
-.form-control {
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
+    .info-label {
+        font-weight: bold;
+        margin-right: 0.5rem;
+    }
 
-.needs-validation .form-control:invalid {
-    border-color: #dc3545;
-}
+    .empty-field {
+        color: #999;
+        font-style: italic;
+    }
 
-.needs-validation .form-control:valid {
-    border-color: #28a745;
-}
+    form label {
+        color: var(--primary-color);
+        font-weight: bold;
+    }
 
-.text-center {
-    text-align: center;
-}
+    form input, form select, form textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        margin-top: 0.25rem;
+        transition: border-color var(--transition-time);
+    }
 
+    form input:focus, form select:focus, form textarea:focus {
+        border-color: var(--primary-color);
+    }
+
+    .btn-update {
+        background-color: var(--secondary-color);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color var(--transition-time);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .btn-update:hover {
+        background-color: #27ae60;
+    }
+
+    @media (max-width: 768px) {
+        .profile-section, .edit-section {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
 </style>
+{% endblock %}
+
 {% block content %}
-<div class="container mt-4">
-    <h1 class="text-center">Modifier votre profil</h1>
-    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
-        {% csrf_token %}
-        <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-                <h2 class="mb-0">Informations Utilisateur</h2>
-            </div>
-            <div class="card-body">
-                {{ user_form.as_p }}
-            </div>
+<div class="profile-container">
+    <div class="profile-section">
+        <h2>Votre profil</h2>
+        <div class="info-item">
+            <i class="fas fa-user"></i>
+            <span class="info-label">Nom :</span>
+            <span>{{ user.last_name }} {{ user.first_name }}</span>
         </div>
-        <div class="card mb-4">
-            <div class="card-header bg-secondary text-white">
-                <h2 class="mb-0">Informations Étudiant</h2>
-            </div>
-            <div class="card-body">
-                {{ student_form.as_p }}
-            </div>
+        <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <span class="info-label">Email :</span>
+            <span>{{ user.email }}</span>
         </div>
-        <div class="text-center">
-            <button type="submit" class="btn btn-success mt-4">Sauvegarder</button>
+        <div class="info-item">
+            <i class="fas fa-graduation-cap"></i>
+            <span class="info-label">Niveau d'études :</span>
+            <span>{% if user.student.study_level %}{{ user.student.study_level }}{% else %}<span class="empty-field">Non renseigné</span>{% endif %}</span>
         </div>
-    </form>
+        <div class="info-item">
+            <i class="fas fa-school"></i>
+            <span class="info-label">École :</span>
+            <span>{% if user.student.school %}{{ user.student.school.name }}{% else %}<span class="empty-field">Non renseigné</span>{% endif %}</span>
+        </div>
+        <div class="info-item">
+            <i class="fas fa-book"></i>
+            <span class="info-label">Programme :</span>
+            <span>{% if user.student.program %}{{ user.student.program.name }}{% else %}<span class="empty-field">Non renseigné</span>{% endif %}</span>
+        </div>
+        <div class="info-item">
+            <i class="fas fa-star"></i>
+            <span class="info-label">Spécialité :</span>
+            <span>{% if user.student.specialty %}{{ user.student.specialty.name }}{% else %}<span class="empty-field">Non renseigné</span>{% endif %}</span>
+        </div>
+        <div class="info-item">
+            <i class="fas fa-tools"></i>
+            <span class="info-label">Compétences :</span>
+            <span>{% if user.student.related_subject %}{{ user.student.related_subject.name }}{% else %}<span class="empty-field">Non renseigné</span>{% endif %}</span>
+        </div>
+        <div class="info-item">
+            <i class="fas fa-euro-sign"></i>
+            <span class="info-label">Taux horaire :</span>
+            <span>{% if user.student.hourly_rate %}{{ user.student.hourly_rate }} €/heure{% else %}<span class="empty-field">Non renseigné</span>{% endif %}</span>
+        </div>
+        <div class="info-item">
+            <i class="fas fa-briefcase"></i>
+            <span class="info-label">Portfolio :</span>
+            <span>{% if user.student.portfolio_url %}<a href="{{ student.portfolio_url }}" target="_blank" class="text-primary">Voir le portfolio</a>{% else %}<span class="empty-field">Non disponible</span>{% endif %}</span>
+        </div>
+    </div>
+
+    <div class="edit-section">
+        <h2>Modifier votre profil</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form|crispy }}
+            {{ student_form|crispy }}
+            <button type="submit" class="btn-update">
+                <i class="fas fa-save"></i> Mettre à jour
+            </button>
+        </form>
+    </div>
 </div>
 {% endblock %}
