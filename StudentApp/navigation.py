@@ -2,14 +2,14 @@ from django.urls import reverse_lazy
 
 NAV_FormStudent = 'Etudiant'
 NAV_FormCompany = 'Entreprise'
-NAV_FormListStudent = 'Liste des etudiants '
+
 NAV_contact = 'Contact'
 NAV_FormListMission = 'Liste des missions '
 NAV_ITEMS = [
     (NAV_FormStudent, reverse_lazy('page_etudiant')),
     (NAV_FormCompany, reverse_lazy('page_company')),
     (NAV_FormListMission, reverse_lazy('mission_list')),
-    (NAV_FormListStudent, reverse_lazy('student_list')),
+
     (NAV_contact, reverse_lazy('contact')),
 
 ]
