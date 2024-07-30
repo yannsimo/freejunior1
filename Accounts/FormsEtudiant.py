@@ -1,9 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
-from StudentApp.models import Student, School, Specialty, Program, Subject, SPECIALTY_CHOICES
+from StudentApp.models import Student, SPECIALTY_CHOICES
 from django.core.validators import URLValidator
-from pydantic import ValidationError
+from django.core.exceptions import ValidationError
 
 User = get_user_model()
 
@@ -40,7 +40,7 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ['first_name', 'last_name', 'email', 'password1', 'password2']
 
-class StudentRegistrationForm(forms.ModelForm):
+class StudentRegistrationForm(UserRegistrationForm):
     study_level = forms.ChoiceField(
         label="Niveau d'études", choices=Student.STUDY_LEVEL_CHOICES, required=True,
         widget=forms.Select(attrs={'class': 'form-control'})
@@ -84,9 +84,12 @@ class StudentRegistrationForm(forms.ModelForm):
         widget=forms.URLInput(attrs={'class': 'form-control'})
     )
 
-    class Meta:
-        model = Student
-        fields = ['study_level', 'hourly_rate', 'school_name', 'specialty_name', 'program_name', 'subject_name', 'description', 'photo', 'cv', 'portfolio_url']
+    class Meta(UserRegistrationForm.Meta):
+        fields = UserRegistrationForm.Meta.fields + [
+            'study_level', 'hourly_rate', 'school_name', 'specialty_name',
+            'program_name', 'subject_name', 'description', 'photo', 'cv',
+            'portfolio_url'
+        ]
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -103,13 +106,6 @@ class StudentRegistrationForm(forms.ModelForm):
                 raise forms.ValidationError("Le fichier doit être une image.")
         return photo
 
-    def clean(self):
-        cleaned_data = super().clean()
-        password1 = cleaned_data.get("password1")
-        password2 = cleaned_data.get("password2")
-        if password1 and password2 and password1 != password2:
-            self.add_error('password2', "Les mots de passe ne correspondent pas.")
-
     def clean_portfolio_url(self):
         url = self.cleaned_data.get('portfolio_url')
         if url:
@@ -118,3 +114,23 @@ class StudentRegistrationForm(forms.ModelForm):
             except ValidationError:
                 raise forms.ValidationError("Veuillez entrer une URL valide.")
         return url
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.user_type = 'STUDENT'
+        if commit:
+            user.save()
+            student = Student.objects.create(
+                user=user,
+                study_level=self.cleaned_data['study_level'],
+                hourly_rate=self.cleaned_data['hourly_rate'],
+                school_name=self.cleaned_data['school_name'],
+                specialty_name=self.cleaned_data['specialty_name'],
+                program_name=self.cleaned_data['program_name'],
+                subject_name=self.cleaned_data['subject_name'],
+                description=self.cleaned_data['description'],
+                photo=self.cleaned_data['photo'],
+                cv=self.cleaned_data['cv'],
+                portfolio_url=self.cleaned_data['portfolio_url']
+            )
+        return user
