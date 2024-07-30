@@ -1,472 +1,280 @@
-   {% extends 'base.html' %}
+ {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-Etudiant
-{% endblock %}
+
+{% block title %}Étudiant - FreeJunior{% endblock %}
 
 {% block content %}
- <style>
-.btn-secondary {
-    background-color: #6c757d;
-    border: none;
-    transition: background-color 0.3s ease;
-}
+<style>
+    :root {
+        --primary-color: #4a90e2;
+        --secondary-color: #50c878;
+        --accent-color: #ffd700;
+        --text-color: #333333;
+        --light-bg: #f8f9fa;
+        --dark-bg: #2c3e50;
+    }
 
-.btn-secondary:hover {
-    background-color: #5a6268;
-    transform: translateY(-2px);
-}
-.btn-info {
-        background-color: #17a2b8;
+    body {
+        font-family: 'Roboto', sans-serif;
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+
+    .section-padding {
+        padding: 80px 0;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 40px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .btn-custom {
+        padding: 12px 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary-custom {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .btn-secondary-custom {
+        background-color: var(--secondary-color);
+        color: white;
+    }
+
+    .btn-custom:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-custom {
         border: none;
-        transition: background-color 0.3s ease, transform 0.3s ease;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
-    .btn-info:hover {
-        background-color: #138496;
-        transform: translateY(-2px);
+    .card-custom:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     }
 
-h1 {
-    color: #007bff; /* Couleur du texte principale */
-    font-weight: bold;
-}
-
-p {
-    font-size: 1.2rem; /* Taille de police pour le paragraphe */
-    color: #333333; /* Couleur du texte */
-}
-
-.container {
-    margin-top: 50px;
-}
-
-.card {
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour les cartes */
-}
-
-.card-img-top {
-    object-fit: cover;
-    height: 200px;
-}
-
-.card-title a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-.card-title a:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
-#pourquoi .heading h2 {
-    margin: 30px 0;
-    color: #007bff;
-    font-weight: bold;
-}
-#Comment .heading h2 {
-    margin: 30px 0;
-    color: #007bff;
-    font-weight: bold;
-}
-.img-fluid {
-    max-width: 100%;
-    height: auto;
-}
-.pourquoi-block {
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
-    padding: 30px;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    margin-bottom: 20px;
-}
-.pourquoi-block i {
-    font-size: 25px;
-    color: #ffdd57;
-    margin-bottom: 15px;
-}
-
-.pourquoi-block:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.pourquoi-block h3 {
-    color: #063BAD;
-    font-size: 20px;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
-.pourquoi-block span {
-    font-size: 35px;
-    color: #ffdd57;
-    margin-bottom: 15px;
-}
-
-.pourquoi-block p {
-    color: #333333;
-    line-height: 1.6;
-    font-size: 16px;
-}
-
- .divider {
-    height: 2px;
-    background-color: #007bff;
-    margin: 20px 0;
-}
- p strong {
-    color: #ffdd57; /* Highlighted text color */
-}
-/* Custom styles for the Contact section */
-#Contact {
-    padding: 40px 0;
-    background-color: #f8f9fa;
-}
-
-#Contact .lead {
-    font-size: 1.25rem;
-    color: #333;
-}
-
-#Contact .btn-primary {
-    background-color: #007bff;
-    border: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-#Contact .btn-primary:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
-
-#Contact .btn-primary:active {
-    background-color: #004085;
-    transform: translateY(0);
-}
-
-/* Custom Styles for the section */
- /* Custom styles for the timeline section */
- /* Custom styles for the timeline section */
-#Comment {
-    padding: 40px 0;
-    background-color: #f8f9fa;
-}
-
-.heading h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.5rem;
-    color: #007bff;
-}
-
-.timeline {
-    list-style: none;
-    padding: 0;
-    position: relative;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 4px;
-    margin-left: -2px;
-    background-color: #007bff;
-}
-
-.timeline > li {
-    position: relative;
-    margin-bottom: 50px;
-}
-
-.timeline-badge {
-    color: #fff;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 1.4rem;
-    text-align: center;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    margin-left: -25px;
-    background-color: #ffdd57;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    z-index: 100;
-}
-
-.timeline-panel-container {
-    position: relative;
-    width: 50%;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.timeline > li:nth-child(odd) .timeline-panel-container {
-    float: left;
-    text-align: right;
-}
-
-.timeline > li:nth-child(even) .timeline-panel-container {
-    float: right;
-    text-align: left;
-}
-
-.timeline-panel {
-    position: relative;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.timeline-panel:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.timeline-heading h4 a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.timeline-heading h4 a:hover {
-    text-decoration: underline;
-}
-
-.timeline-heading p {
-    margin: 0;
-    font-size: 1rem;
-}
-
-.timeline-body p {
-    margin: 0;
-    font-size: 1.1rem;
-    color: #333;
-}
-
-.timeline i {
-    font-size: 1.2rem;
-    margin-right: 5px;
-}
-
-/* Custom styles for the timeline headings */
-.timeline-heading h4 {
-    color: #ff5733; /* New color for h4 elements inside timeline */
-}
-
-/* Additional custom styles */
-.heading h2 {
-    font-size: 2.5rem;
-    color: #007bff;
-    margin-bottom: 40px;
-}
-
-.timeline-badge {
-    background-color: #ffdd57;
-    color: #fff;
-}
-
-.timeline-heading h4 a {
-    color: #007bff;
-}
-
-
-.timeline-panel {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.timeline-panel:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-.pourquoi-block p.highlight {
-    font-weight: bold;
-    color: #333;
-    background-color: #e7f3ff; /* Light background for emphasis */
-    padding: 10px;
-    border-radius: 5px;
-}
-
-
-.timeline-heading h3 {
-    color: #063BAD; /* New color for h4 elements inside timeline */
-}
-@media (max-width: 767px) {
-     .timeline-badge {
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        font-size: 1.2rem;
-        margin-left: -20px;
-        left: 10px; /* Ajustement pour positionner le badge à gauche */
-          top: -20px;
+    .icon-box {
+        font-size: 3rem;
+        color: var(--accent-color);
+        margin-bottom: 20px;
     }
 
-    .timeline-panel-container {
-        width: 100%;
-        padding-left: 10px;
-        padding-right: 10px;
+    .timeline {
+        position: relative;
+        padding: 50px 0;
     }
 
-    .timeline-panel {
-        padding: 15px;
+    .timeline::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 2px;
+        background-color: var(--primary-color);
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .timeline-heading h3 {
-        font-size: 1.5rem; /* Ajustement de la taille de police pour h3 */
+    .timeline-item {
+        margin-bottom: 50px;
+        position: relative;
+        opacity: 0;
+        animation: fadeInUp 0.6s forwards;
+        animation-delay: 0.3s;
     }
-}
 
- </style>
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-md-6 order-md-1 order-2">
-            <h1 class="text-primary">FreeJunior - 1ère plateforme de freelance pour étudiant</h1>
-            <p>Nous croyons que les étudiants d'aujourd'hui sont les leaders de demain. Rejoignez notre plateforme pour accéder à des opportunités de missions freelances qui vous permettront de développer vos compétences et d'acquérir une expérience précieuse dans votre domaine.</p>
-            <div class="btn-group mt-2" role="group">
-                <a href="{% url 'student_form' %}" class="btn btn-secondary btn-lg">Inscrivez-vous</a>
-                <a href="{% url 'mission_list' %}" class="btn btn-info btn-lg ml-2">Voir les missions</a>
+    .timeline-content {
+        background-color: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        width: 45%;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+        float: right;
+    }
+
+    .timeline-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: var(--accent-color);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .timeline::before {
+            left: 30px;
+        }
+        .timeline-content {
+            width: calc(100% - 90px);
+            float: right;
+        }
+        .timeline-icon {
+            left: 0;
+        }
+    }
+
+    .highlight {
+        background-color: rgba(255, 215, 0, 0.2);
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: 600;
+    }
+</style>
+
+<header class="bg-light section-padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 mb-4">Lancez votre carrière avec FreeJunior</h1>
+                <p class="lead mb-4">Développez vos compétences, gagnez de l'expérience et de l'argent tout en étudiant. FreeJunior est la première plateforme de freelance dédiée aux étudiants.</p>
+                <div class="d-flex">
+                    <a href="{% url 'student_form' %}" class="btn btn-custom btn-primary-custom mr-3">S'inscrire</a>
+                    <a href="{% url 'mission_list' %}" class="btn btn-custom btn-secondary-custom">Voir les missions</a>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-5 mt-lg-0">
+                <img src="{% static 'img/jeunes-freelance.jpg' %}" class="img-fluid rounded-lg" alt="Étudiants freelances" loading="lazy">
             </div>
         </div>
-        <div class="col-md-6 order-md-2 order-1 mb-4 mb-md-0">
-            <!-- Vous pouvez ajouter une image ou un autre contenu ici -->
-            <img src="{% static 'img/jeunes-freelance.jpg' %}" class="img-fluid" alt="Students working together">
-        </div>
     </div>
-<section id="pourquoi">
+</header>
+
+<section id="pourquoi" class="section-padding">
     <div class="container">
-        <div class="divider"></div>
-        <div class="heading">
-            <h2>Pourquoi choisir FreeJunior?</h2>
-        </div>
+        <h2 class="section-title">Pourquoi choisir FreeJunior ?</h2>
         <div class="row">
-            <div class="col-md-6">
-                 <div class="pourquoi-block">
-                    <i class="fas fa-project-diagram"></i>
-                    <h3> Missions variées et enrichissantes</h3>
-                    <div class="divider"></div>
-                    <p class="highlight">Accédez à une large gamme de missions freelances.</p>
-                    <p><i class="fas fa-laptop-code"></i> Développement web</p>
-                    <p><i class="fas fa-database"></i> Administration de bases de données</p>
-                    <p><i class="fas fa-paint-brush"></i> Design graphique</p>
-                    <p class="highlight">Appliquez vos connaissances théoriques dans des contextes réels.</p>
+            <div class="col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                    <div class="card-body">
+                        <div class="icon-box">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3 class="card-title">Missions variées et enrichissantes</h3>
+                        <p class="card-text">Accédez à une large gamme de missions dans le développement web, l'administration de bases de données, le design graphique et bien plus encore.</p>
+                        <p class="highlight">Appliquez vos connaissances théoriques dans des contextes réels.</p>
+                    </div>
                 </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                    <div class="card-body">
+                        <div class="icon-box">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h3 class="card-title">Gagnez de l'expérience professionnelle</h3>
+                        <p class="card-text">Rejoignez les 40% d'étudiants français qui travaillent pendant leurs études. Gagnez de l'argent tout en enrichissant votre CV.</p>
+                        <p class="highlight">Préparez-vous efficacement pour le marché du travail.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                    <div class="card-body">
+                        <div class="icon-box">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="card-title">Flexibilité et autonomie</h3>
+                        <p class="card-text">Choisissez les missions qui vous intéressent, gérez votre emploi du temps et conciliez études et travail sans compromis.</p>
+                        <p class="highlight">Développez votre sens de l'organisation et votre autonomie.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                    <div class="card-body">
+                        <div class="icon-box">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3 class="card-title">Valorisez vos compétences</h3>
+                        <p class="card-text">Chaque mission réussie est une preuve de votre expertise. Renforcez votre réputation et ouvrez de nouvelles opportunités.</p>
+                        <p class="highlight">Construisez un portfolio impressionnant dès vos études.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-            </div>
-            <div class="col-md-6">
-                <div class="pourquoi-block">
-                    <i class="fas fa-wallet"></i>
-                    <h3> Gagnez de l'expérience professionnelle</h3>
-                    <div class="divider"></div>
-                        <p><a href="https://www.letudiant.fr/jobsstages/pourquou-40-des-etudiants-ont-un-emploi-a-cote-de-leurs-etudes.html" target="_blank">En France, 40% des étudiants travaillent en parallèle de leurs études.</a></p>
-                        <p><i class="fas fa-money-bill-wave"></i> Gagnez de l'argent</p>
-                        <p><i class="fas fa-briefcase"></i> Acquérez une expérience précieuse</p>
-                        <p class="highlight">Enrichissez votre CV et préparez-vous pour le marché du travail.</p>
-                    </div>
-            </div>
-            <div class="col-md-6">
-                <div class="pourquoi-block">
-                    <i class="fas fa-clock"></i>
-                    <h3> Flexibilité et autonomie</h3>
-                    <div class="divider"></div>
-                    <p><i class="fas fa-tasks"></i> Choisissez les missions qui vous intéressent.</p>
-                    <p><i class="fas fa-calendar-alt"></i> Gérez votre emploi du temps</p>
-                    <p><i class="fas fa-balance-scale"></i> Conciliez études et travail sans compromis.</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="pourquoi-block">
-                    <i class="fas fa-user-check"></i>
-                    <h3> Valorisez vos compétences</h3>
-                    <div class="divider"></div>
-                     <p><i class="fas fa-award"></i> Chaque mission réussie est une preuve de votre expertise.</p>
-                    <p><i class="fas fa-star"></i> Renforcez votre réputation</p>
-                    <p><i class="fas fa-handshake"></i> Ouvrez de nouvelles opportunités</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="divider"></div>
-</section>
-<section id="Comment">
-     <div class="text-center mt-4">
-            <p>Vous pouvez postulez directement pour des missions et  être payés en cash ou en part d'entreprise </p>
-            <a href="{% url 'mission_list' %}" class="btn btn-danger btn-lg mt-2">Je postule  maintenant </a>
-     </div>
+<section id="Comment" class="section-padding bg-light">
     <div class="container">
-        <div class="heading">
-            <h2>Comment ça marche ?</h2>
-        </div>
-        <ul class="timeline">
-            <li>
-                <div class="timeline-badge"><i class="fas fa-users"></i></div>
-                <div class="timeline-panel-container"></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h3><a href="{% url 'student_form' %}">Inscrivez-vous</a></h3>
-                        <p class="text-muted">
-                            <i class="far fa-clock"></i> Étape 1
-                        </p>
-                    </div>
-                    <div class="timeline-body">
-                        <p>Remplissez notre formulaire d'inscription en fournissant des informations sur votre parcours académique, vos compétences et vos intérêts professionnels.</p>
-                    </div>
+        <h2 class="section-title">Comment ça marche ?</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fas fa-user-plus"></i>
                 </div>
-            </li>
-            <li>
-                <div class="timeline-badge"><i class="fas fa-envelope"></i></div>
-                <div class="timeline-panel-container"></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h3>L'entreprise vous contacterons</h3>
-                        <p class="text-muted">
-                            <i class="far fa-clock"></i> Étape 2
-                        </p>
-                    </div>
-                    <div class="timeline-body">
-                      <p>Les entreprises vous contacteront pour un entretien afin de vérifier si vous répondez à leurs critères.</p>
-                    </div>
+                <div class="timeline-content">
+                    <h3>1. Inscrivez-vous</h3>
+                    <p>Créez votre profil en détaillant votre parcours académique, vos compétences et vos ambitions professionnelles.</p>
+                    <a href="{% url 'student_form' %}" class="btn btn-custom btn-primary-custom mt-3">S'inscrire</a>
                 </div>
-            </li>
-            <li>
-                <div class="timeline-badge"><i class="fas fa-rocket"></i></div>
-                <div class="timeline-panel-container"></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h3>Commencez la mission</h3>
-                        <p class="text-muted">
-                            <i class="far fa-clock"></i> Étape 3
-                        </p>
-                    </div>
-                    <div class="timeline-body">
-                        <p>Définissez les dates de début et de fin de la mission, calculez le coût basé sur votre  taux horaire  et démarrez la collaboration.</p>
-                    </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fas fa-search"></i>
                 </div>
-            </li>
-        </ul>
-    </div>
-</section>
- <section id="Contact">
-    <div class="container">
-        <div class="divider"></div>
-        <p class="lead text-center mt-4">Ne manquez pas l'opportunité de développer vos compétences et de vous préparer pour le marché du travail tout en gagnant de l'argent. Inscrivez-vous dès maintenant sur FreeJunior et commencez à explorer les missions qui vous attendent !</p>
-        <div class="text-center">
-            <a href="{% url 'student_form' %}" class="btn btn-success btn-lg mr-2 mt-2">Inscription Étudiant</a>
+                <div class="timeline-content">
+                    <h3>2. Trouvez des missions</h3>
+                    <p>Parcourez les offres de missions qui correspondent à vos compétences et à vos disponibilités.</p>
+                    <a href="{% url 'mission_list' %}" class="btn btn-custom btn-secondary-custom mt-3">Voir les missions</a>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>3. Démarrez votre mission</h3>
+                    <p>Une fois sélectionné, planifiez votre mission, convenez des modalités et lancez-vous dans cette nouvelle aventure professionnelle !</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+<section id="Contact" class="section-padding">
+    <div class="container text-center">
+        <h2 class="section-title">Prêt à vous lancer ?</h2>
+        <p class="lead mb-4">Ne manquez pas l'opportunité de développer vos compétences et de vous préparer pour le marché du travail tout en gagnant de l'argent. Inscrivez-vous dès maintenant sur FreeJunior et commencez à explorer les missions qui vous attendent !</p>
+        <a href="{% url 'student_form' %}" class="btn btn-custom btn-primary-custom btn-lg">Inscription Étudiant</a>
     </div>
-</div>
+</section>
 {% endblock %}

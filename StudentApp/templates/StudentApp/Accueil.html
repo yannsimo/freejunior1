@@ -1,195 +1,640 @@
-   {% load static %}
+ {% load static %}
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <title>FreeJunior - Première plateforme de freelance 100% étudiant </title>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NQGDXW7Z');</script>
- <!-- Hotjar Tracking Code for https://www.freejunior.fr/ -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:5066470,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-<!-- End Google Tag Manager -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="FreeJunior connecte les entreprises avec des étudiants pour des missions freelance, offrant des opportunités de croissance et d'expérience.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeJunior - Première plateforme de freelance 100% étudiant</title>
+    <meta name="description" content="FreeJunior connecte les entreprises avec des étudiants pour des missions freelance, offrant des opportunités de croissance et d'expérience.">
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding: 0;
-      color: #333;
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #50c878;
+            --accent-color: #ffd700;
+            --text-color: #333333;
+            --light-bg: #f8f9fa;
+            --dark-bg: #2c3e50;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+        }
+
+        .mascot {
+            display: block;
+            margin: 20px auto;
+            max-width: 300px;
+            height: auto;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .stat-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-item .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px -10px;
+
+        }
+
+        .col-md-6 {
+            flex: 1;
+            padding: 10px;
+            min-width: 300px;
+        }
+
+        .pourquoi-block {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .pourquoi-block:hover {
+            transform: translateY(-5px);
+        }
+
+        .pourquoi-block i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .pourquoi-block h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            width: 50px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 20px 0;
+        }
+
+        .pourquoi-block p {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #3a7bc8;
+            transform: translateY(-2px);
+        }
+
+        .free-post {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: var(--accent-color);
+            border-radius: 8px;
+            color: var(--dark-bg);
+        }
+
+        @media (max-width: 768px) {
+            .col-md-6 {
+                flex: 100%;
+            }
+        }
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 60px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            flex: 1;
+            min-width: 200px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-item i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .stat-item .number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--dark-bg);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+        }
+
+        .stat-item .number .plus {
+            font-size: 2rem;
+            margin-left: 5px;
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-item .number {
+            animation: countUp 1s ease-out forwards;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            margin-bottom: 50px;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+
+        .testimonials {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .testimonial-card {
+            flex-basis: calc(50% - 20px);
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card .author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .faq-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .case-study {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+
+        .case-study h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .skills-cloud {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9rem;
+        }
+        .hero-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-align: center;
+    padding: 80px 0;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn-cta {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--dark-bg);
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
     }
-    .container {
-      width: 80%;
-      margin: 0 auto;
-      padding: 20px;
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
     }
-    header {
-      text-align: center;
-      padding: 20px 0;
-      background-color: #007bff;
-      color: white;
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
     }
-    .mascot {
-      display: block;
-      margin: 10px auto;
-      width: 300px;
-      height: auto;
+}
+
+.ai-era-banner {
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    padding: 40px;
+    margin-top: -50px;
+    margin-bottom: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.ai-era-points {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.point {
+    flex-basis: 22%;
+    margin-bottom: 20px;
+}
+
+.point i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.highlight-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 30px 0;
+}
+
+.btn-action {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-action:hover {
+    background-color: #3a7bc8;
+    transform: translateY(-2px);
+}
+.emboited-blocks {
+    margin-bottom: 150px; /* Ajustez cette valeur selon vos besoins */
+    position: relative;
+    z-index: 2;
+}
+@media (max-width: 768px) {
+    .ai-era-points {
+        flex-direction: column;
     }
-    .info-section {
-      text-align: center;
-      padding: 20px;
-      margin-top: 10px;
+    .point {
+        flex-basis: 100%;
     }
-    .info-section h2 {
-      color: #007bff;
-    }
-    .info-section p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: #555;
-    }
-    .value-proposition {
-      text-align: left;
-      margin-top: 20px;
-    }
-    .value-proposition ul {
-      list-style: none;
-      padding: 0;
-    }
-    .value-proposition ul li {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-      color: #555;
-    }
-    .value-proposition ul li i {
-      color: #007bff;
-      margin-right: 10px;
-    }
-    .btn {
-      padding: 10px 20px;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      margin-left: 10px;
-    }
-    .btn:hover {
-      background-color: #0056b3;
-    }
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 20px 0;
-    }
-    .col-md-6 {
-      flex: 1;
-      padding: 10px;
-      box-sizing: border-box;
-      min-width: 300px;
-    }
-    .pourquoi-block {
-      background-color: white;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .pourquoi-block i {
-      font-size: 2rem;
-      color: #007bff;
-      margin-bottom: 10px;
-    }
-    .pourquoi-block h3 {
-      margin-bottom: 10px;
-      color: #333;
-    }
-    .divider {
-      width: 50px;
-      height: 4px;
-      background-color: #007bff;
-      margin: 10px auto;
-      border-radius: 2px;
-    }
-    .pourquoi-block p {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #555;
-    }
-    .pourquoi-block p i {
-      color: #007bff;
-      margin-right: 5px;
-    }
-  </style>
-  <meta name="google-site-verification" content="LRa6grZceYZ7kysbD_ZBL2JazXtVvY8tyjmHJPkw-fI" />
+}
+    </style>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NQGDXW7Z');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Hotjar Tracking Code -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:5066470,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3LT3GH3ZEC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-3LT3GH3ZEC');
-</script>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQGDXW7Z"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-  <header>
-    <h1>Bienvenue chez FreeJunior</h1>
-  </header>
-  <div class="container">
-    <img src="{% static 'img/mascotteFreeJunior.jpg' %}" alt="FreeJunior Mascot" class="mascot">
-    <div class="info-section">
-      <h2>Première plateforme de freelance pour étudiant </h2>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="pourquoi-block">
-          <i class="fas fa-lightbulb"></i>
-          <h3>Pour les étudiants :</h3>
-          <div class="divider"></div>
-          <p><i class="fas fa-certificate"></i> Développez vos compétences et bénéficiez d'un gain professionnel significatif.</p>
-          <p><i class="fas fa-chart-line"></i> Obtenez des résultats concrets et démarquez-vous sur le marché du travail.</p>
-          <p><i class="fas fa-star"></i> Profitez de notre solution exclusive pour gagner de l'argent et  en expérience sur des projets réels.</p>
-          <p><i class="fas fa-rocket"></i> Augmentez votre visibilité en postulant aux missions sur notre plateforme de freelances dédiée aux étudiants.</p>
-          <a href="{% url 'page_etudiant' %}" class="btn">Je suis un talent</a>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQGDXW7Z"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <header>
+        <h1>Bienvenue chez FreeJunior</h1>
+        <p>Première plateforme de freelance 100% étudiant</p>
+    </header>
+         <div class="hero-section">
+            <div class="container">
+                <h1>Trouvez le talent étudiant en informatique idéal pour votre projet</h1>
+                <p class="hero-subtitle">À l'ère de l'IA, misez sur l'innovation et l'adaptabilité des étudiants développeurs</p>
+                <a href="{% url 'submit_mission' %}" class="btn-cta pulse">Publiez votre projet gratuitement</a>
+            </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="pourquoi-block">
-          <i class="fas fa-user-tie"></i>
-          <h3>Pour les entreprises :</h3>
-          <div class="divider"></div>
-          <p><i class="fas fa-rocket"></i> Découvrez une nouvelle façon d'accéder à des talents innovants et motivés.</p>
-          <p><i class="fas fa-money-bill-wave"></i> Collaborez avec des étudiants talentueux à des tarifs avantageux pour des économies significatives.</p>
-          <p><i class="fas fa-lightbulb"></i> Bénéficiez de perspectives fraîches et de solutions créatives grâce à l'énergie et à l'innovation des étudiants.</p>
-          <p><i class="fas fa-sync-alt"></i> Profitez de la flexibilité et de l'adaptabilité des étudiants, capables de s'ajuster rapidement aux besoins de votre entreprise.</p>
-          <a href="{% url 'page_company' %}" class="btn">Je recherche un talent</a>
-          </div>
-      </div>
+
+       <div class="container">
+        <img src="{% static 'img/mascotteFreeJunior.jpg' %}" alt="FreeJunior Mascot" class="mascot">
+
+        <div class="stats-container">
+            <div class="stat-item">
+                <i class="fas fa-tasks"></i>
+                <div class="number" id="missions-count">0</div>
+                <p>Missions réalisées</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-user-graduate"></i>
+                <div class="number" id="students-count">0</div>
+                <p>Étudiants inscrits</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-euro-sign"></i>
+                <div class="number" id="hourly-rate">0</div>
+                <p>Taux horaire moyen</p>
+            </div>
+        </div>
+            <h2 class="section-title">Compétences recherchées</h2>
+        <div class="skills-cloud">
+            <span class="skill-tag">Développement Web</span>
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">iOS/Android</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">DevOps</span>
+        </div>
+       <div class="container">
+    <div class="row emboited-blocks">
+        <div class="col-md-6">
+            <div class="pourquoi-block">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Pour les étudiants</h3>
+                <div class="divider"></div>
+                <p><i class="fas fa-certificate"></i> Développez vos compétences et gagnez en expérience professionnelle</p>
+                <p><i class="fas fa-chart-line"></i> Démarquez-vous sur le marché du travail avec des projets concrets</p>
+                <p><i class="fas fa-star"></i> Gagnez de l'argent tout en étudiant</p>
+                <p><i class="fas fa-rocket"></i> Augmentez votre visibilité auprès des entreprises</p>
+                <a href="{% url 'page_etudiant' %}" class="btn">Je suis un talent</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="pourquoi-block">
+                <i class="fas fa-user-tie"></i>
+                <h3>Pour les entreprises</h3>
+                <div class="divider"></div>
+                <p><i class="fas fa-rocket"></i> Accédez à des talents innovants et motivés</p>
+                <p><i class="fas fa-money-bill-wave"></i> Économisez sur vos coûts de recrutement</p>
+                <p><i class="fas fa-lightbulb"></i> Bénéficiez de solutions créatives et de perspectives fraîches</p>
+                <p><i class="fas fa-sync-alt"></i> Profitez de la flexibilité et de l'adaptabilité des étudiants</p>
+                <a href="{% url 'page_company' %}" class="btn">Je recherche un talent</a>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <div class="ai-era-banner">
+        <h2>L'ère de l'IA : Le moment idéal pour engager des étudiants développeurs</h2>
+        <div class="ai-era-points">
+            <div class="point">
+                <i class="fas fa-robot"></i>
+                <p>Démocratisation du code : Aujourd'hui vous pouvez faire appel aux profils moins expérimentés pour un travail de qualité</p>
+            </div>
+            <div class="point">
+                <i class="fas fa-graduation-cap"></i>
+                <p>Valorisation des jeunes talents : De plus en plus d'entreprises tech misent sur la fraîcheur des étudiants</p>
+            </div>
+            <div class="point">
+                <i class="fas fa-lightbulb"></i>
+                <p>Innovation accélérée : IA + créativité étudiante = solutions innovantes rapides</p>
+            </div>
+            <div class="point">
+                <i class="fas fa-chart-line"></i>
+                <p>Apprentissage rapide : Montée en compétences accélérée grâce à l'IA</p>
+            </div>
+        </div>
+        <p class="highlight-text">Faites confiance aux talents de demain : compétences à jour, approche innovante et excellent rapport qualité-prix !</p>
+        <a href="{% url 'page_company' %}" class="btn-action">Découvrez nos talents étudiants</a>
+    </div>
+</div>
+        <h2 class="section-title">Témoignages</h2>
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <img src="{% static 'img/testimonial1.jpg' %}" alt="Témoignage 1">
+                <p>"FreeJunior nous a permis de trouver un étudiant talentueux en développement web. Notre application a été livrée dans les temps et avec une qualité exceptionnelle."</p>
+                <span class="author">- Marie D., Startup Tech</span>
+            </div>
+            <div class="testimonial-card">
+                <img src="{% static 'img/testimonial2.jpg' %}" alt="Témoignage 2">
+                <p>"Grâce à FreeJunior, j'ai pu mettre en pratique mes compétences en développement mobile et gagner une expérience précieuse pour mon CV."</p>
+                <span class="author">- Thomas L., Étudiant en Master Informatique</span>
+            </div>
+        </div>
+          <h2 class="section-title">FAQ</h2>
+        <div class="faq-section">
+            <div class="faq-item">
+                <h3>Comment fonctionne FreeJunior ?</h3>
+                <p>FreeJunior met en relation des entreprises avec des étudiants qualifiés en informatique pour des missions freelance. Vous postez votre projet tech gratuitement, les étudiants développeurs intéressés postulent, et vous choisissez le meilleur profil.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Quels types de projets peut-on proposer ?</h3>
+                <p>FreeJunior couvre une large gamme de domaines en informatique : développement web, mobile, logiciel, data science, IA, cybersécurité, et bien plus encore. Tout projet adapté aux compétences d'un étudiant en informatique peut être proposé.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Exemple de projet réussi</h2>
+        <div class="case-study">
+            <h3>Développement d'une application mobile pour une startup</h3>
+            <p><strong>Problème :</strong> Une startup avait besoin de développer rapidement un MVP de son application mobile mais disposait d'un budget limité.</p>
+            <p><strong>Solution :</strong> Via FreeJunior, ils ont engagé un étudiant en informatique spécialisé en développement mobile pour une mission de 2 mois.</p>
+            <p><strong>Résultat :</strong> L'application a été développée et lancée dans les temps, permettant à la startup de valider son concept auprès des premiers utilisateurs et d'attirer des investisseurs.</p>
+        </div>
+
+
+
+        <div class="free-post">
+            <h2>Poster une mission est 100% gratuit !</h2>
+            <p>Publiez votre mission dès maintenant et trouvez le talent étudiant parfait pour votre projet.</p>
+            <a href="{% url 'submit_mission' %}" class="btn">Poster une mission gratuitement</a>
+        </div>
+    </div>
+ <script>
+        function animateValue(id, start, end, duration) {
+            if (start === end) return;
+            var range = end - start;
+            var current = start;
+            var increment = end > start? 1 : -1;
+            var stepTime = Math.abs(Math.floor(duration / range));
+            var obj = document.getElementById(id);
+            var timer = setInterval(function() {
+                current += increment;
+                obj.innerHTML = current;
+                if (current == end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }
+
+        // Lancer les animations lorsque la page est chargée
+        window.onload = function() {
+            animateValue("missions-count", 0,+ 200, 2000);
+            animateValue("students-count", 0, +700, 2000);
+            animateValue("hourly-rate", 0,+16, 2000);
+        }
+    </script>
 </body>
 </html>

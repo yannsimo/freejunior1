@@ -25,7 +25,7 @@ SECRET_KEY =  config('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #ALLOWED_HOSTS = ['54.87.17.222']
 ALLOWED_HOSTS = ['*']
@@ -133,7 +133,6 @@ USE_TZ = True
 AWS_ACCESS_KEY_ID = 'AKIA4MTWNWMLZ4KXQEUX'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'django-freejunior'
-
 
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
