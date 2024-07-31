@@ -2,13 +2,18 @@
 {% load widget_tweaks %}
 {% load static %}
 
-{% block title %}Inscription Étudiant - StudyFreelance{% endblock %}
+{% block title %}Inscription Étudiant - FreeJunior | Plateforme de freelance pour étudiants en informatique{% endblock %}
+
+{% block meta %}
+<meta name="description" content="Inscrivez-vous sur FreeJunior, la première plateforme de freelance dédiée aux étudiants en informatique. Boostez votre carrière et gagnez de l'expérience professionnelle tout en étudiant.">
+<meta name="keywords" content="freelance étudiant, informatique, inscription, carrière tech, FreeJunior">
+{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12 col-lg-6">
-            <h2 class="mb-4 text-primary">Inscription Étudiant</h2>
+            <h1 class="mb-4 text-primary">Inscription Étudiant</h1>
 
             {% if messages %}
             <div class="messages mb-4">
@@ -41,12 +46,12 @@
                         <div class="form-group mb-3">
                             <label for="{{ field.id_for_label }}">
                                 {{ field.label }}
-                                <i class="fas fa-question-circle" data-toggle="tooltip" title="{{ field.help_text }}"></i>
+                                <i class="fas fa-question-circle" data-toggle="tooltip" title="{{ field.help_text }}" aria-label="Aide"></i>
                             </label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
-                                        <i class="fas {% if 'password' in field.name %}fa-lock{% elif 'email' in field.name %}fa-envelope{% else %}fa-user{% endif %}"></i>
+                                        <i class="fas {% if 'password' in field.name %}fa-lock{% elif 'email' in field.name %}fa-envelope{% else %}fa-user{% endif %}" aria-hidden="true"></i>
                                     </span>
                                 </div>
                                 {% render_field field class="form-control" %}
@@ -69,14 +74,14 @@
                         <div class="form-group mb-3">
                             <label for="{{ field.id_for_label }}">
                                 {{ field.label }}
-                                <i class="fas fa-question-circle" data-toggle="tooltip" title="{{ field.help_text }}"></i>
+                                <i class="fas fa-question-circle" data-toggle="tooltip" title="{{ field.help_text }}" aria-label="Aide"></i>
                             </label>
                             {% if field.name == 'study_level' %}
                                 {% render_field field class="form-control select2" %}
                             {% elif field.name == 'hourly_rate' %}
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-euro-sign"></i></span>
+                                        <span class="input-group-text"><i class="fas fa-euro-sign" aria-hidden="true"></i></span>
                                     </div>
                                     {% render_field field class="form-control" %}
                                 </div>
@@ -105,16 +110,16 @@
 
         <div class="col-md-12 col-lg-6 mt-4 mt-lg-0">
             <div class="card shadow-sm border-0">
-                <img src="{% static 'img/freelances.jpg' %}" class="card-img-top img-fluid" alt="Des étudiants travaillent ensemble">
+                <img src="{% static 'img/freelances.jpg' %}" class="card-img-top img-fluid" alt="Étudiants en informatique travaillant sur des projets freelance">
                 <div class="card-body">
-                    <h3 class="card-title text-primary"><i class="fas fa-graduation-cap mr-2"></i>Boostez Votre Carrière avec FreeJunior !</h3>
-                    <p class="card-text">Rejoignez FreeJunior, où plus de la moitié de nos étudiants ont déjà complété une mission avec succès. Profitez de notre réseau de partenaires et d'opportunités professionnelles.</p>
-                    <h4 class="text-success mt-4"><i class="fas fa-trophy mr-2"></i>Ce que nos étudiants disent :</h4>
+                    <h2 class="card-title text-primary"><i class="fas fa-graduation-cap mr-2" aria-hidden="true"></i>Boostez Votre Carrière Tech avec FreeJunior !</h2>
+                    <p class="card-text">Rejoignez FreeJunior, où plus de la moitié de nos étudiants en informatique ont déjà complété une mission avec succès. Profitez de notre réseau de partenaires tech et d'opportunités professionnelles uniques.</p>
+                    <h3 class="text-success mt-4"><i class="fas fa-trophy mr-2" aria-hidden="true"></i>Ce que nos étudiants disent :</h3>
                     <ul class="list-group list-group-flush mt-3">
-                        <li class="list-group-item"><i class="fas fa-check text-info mr-2"></i>50% ont déjà complété des missions.</li>
-                        <li class="list-group-item"><i class="fas fa-handshake text-warning mr-2"></i>Partenariats avec des entreprises reconnues.</li>
-                        <li class="list-group-item"><i class="fas fa-star text-success mr-2"></i>1 étudiant sur 8 a reçu des recommandations.</li>
-                        <li class="list-group-item"><i class="fas fa-chart-line text-primary mr-2"></i>Amélioration des compétences pour la majorité.</li>
+                        <li class="list-group-item"><i class="fas fa-check text-info mr-2" aria-hidden="true"></i>50% ont déjà complété des missions en développement.</li>
+                        <li class="list-group-item"><i class="fas fa-handshake text-warning mr-2" aria-hidden="true"></i>Partenariats avec des entreprises tech reconnues.</li>
+                        <li class="list-group-item"><i class="fas fa-star text-success mr-2" aria-hidden="true"></i>1 étudiant sur 8 a reçu des recommandations professionnelles.</li>
+                        <li class="list-group-item"><i class="fas fa-chart-line text-primary mr-2" aria-hidden="true"></i>Amélioration significative des compétences techniques pour la majorité.</li>
                     </ul>
                 </div>
             </div>
@@ -125,14 +130,23 @@
 
 {% block extra_js %}
 <script>
-    $(document).ready(function() {
-        $('[data-toggle="tooltip"]').tooltip();
-        $('.select2').select2();
+    document.addEventListener('DOMContentLoaded', function() {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
 
-        $('form').on('submit', function() {
-            $(this).find(':input').each(function() {
-                $(this).removeClass('is-invalid');
-                $(this).next('.invalid-feedback').remove();
+        if (document.querySelector('.select2')) {
+            $('.select2').select2();
+        }
+
+        document.querySelector('form').addEventListener('submit', function() {
+            this.querySelectorAll(':input').forEach(function(input) {
+                input.classList.remove('is-invalid');
+                var feedback = input.nextElementSibling;
+                if (feedback && feedback.classList.contains('invalid-feedback')) {
+                    feedback.remove();
+                }
             });
         });
     });

@@ -71,6 +71,7 @@ def edit_student_profile(request):
     }
     return render(request, 'Accounts/edit_student_profile.html', context)
 
+
 def register_student(request):
     step = request.POST.get('step', '1')
 
@@ -80,7 +81,6 @@ def register_student(request):
 
         if request.method == 'POST':
             if user_form.is_valid():
-                # Store user data in session
                 request.session['user_data'] = user_form.cleaned_data
                 return render(request, 'Accounts/register_student_step1.html', {
                     'user_form': user_form,
@@ -90,7 +90,6 @@ def register_student(request):
             else:
                 messages.error(request, "Erreur dans le formulaire utilisateur")
     else:
-        # Retrieve user data from session
         user_data = request.session.get('user_data')
         user_form = UserRegistrationForm(user_data)
         student_form = StudentRegistrationForm(request.POST or None, request.FILES or None)
@@ -104,9 +103,7 @@ def register_student(request):
 
                     # Handle School
                     school_name = student_form.cleaned_data['school_name']
-                    school = School.objects.filter(name=school_name).first()
-                    if not school:
-                        school = School.objects.create(name=school_name)
+                    school, _ = School.objects.get_or_create(name=school_name)
 
                     # Handle Specialty
                     specialty_name = student_form.cleaned_data['specialty_name']

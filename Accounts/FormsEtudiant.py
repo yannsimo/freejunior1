@@ -5,6 +5,8 @@ from StudentApp.models import Student, SPECIALTY_CHOICES
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 
+from StudentApp.models import Specialty, School, Program, Subject
+
 User = get_user_model()
 
 class UserRegistrationForm(UserCreationForm):
@@ -45,51 +47,57 @@ class StudentRegistrationForm(UserRegistrationForm):
         label="Niveau d'études", choices=Student.STUDY_LEVEL_CHOICES, required=True,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
+    specialty = forms.ModelChoiceField(
+        queryset=Specialty.objects.all(),
+        label="Spécialité",
+        required=True,
+        widget=forms.Select(attrs={'class': 'form-control'})
+        )
+    school = forms.ModelChoiceField(
+        queryset=School.objects.all(),
+        label="École",
+        required=True,
+        widget=forms.Select(attrs={'class': 'form-control'})
+        )
+    program = forms.ModelChoiceField(
+        queryset=Program.objects.all(),
+        label="Programme",
+        required=True,
+        widget=forms.Select(attrs={'class': 'form-control'})
+        )
+    related_subject = forms.ModelChoiceField(
+        queryset=Subject.objects.all(),
+        label="Matière associée",
+        required=True,
+        widget=forms.Select(attrs={'class': 'form-control'})
+        )
     hourly_rate = forms.DecimalField(
         label="Taux horaire (€/heure)", required=True,
         widget=forms.NumberInput(attrs={'class': 'form-control'})
-    )
+        )
     description = forms.CharField(
         label="Brève description de vous-même",
         required=False,
         widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': "Décrivez-vous brièvement."})
-    )
+        )
     photo = forms.ImageField(
         label="Photo de profil", required=False,
         widget=forms.FileInput(attrs={'class': 'form-control-file'})
-    )
+        )
     cv = forms.FileField(
         label="Curriculum Vitae (CV)", required=False,
         widget=forms.FileInput(attrs={'class': 'form-control-file'})
-    )
-    school_name = forms.CharField(
-        label="Nom de l'école où vous étudiez", max_length=255, required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'})
-    )
-    specialty_name = forms.ChoiceField(
-        label="Spécialité que vous souhaitez exercer sur ce site",
-        choices=SPECIALTY_CHOICES, required=True,
-        widget=forms.Select(attrs={'class': 'form-control'})
-    )
-    program_name = forms.CharField(
-        label="Nom de votre filière universitaire", max_length=255, required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'})
-    )
-    subject_name = forms.CharField(
-        label="Listez vos compétences", max_length=255, required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'})
-    )
+        )
     portfolio_url = forms.URLField(
         label="URL du portfolio", required=False,
         widget=forms.URLInput(attrs={'class': 'form-control'})
-    )
+        )
 
     class Meta(UserRegistrationForm.Meta):
         fields = UserRegistrationForm.Meta.fields + [
-            'study_level', 'hourly_rate', 'school_name', 'specialty_name',
-            'program_name', 'subject_name', 'description', 'photo', 'cv',
-            'portfolio_url'
-        ]
+            'study_level', 'specialty', 'school', 'program', 'related_subject',
+            'hourly_rate', 'description', 'photo', 'cv', 'portfolio_url'
+            ]
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -123,11 +131,11 @@ class StudentRegistrationForm(UserRegistrationForm):
             student = Student.objects.create(
                 user=user,
                 study_level=self.cleaned_data['study_level'],
+                specialty=self.cleaned_data['specialty'],
+                school=self.cleaned_data['school'],
+                program=self.cleaned_data['program'],
+                related_subject=self.cleaned_data['related_subject'],
                 hourly_rate=self.cleaned_data['hourly_rate'],
-                school_name=self.cleaned_data['school_name'],
-                specialty_name=self.cleaned_data['specialty_name'],
-                program_name=self.cleaned_data['program_name'],
-                subject_name=self.cleaned_data['subject_name'],
                 description=self.cleaned_data['description'],
                 photo=self.cleaned_data['photo'],
                 cv=self.cleaned_data['cv'],
