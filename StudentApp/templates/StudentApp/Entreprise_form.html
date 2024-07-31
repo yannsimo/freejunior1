@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="fr">
 <head>
     <script>
@@ -156,6 +156,42 @@
                 <div class="form-group">
                     <label for="id_contact_info">Téléphone</label>
                     {{ entreprise_form.contact_info }}
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Détails de la Mission</h2>
+                <div class="form-group">
+                    <label for="id_title">Titre de la Mission</label>
+                    {{ mission_form.title }}
+                </div>
+                <div class="form-group">
+                    <label for="id_mission_type">Type de Mission</label>
+                    {{ mission_form.specialty_name }}
+                </div>
+                <div class="form-group">
+                    <label for="id_description">Description</label>
+                    {{ mission_form.description }}
+                </div>
+                <div class="form-group">
+                    <label for="id_payment_type">Type de Paiement</label>
+                    {{ mission_form.payment_type }}
+                </div>
+                <div id="cash_fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="id_cash_amount_min">Montant minimum en Cash (€)</label>
+                        {{ mission_form.cash_amount_min }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_cash_amount_max">Montant maximum en Cash (€)</label>
+                        {{ mission_form.cash_amount_max }}
+                    </div>
+                </div>
+                <div id="equity_fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="id_equity_offer">Offre d'Équité (en %)</label>
+                        {{ mission_form.equity_offer }}
+                    </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary btn-lg btn-block">Soumettre</button>
