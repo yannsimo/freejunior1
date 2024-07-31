@@ -197,8 +197,8 @@ class Student(models.Model):
 
 
 class Company(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     name = models.CharField(max_length=255)
-    email = models.EmailField(null=True)
     contact_info = models.TextField()
     def __str__(self):
         return self.name

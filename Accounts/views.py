@@ -97,6 +97,8 @@ def register_student(request):
         if request.method == 'POST':
             if user_form.is_valid() and student_form.is_valid():
                 with transaction.atomic():
+                    user = user_form.save(commit=False)
+                    user.user_type = 'STUDENT'
                     user = user_form.save()
                     student = student_form.save(commit=False)
                     student.user = user
@@ -138,3 +140,4 @@ def register_student(request):
         'student_form': student_form,
         'step': step
     })
+

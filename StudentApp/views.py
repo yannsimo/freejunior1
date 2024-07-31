@@ -1,7 +1,6 @@
 
 from django.urls import reverse
 from Accounts.FormsEtudiant import StudentRegistrationForm
-from .FormsEntreprise import MissionForm,EntrepriseForm
 from .ContactForm import ContactForm,ContactFormAvis
 from StudentApp import navigation, model_helpers
 from django.contrib.auth.decorators import login_required, permission_required
@@ -9,6 +8,8 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from StudentApp.models import Student , Comment, Mission
 from django.core.mail import send_mail
+
+from .FormsEntreprise import EntrepriseForm
 from .models import Article
 from .CommentForm import CreateComment
 
@@ -202,28 +203,6 @@ def privacy_policy(request):
     return render(request, 'StudentApp/privacy_policy.html')
 
 
-def submit_mission_view(request):
-    if request.method == 'POST':
-        entreprise_form = EntrepriseForm(request.POST)
-        mission_form = MissionForm(request.POST)
-        if entreprise_form.is_valid() and mission_form.is_valid():
-            company = entreprise_form.save()
-            mission = mission_form.save(commit=False)
-            mission.company = company
-            mission.save()
-            print("formulaire valide")
-            messages.success(request, 'Votre mission a été soumise avec succès!')
-            return redirect('confirmationEntreprise')
-    else:
-        entreprise_form = EntrepriseForm()
-        mission_form = MissionForm()
-        print("formulaire non  valide")
-
-
-    return render(request, 'StudentApp/Entreprise_form.html', {
-        'entreprise_form': entreprise_form,
-        'mission_form': mission_form
-    })
 def article_list(request):
     articles = Article.objects.all()
     return render(request, 'article_list.html', {'articles': articles})
@@ -231,3 +210,22 @@ def article_list(request):
 def article_detail(request, pk):
     article = Article.objects.get(pk=pk)
     return render(request, 'article_detail.html', {'article': article})
+
+def register_company(request):
+    if request.method == 'POST':
+        form = EntrepriseForm(request.POST)
+        if form.is_valid():
+            company = form.save()
+            # Rediriger vers une page de succès ou connecter l'utilisateur
+            return redirect('some_success_page')
+        else:
+            form = EntrepriseForm()
+        return render(request, 'StudentApp/register_company.html', {'form': form})
+
+
+
+
+
+
+
+

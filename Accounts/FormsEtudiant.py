@@ -1,11 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
-from StudentApp.models import Student, SPECIALTY_CHOICES
+from StudentApp.models import Student, School, Specialty, Program, Subject, SPECIALTY_CHOICES
 from django.core.validators import URLValidator
-from django.core.exceptions import ValidationError
-
-from StudentApp.models import Specialty, School, Program, Subject
+from pydantic import ValidationError
 
 User = get_user_model()
 
@@ -42,62 +40,53 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ['first_name', 'last_name', 'email', 'password1', 'password2']
 
-class StudentRegistrationForm(UserRegistrationForm):
+class StudentRegistrationForm(forms.ModelForm):
     study_level = forms.ChoiceField(
         label="Niveau d'études", choices=Student.STUDY_LEVEL_CHOICES, required=True,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
-    specialty = forms.ModelChoiceField(
-        queryset=Specialty.objects.all(),
-        label="Spécialité",
-        required=True,
-        widget=forms.Select(attrs={'class': 'form-control'})
-        )
-    school = forms.ModelChoiceField(
-        queryset=School.objects.all(),
-        label="École",
-        required=True,
-        widget=forms.Select(attrs={'class': 'form-control'})
-        )
-    program = forms.ModelChoiceField(
-        queryset=Program.objects.all(),
-        label="Programme",
-        required=True,
-        widget=forms.Select(attrs={'class': 'form-control'})
-        )
-    related_subject = forms.ModelChoiceField(
-        queryset=Subject.objects.all(),
-        label="Matière associée",
-        required=True,
-        widget=forms.Select(attrs={'class': 'form-control'})
-        )
     hourly_rate = forms.DecimalField(
         label="Taux horaire (€/heure)", required=True,
         widget=forms.NumberInput(attrs={'class': 'form-control'})
-        )
+    )
     description = forms.CharField(
         label="Brève description de vous-même",
         required=False,
         widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': "Décrivez-vous brièvement."})
-        )
+    )
     photo = forms.ImageField(
         label="Photo de profil", required=False,
         widget=forms.FileInput(attrs={'class': 'form-control-file'})
-        )
+    )
     cv = forms.FileField(
         label="Curriculum Vitae (CV)", required=False,
         widget=forms.FileInput(attrs={'class': 'form-control-file'})
-        )
+    )
+    school_name = forms.CharField(
+        label="Nom de l'école où vous étudiez", max_length=255, required=True,
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+    specialty_name = forms.ChoiceField(
+        label="Spécialité que vous souhaitez exercer sur ce site",
+        choices=SPECIALTY_CHOICES, required=True,
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+    program_name = forms.CharField(
+        label="Nom de votre filière universitaire", max_length=255, required=True,
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+    subject_name = forms.CharField(
+        label="Listez vos compétences", max_length=255, required=True,
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
     portfolio_url = forms.URLField(
         label="URL du portfolio", required=False,
         widget=forms.URLInput(attrs={'class': 'form-control'})
-        )
+    )
 
-    class Meta(UserRegistrationForm.Meta):
-        fields = UserRegistrationForm.Meta.fields + [
-            'study_level', 'specialty', 'school', 'program', 'related_subject',
-            'hourly_rate', 'description', 'photo', 'cv', 'portfolio_url'
-            ]
+    class Meta:
+        model = Student
+        fields = ['study_level', 'hourly_rate', 'school_name', 'specialty_name', 'program_name', 'subject_name', 'description', 'photo', 'cv', 'portfolio_url']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -114,6 +103,13 @@ class StudentRegistrationForm(UserRegistrationForm):
                 raise forms.ValidationError("Le fichier doit être une image.")
         return photo
 
+    def clean(self):
+        cleaned_data = super().clean()
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
+        if password1 and password2 and password1 != password2:
+            self.add_error('password2', "Les mots de passe ne correspondent pas.")
+
     def clean_portfolio_url(self):
         url = self.cleaned_data.get('portfolio_url')
         if url:
@@ -124,21 +120,12 @@ class StudentRegistrationForm(UserRegistrationForm):
         return url
 
     def save(self, commit=True):
-        user = super().save(commit=False)
-        user.user_type = 'STUDENT'
+        # Cette méthode n'est nécessaire que si vous créez l'utilisateur ici
+        # Sinon, vous pouvez la gérer dans la vue
+        student = super().save(commit=False)
         if commit:
+            user = student.user
+            user.user_type = 'STUDENT'
             user.save()
-            student = Student.objects.create(
-                user=user,
-                study_level=self.cleaned_data['study_level'],
-                specialty=self.cleaned_data['specialty'],
-                school=self.cleaned_data['school'],
-                program=self.cleaned_data['program'],
-                related_subject=self.cleaned_data['related_subject'],
-                hourly_rate=self.cleaned_data['hourly_rate'],
-                description=self.cleaned_data['description'],
-                photo=self.cleaned_data['photo'],
-                cv=self.cleaned_data['cv'],
-                portfolio_url=self.cleaned_data['portfolio_url']
-            )
-        return user
+            student.save()
+        return student
