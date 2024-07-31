@@ -6,17 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreeJunior - Première plateforme de freelance 100% étudiant {% block title %}{% endblock %}</title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
-
-    <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS -->
     <style>
         :root {
             --primary-color: #4a90e2;
@@ -37,9 +31,9 @@
             box-shadow: 0 2px 4px rgba(0,0,0,.1);
         }
 
-        .navbar-brand img {
+        .navbar-brand svg {
             height: 40px;
-            margin-right: 10px;
+            width: auto;
         }
 
         .nav-link {
@@ -118,6 +112,31 @@
             color: var(--accent-color);
         }
 
+        #fullscreen-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        #fullscreen-animation.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .hidden {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .footer-section {
                 margin-bottom: 30px;
@@ -127,7 +146,6 @@
 
     {% block extra_css %}{% endblock %}
 
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3LT3GH3ZEC"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -136,7 +154,6 @@
         gtag('config', 'G-3LT3GH3ZEC');
     </script>
 
-    <!-- Hotjar Tracking Code -->
     <script>
         (function(h,o,t,j,a,r){
             h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -150,10 +167,46 @@
 </head>
 
 <body>
+    <div id="fullscreen-animation" class="hidden">
+        <svg width="300" height="300" viewBox="0 0 300 300" id="foxSvg">
+            <path id="foxBody" d="M150 200 Q120 180 100 200 T50 220 Q100 250 150 220 Q200 250 250 220 Q230 200 200 200 T150 200" fill="orange"/>
+            <circle cx="130" cy="180" r="15" fill="white"/>
+            <circle cx="170" cy="180" r="15" fill="white"/>
+            <circle cx="130" cy="180" r="8" fill="black"/>
+            <circle cx="170" cy="180" r="8" fill="black"/>
+            <rect id="cap" x="120" y="140" width="60" height="20" fill="navy"/>
+            <polygon points="110,160 190,160 150,130" fill="navy"/>
+            <circle cx="130" cy="180" r="20" fill="none" stroke="black" stroke-width="3"/>
+            <circle cx="170" cy="180" r="20" fill="none" stroke="black" stroke-width="3"/>
+            <line x1="150" y1="180" x2="170" y2="180" stroke="black" stroke-width="3"/>
+            <text x="150" y="280" text-anchor="middle" font-family="Arial" font-size="24" fill="navy">FREEJUNIOR</text>
+        </svg>
+    </div>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'accueil' %}">
-                <img src="{% static 'img/Free.png' %}" alt="FreeJunior Logo"> FreeJunior
+            <a class="navbar-brand" href="{% url 'accueil' %}" id="logo-link">
+                <svg width="200" height="100" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                  <style>
+                    .text { font-family: Arial, sans-serif; font-weight: bold; }
+                    .free { fill: #4a90e2; }
+                    .junior { fill: #ff7f00; }
+                    .icon { fill: #4a90e2; }
+                  </style>
+
+                  <!-- Background circle -->
+                  <circle cx="100" cy="50" r="48" fill="white" stroke="#4a90e2" stroke-width="2"/>
+
+                  <!-- Text -->
+                  <text x="50" y="45" class="text free" font-size="24">Free</text>
+                  <text x="50" y="70" class="text junior" font-size="24">JUNIOR</text>
+
+                  <!-- Laptop icon -->
+                  <path class="icon" d="M30 40 L70 40 L75 60 L25 60 Z M35 45 H65 V55 H35 Z"/>
+
+                  <!-- Graduation cap -->
+                  <path class="icon" fill="#ff7f00" d="M45 25 L55 20 L65 25 L55 30 Z M55 30 V35 M50 35 H60"/>
+                </svg>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -238,7 +291,6 @@
                     <h2>Suivez-nous</h2>
                     <div class="footer-socials">
                         <a href="https://www.linkedin.com/company/freelance-junior/?viewAsMember=true" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <!-- Ajoutez d'autres icônes de réseaux sociaux si nécessaire -->
                     </div>
                 </div>
             </div>
@@ -248,11 +300,46 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoLink = document.getElementById('logo-link');
+            const fullscreenAnimation = document.getElementById('fullscreen-animation');
+            const fox = document.getElementById('foxBody');
+            const cap = document.getElementById('cap');
+            let angle = 0;
+
+            function animate() {
+                angle += 0.05;
+                const yOffset = Math.sin(angle) * 5;
+                fox.setAttribute('d', `M150 ${200 + yOffset} Q120 ${180 + yOffset} 100 ${200 + yOffset} T50 ${220 + yOffset} Q100 ${250 + yOffset} 150 ${220 + yOffset} Q200 ${250 + yOffset} 250 ${220 + yOffset} Q230 ${200 + yOffset} 200 ${200 + yOffset} T150 ${200 + yOffset}`);
+
+                const capRotation = Math.sin(angle) * 5;
+                cap.setAttribute('transform', `rotate(${capRotation}, 150, 150)`);
+
+                if (fullscreenAnimation.classList.contains('visible')) {
+                    requestAnimationFrame(animate);
+                }
+            }
+
+            logoLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetHref = this.getAttribute('href');
+
+                fullscreenAnimation.classList.remove('hidden');
+                setTimeout(() => {
+                    fullscreenAnimation.classList.add('visible');
+                    animate();
+                }, 50);
+
+                setTimeout(() => {
+                    window.location.href = targetHref;
+                }, 3000);
+            });
+        });
+    </script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

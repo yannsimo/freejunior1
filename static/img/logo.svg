@@ -1,0 +1,21 @@
+<svg width="200" height="100" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text { font-family: Arial, sans-serif; font-weight: bold; }
+    .free { fill: #4a90e2; }
+    .junior { fill: #ff7f00; }
+    .icon { fill: #4a90e2; }
+  </style>
+
+  <!-- Background circle -->
+  <circle cx="100" cy="50" r="48" fill="white" stroke="#4a90e2" stroke-width="2"/>
+
+  <!-- Text -->
+  <text x="50" y="45" class="text free" font-size="24">Free</text>
+  <text x="50" y="70" class="text junior" font-size="24">JUNIOR</text>
+
+  <!-- Laptop icon -->
+  <path class="icon" d="M30 40 L70 40 L75 60 L25 60 Z M35 45 H65 V55 H35 Z"/>
+
+  <!-- Graduation cap -->
+  <path class="icon" fill="#ff7f00" d="M45 25 L55 20 L65 25 L55 30 Z M55 30 V35 M50 35 H60"/>
+</svg>
