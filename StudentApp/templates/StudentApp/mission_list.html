@@ -65,6 +65,10 @@
     .badge-primary {
         background-color: var(--primary-color);
         color: #fff;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        border-radius: 50px;
+        font-weight: 500;
     }
 
     .badge-secondary {
@@ -93,12 +97,14 @@
         transition: color 0.3s ease;
 }
 
-    .mission-title {
-    font-weight: 600;
-    color: var(--primary-color);
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-}
+  .mission-title {
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        flex-grow: 1;
+        margin-right: 15px;
+    }
  .btn-apply {
     font-size: 1rem;
     padding: 12px 24px;
@@ -200,7 +206,6 @@
 
 
 
-
     @media (max-width: 575px) {
         .container {
             padding-left: 10px;
@@ -229,6 +234,14 @@
             padding: 6px 12px; /* Réduit davantage l'espace interne du bouton */
             border-radius: 30px; /* Réduit davantage le rayon des coins arrondis */
     }
+
+    .mission-title {
+        font-size: 1.4rem;
+    }
+    .badge-primary {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
     }
 </style>
 
@@ -247,43 +260,33 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="col-lg-9 col-md-8">
-            <h1 class="mb-5 text-primary">Liste des missions {% if speciality %} {{ speciality.get_human_readable_name }}{% endif %}</h1>
-            <div class="mission-list">
-                {% for mission in missions %}
-                 <div class="mission-list-item">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h5 class="text-primary mb-0">
-                            <a href="{% url 'mission_detail' mission.pk %}" class="company-name">{{ mission.company.name }}</a>
-                        </h5>
 
-                    </div>
-
-                    <h2 class="mission-title">{{ mission.title }}</h2>
-                    <p><strong>Date :</strong> {{ mission.date }}</p>
-                    <p><strong>Fourchette de prix :</strong> {{ mission.cash_amount_min  }} € \ h- {{mission.cash_amount_max}}  €\ h</p>
-
-                    <p class="mission-description"><strong>Description :</strong><br>
-                        {{ mission.description|slice:":100" }}...
-                    </p>
-                    <div class="mission-footer">
-                        {% if mission.specialty %}
-                        <a href="{% url 'mission_list_filter' mission.specialty.name %}" class="badge badge-primary">{{ mission.specialty.get_human_readable_name|capfirst|truncatechars:20 }}</a>
-                        {% else %}
-                        <span class="badge badge-secondary">Aucune spécialité</span>
-                        {% endif %}
-                        {% if mission.disponible %}
-                            <a href="{% url 'mission_detail' mission.pk %}" class="btn btn-apply">Postuler</a>
-                        {% else %}
-                            <button class="btn btn-apply-disabled" disabled>Candidature fermée</button>
-                        {% endif %}
-                    </div>
+            <div class="col-lg-9 col-md-8">
+                        <h1 class="mb-5 text-primary">Liste des missions {% if speciality %} {{ speciality.get_human_readable_name }}{% endif %}</h1>
+                         <div class="mission-list-item">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="mission-title mb-0">{{ mission.title }}</h2>
+                    <span class="badge badge-primary">{{ mission.nombre_de_candidature }} candidature{{ mission.nombre_de_candidature|pluralize }}</span>
                 </div>
-                {% empty %}
-                <div class="alert alert-info">
-                    <p class="text-center mb-0">Aucune mission n'est enregistrée.</p>
+
+                <p><strong>Date :</strong> {{ mission.date }}</p>
+                <p><strong>Fourchette de prix :</strong> {{ mission.cash_amount_min }} € - {{ mission.cash_amount_max }} €</p>
+
+                <p class="mission-description"><strong>Description :</strong><br>
+                    {{ mission.description|slice:":100" }}...
+                </p>
+                <div class="mission-footer">
+                    {% if mission.specialty %}
+                    <a href="{% url 'mission_list_filter' mission.specialty.name %}" class="badge badge-secondary">{{ mission.specialty.get_human_readable_name|capfirst|truncatechars:20 }}</a>
+                    {% else %}
+                    <span class="badge badge-secondary">Aucune spécialité</span>
+                    {% endif %}
+                    {% if mission.disponible %}
+                        <a href="{% url 'mission_detail' mission.pk %}" class="btn btn-apply">Postuler</a>
+                    {% else %}
+                        <button class="btn btn-apply-disabled" disabled>Candidature fermée</button>
+                    {% endif %}
                 </div>
-                {% endfor %}
             </div>
         </div>
     </div>

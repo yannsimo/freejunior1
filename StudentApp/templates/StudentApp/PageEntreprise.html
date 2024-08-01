@@ -142,8 +142,76 @@
             left: 0;
         }
     }
-</style>
+    .partner-carousel {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
 
+.partner-logos {
+    display: flex;
+    animation: scroll 30s linear infinite;
+}
+
+.partner-logo {
+    flex: 0 0 auto;
+    height: 50px;
+    margin: 0 20px;
+    object-fit: contain;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-100% - 40px));
+    }
+}
+
+.partner-carousel:hover .partner-logos {
+    animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+    .partner-logo {
+        height: 40px;
+        margin: 0 10px;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-100% - 20px));
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .partner-logo {
+        height: 30px;
+        margin: 0 5px;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-100% - 10px));
+        }
+    }
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const logos = document.querySelector('.partner-logos');
+    const clonedLogos = logos.cloneNode(true);
+    logos.parentNode.appendChild(clonedLogos);
+});
+</script>
  <header class="bg-light section-padding">
     <div class="container">
         <div class="row align-items-center">
@@ -278,6 +346,32 @@
     </div>
 </section>
 
+<section id="partenaires" class="section-padding bg-light">
+    <div class="container">
+        <h2 class="section-title">Ces start up nous ont fait confiance</h2>
+        <div class="partner-carousel">
+            <div class="partner-logos">
+                <img src="{% static 'img/partenaire1.svg' %}" alt="Partenaire 1" class="partner-logo">
+                <img src="{% static 'img/partenaire2.svg' %}" alt="Partenaire 2" class="partner-logo">
+                <img src="{% static 'img/partenaire3.svg' %}" alt="Partenaire 3" class="partner-logo">
+                <img src="{% static 'img/partenaire4.svg' %}" alt="Partenaire 4" class="partner-logo">
+                <img src="{% static 'img/partenaire5.svg' %}" alt="Partenaire 5" class="partner-logo">
+                <img src="{% static 'img/partenaire6.svg' %}" alt="Partenaire 6" class="partner-logo">
+                <img src="{% static 'img/partenaire7.svg' %}" alt="Partenaire 7" class="partner-logo">
+                <img src="{% static 'img/partenaire8.svg' %}" alt="Partenaire 8" class="partner-logo">
+                <img src="{% static 'img/partenariat9.svg' %}" alt="Partenaire 9" class="partner-logo">
+                <img src="{% static 'img/partenaire10.svg' %}" alt="Partenaire 10" class="partner-logo">
+                <img src="{% static 'img/partenaire11.svg' %}" alt="Partenaire 11" class="partner-logo">
+                <img src="{% static 'img/partenaire12.svg' %}" alt="Partenaire 12" class="partner-logo">
+                <img src="{% static 'img/partenaire13.svg' %}" alt="Partenaire 13" class="partner-logo">
+                <img src="{% static 'img/partenaire14.svg' %}" alt="Partenaire 14" class="partner-logo">
+                <img src="{% static 'img/partenaire15.svg' %}" alt="Partenaire 15" class="partner-logo">
+                <!-- Ajoutez autant de logos que nécessaire -->
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="Contact" class="section-padding">
     <div class="container text-center">
         <h2 class="section-title">Besoin d'aide ?</h2>
@@ -285,4 +379,5 @@
         <a href="{% url 'contact' %}" class="btn btn-custom btn-primary-custom btn-lg">Contactez-nous</a>
     </div>
 </section>
+
 {% endblock %}

@@ -19,29 +19,13 @@ SPECIALTY_CHOICES = [
     ('data_science', 'Data Science'),
     ('machine_learning', 'Apprentissage automatique (Machine Learning)'),
     ('artificial_intelligence', 'Intelligence artificielle'),
-    ('blockchain', 'Blockchain'),
     ('cyber_security', 'Sécurité informatique (Cyber sécurité)'),
-    ('networking', 'Réseaux informatiques'),
     ('database_management', 'Gestion de bases de données'),
-    ('systems_architecture', 'Architecture des systèmes'),
     ('ui_ux_design', 'Conception UI/UX'),
     ('game_development', 'Développement de jeux vidéo'),
-    ('iot', 'Internet des objets (IoT)'),
-    ('robotics', 'Robotique'),
-    ('virtual_reality', 'Réalité virtuelle'),
-    ('augmented_reality', 'Réalité augmentée'),
-    ('3d_modeling', 'Modélisation 3D'),
-    ('computer_graphics', 'Graphisme informatique'),
-    ('computer_vision', 'Vision par ordinateur'),
-    ('embedded_systems', 'Systèmes embarqués'),
-    ('enterprise_software', 'Logiciels d\'entreprise'),
     ('web_scraping', 'Web Scraping'),
     ('data_analysis', 'Analyse de données'),
-    ('business_intelligence', 'Intelligence d\'affaires'),
-    ('erp', 'ERP (Planification des ressources de l\'entreprise)'),
-    ('crm', 'CRM (Gestion de la relation client)'),
-    ('e-commerce', 'E-commerce'),
-    ('wordpress_development', 'Développement WordPress'),
+    ('wordpress_development', 'WordPress'),
     ('shopify_development', 'Développement Shopify'),
     ('magento_development', 'Développement Magento'),
     ('prestashop_development', 'Développement PrestaShop'),
@@ -50,93 +34,14 @@ SPECIALTY_CHOICES = [
     ('laravel_development', 'Développement Laravel'),
     ('ruby_on_rails_development', 'Développement Ruby on Rails'),
     ('nodejs_development', 'Développement Node.js'),
-    ('react_development', 'Développement React'),
-    ('angular_development', 'Développement Angular'),
-    ('vuejs_development', 'Développement Vue.js'),
-    ('typescript_development', 'Développement TypeScript'),
-    ('java_development', 'Développement Java'),
-    ('python_development', 'Développement Python'),
-    ('csharp_development', 'Développement C#'),
-    ('php_development', 'Développement PHP'),
-    ('cpp_development', 'Développement C++'),
-    ('rust_development', 'Développement Rust'),
-    ('golang_development', 'Développement Go (Golang)'),
-    ('swift_development', 'Développement Swift'),
-    ('kotlin_development', 'Développement Kotlin'),
-    ('scala_development', 'Développement Scala'),
-    ('typescript_development', 'Développement TypeScript'),
-    ('ruby_development', 'Développement Ruby'),
-    ('perl_development', 'Développement Perl'),
-    ('bash_scripting', 'Scripting Bash'),
-    ('powershell_scripting', 'Scripting PowerShell'),
-    ('linux_system_administration', 'Administration système Linux'),
-    ('windows_system_administration', 'Administration système Windows'),
-    ('macos_system_administration', 'Administration système macOS'),
-    ('unix_system_administration', 'Administration système Unix'),
-    ('it_support', 'Support informatique'),
-    ('helpdesk_support', 'Support Helpdesk'),
-    ('technical_documentation', 'Documentation technique'),
-    ('technical_support', 'Support technique'),
-    ('quality_assurance', 'Assurance qualité'),
-    ('test_automation', 'Automatisation des tests'),
-    ('virtualization', 'Virtualisation'),
-    ('containerization', 'Conteneurisation'),
-    ('microservices', 'Microservices'),
-    ('serverless_architecture', 'Architecture serverless'),
     ('big_data', 'Big Data'),
     ('data_engineering', 'Ingénierie des données'),
-    ('data_migration', 'Migration des données'),
-    ('data_warehousing', 'Entrepôt de données (Data Warehousing)'),
-    ('etl', 'ETL (Extract, Transform, Load)'),
-    ('business_analysis', 'Analyse commerciale'),
-    ('project_management', 'Gestion de projet'),
-    ('agile_methodologies', 'Méthodologies Agile'),
-    ('scrum_master', 'Scrum Master'),
-    ('product_owner', 'Product Owner'),
-    ('technical_lead', 'Lead technique'),
-    ('consulting', 'Consultant informatique'),
-    ('freelance', 'Freelance informatique'),
-
-    # Spécialités en audiovisuel
-    ('video_editing', 'Montage vidéo'),
-    ('motion_graphics', 'Motion Design'),
-    ('audio_production', 'Production audio'),
-    ('sound_engineering', 'Ingénierie du son'),
-    ('cinematography', 'Cinématographie'),
-    ('video_production', 'Production vidéo'),
-    ('photography', 'Photographie'),
-    ('graphic_design', 'Design graphique'),
-
-    # Systèmes de gestion de contenu (CMS)
-    ('wordpress', 'WordPress'),
     ('drupal', 'Drupal'),
     ('joomla', 'Joomla'),
-
-    # Marketing digital et communication
-    ('digital_marketing', 'Marketing digital'),
-    ('social_media_management', 'Gestion des réseaux sociaux'),
-    ('content_marketing', 'Marketing de contenu'),
-    ('seo', 'SEO (Optimisation pour les moteurs de recherche)'),
-    ('sem', 'SEM (Marketing sur les moteurs de recherche)'),
-    ('email_marketing', 'Marketing par email'),
-    ('affiliate_marketing', 'Marketing par affiliation'),
-    ('branding', 'Branding'),
-    ('community_management', 'Community Management'),
-    ('copywriting', 'Rédaction publicitaire'),
-    ('technical_writing', 'Rédaction technique'),
-    ('visual_communication', 'Communication visuelle'),
-    ('public_relations', 'Relations publiques'),
-    ('event_management', 'Gestion d\'événements'),
-    ('advertising', 'Publicité'),
-    ('sales', 'Ventes'),
-    ('business_development', 'Développement commercial'),
-    ('customer_service', 'Service clientèle'),
-    ('telecommunications', 'Télécommunications'),
-    ('network_security', 'Sécurité réseau'),
 ]
 
 PAYMENT_CHOICES = [
-    ('cash', 'argent'),
+    ('cash', 'Rénumération'),
     ('equity', 'Parts d\'entreprise')
 ]
 
@@ -191,6 +96,7 @@ class Student(models.Model):
     photo = models.ImageField(upload_to='student_photos/', null=True)
     cv = models.FileField(upload_to='student_cvs/', blank=True, null=True)
     portfolio_url = models.URLField(null=True, blank=True)
+
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name}"
 
@@ -217,6 +123,7 @@ class Mission(models.Model):
     cash_amount_max = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     equity_offer = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     disponible = models.BooleanField(default=True)
+    nombre_de_candidature = models.IntegerField(default=0)
     def __str__(self):
         return self.title
 class Comment(models.Model):
