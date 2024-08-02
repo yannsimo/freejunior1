@@ -263,32 +263,37 @@
 
             <div class="col-lg-9 col-md-8">
                         <h1 class="mb-5 text-primary">Liste des missions {% if speciality %} {{ speciality.get_human_readable_name }}{% endif %}</h1>
-                         <div class="mission-list-item">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h2 class="mission-title mb-0">{{ mission.title }}</h2>
-                    <span class="badge badge-primary">{{ mission.nombre_de_candidature }} candidature{{ mission.nombre_de_candidature|pluralize }}</span>
-                </div>
+                 <div class="mission-list">
+                {% for mission in missions %}
 
-                <p><strong>Date :</strong> {{ mission.date }}</p>
-                <p><strong>Fourchette de prix :</strong> {{ mission.cash_amount_min }} € - {{ mission.cash_amount_max }} €</p>
+                <div class="mission-list-item">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2 class="mission-title mb-0">{{ mission.title }}</h2>
+                            <span class="badge badge-primary">{{ mission.nombre_de_candidature }} candidature{{ mission.nombre_de_candidature|pluralize }}</span>
+                        </div>
 
-                <p class="mission-description"><strong>Description :</strong><br>
-                    {{ mission.description|slice:":100" }}...
-                </p>
-                <div class="mission-footer">
-                    {% if mission.specialty %}
-                    <a href="{% url 'mission_list_filter' mission.specialty.name %}" class="badge badge-secondary">{{ mission.specialty.get_human_readable_name|capfirst|truncatechars:20 }}</a>
-                    {% else %}
-                    <span class="badge badge-secondary">Aucune spécialité</span>
-                    {% endif %}
-                    {% if mission.disponible %}
-                        <a href="{% url 'mission_detail' mission.pk %}" class="btn btn-apply">Postuler</a>
-                    {% else %}
-                        <button class="btn btn-apply-disabled" disabled>Candidature fermée</button>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
+                        <p><strong>Date :</strong> {{ mission.date }}</p>
+                        <p><strong>Fourchette de prix :</strong> {{ mission.cash_amount_min }} € - {{ mission.cash_amount_max }} €</p>
+
+                        <p class="mission-description"><strong>Description :</strong><br>
+                            {{ mission.description|slice:":100" }}...
+                        </p>
+                        <div class="mission-footer">
+                            {% if mission.specialty %}
+                            <a href="{% url 'mission_list_filter' mission.specialty.name %}" class="badge badge-secondary">{{ mission.specialty.get_human_readable_name|capfirst|truncatechars:20 }}</a>
+                            {% else %}
+                            <span class="badge badge-secondary">Aucune spécialité</span>
+                            {% endif %}
+                            {% if mission.disponible %}
+                                <a href="{% url 'mission_detail' mission.pk %}" class="btn btn-apply">Postuler</a>
+                            {% else %}
+                                <button class="btn btn-apply-disabled" disabled>Candidature fermée</button>
+                            {% endif %}
+                        </div>
+                  </div>
+                  {% endfor %}
+                 </div>
+                 </div>
+     </div>
 </div>
 {% endblock %}

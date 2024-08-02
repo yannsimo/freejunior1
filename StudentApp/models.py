@@ -104,8 +104,10 @@ class Student(models.Model):
 
 class Company(models.Model):
     name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255,null=True)
+    last_name = models.CharField(max_length=255,null=True)
     email = models.EmailField(null=True)
-    contact_info = models.TextField()
+    contact_info = models.CharField()
     def __str__(self):
         return self.name
 

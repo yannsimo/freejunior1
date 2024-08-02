@@ -480,7 +480,7 @@
          <div class="hero-section">
             <div class="container">
                 <h1>Trouvez le talent étudiant en informatique idéal pour votre projet</h1>
-                <p class="hero-subtitle">À l'ère de l'IA, misez sur l'innovation et l'adaptabilité des étudiants développeurs</p>
+                  <p class="hero-subtitle">À l'ère de l'IA, <span id="changing-text"></span></p>
                 <a href="{% url 'submit_mission' %}" class="btn-cta pulse">Publiez votre projet gratuitement</a>
             </div>
         </div>
@@ -508,13 +508,16 @@
             <h2 class="section-title">Compétences recherchées</h2>
         <div class="skills-cloud">
             <span class="skill-tag">Développement Web</span>
-            <span class="skill-tag">React.js</span>
-            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Back-end</span>
+            <span class="skill-tag">Front-end</span>
             <span class="skill-tag">Python</span>
             <span class="skill-tag">Java</span>
             <span class="skill-tag">iOS/Android</span>
             <span class="skill-tag">Machine Learning</span>
             <span class="skill-tag">DevOps</span>
+            <span class="skill-tag">Wordpress</span>
+            <span class="skill-tag">Design</span>
+            <span class="skill-tag">Big data</span>
         </div>
        <div class="container">
     <div class="row emboited-blocks">
@@ -601,5 +604,39 @@
             animateValue("hourly-rate", 0,+16, 2000);
         }
     </script>
+<script>
+    const phrases = [
+        "misez sur l'innovation et l'adaptabilité des étudiants développeurs",
+        "les start-up misent de plus en plus sur les étudiants développeurs",
+        "les start-up font des économies en donnant de l'expérience aux étudiants"
+    ];
+     let currentPhraseIndex = 0;
+    let currentCharIndex = 0;
+    const changingTextElement = document.getElementById('changing-text');
+
+    function typeWriter() {
+        if (currentCharIndex < phrases[currentPhraseIndex].length) {
+            changingTextElement.textContent += phrases[currentPhraseIndex].charAt(currentCharIndex);
+            currentCharIndex++;
+            setTimeout(typeWriter, 50); // Vitesse de frappe
+        } else {
+            setTimeout(eraseText, 2000); // Attendre 2 secondes avant d'effacer
+        }
+    }
+
+    function eraseText() {
+        if (changingTextElement.textContent.length > 0) {
+            changingTextElement.textContent = changingTextElement.textContent.slice(0, -1);
+            setTimeout(eraseText, 25); // Vitesse d'effacement
+        } else {
+            currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+            currentCharIndex = 0;
+            setTimeout(typeWriter, 500); // Pause avant la prochaine phrase
+        }
+    }
+
+    // Démarrer l'animation
+    typeWriter();
+</script>
 </body>
 </html>

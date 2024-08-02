@@ -1,7 +1,7 @@
 
 from django.urls import reverse
 from Accounts.FormsEtudiant import StudentRegistrationForm
-from .FormsEntreprise import MissionForm,EntrepriseForm
+from .FormsEntreprise import CompanyForm
 from .ContactForm import ContactForm,ContactFormAvis
 from StudentApp import navigation, model_helpers
 from django.contrib.auth.decorators import login_required, permission_required
@@ -204,26 +204,17 @@ def privacy_policy(request):
 
 def submit_mission_view(request):
     if request.method == 'POST':
-        entreprise_form = EntrepriseForm(request.POST)
-        mission_form = MissionForm(request.POST)
-        if entreprise_form.is_valid() and mission_form.is_valid():
-            company = entreprise_form.save()
-            mission = mission_form.save(commit=False)
-            mission.company = company
-            mission.save()
-            print("formulaire valide")
-            messages.success(request, 'Votre mission a été soumise avec succès!')
+        entreprise_form = CompanyForm(request.POST)
+        if entreprise_form.is_valid():
+            entreprise_form.save()
+            messages.success(request, 'Votre entreprise a été enregistrée avec succès!')
             return redirect('confirmationEntreprise')
+        else:
+            messages.error(request, 'Il y a eu une erreur dans le formulaire. Veuillez vérifier vos entrées.')
     else:
-        entreprise_form = EntrepriseForm()
-        mission_form = MissionForm()
-        print("formulaire non  valide")
+        entreprise_form = CompanyForm()
 
-
-    return render(request, 'StudentApp/Entreprise_form.html', {
-        'entreprise_form': entreprise_form,
-        'mission_form': mission_form
-    })
+    return render(request, 'StudentApp/Entreprise_form.html', {'form': entreprise_form})
 def article_list(request):
     articles = Article.objects.all()
     return render(request, 'article_list.html', {'articles': articles})
