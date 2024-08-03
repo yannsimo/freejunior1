@@ -24,29 +24,29 @@
     }
 
     .section-padding {
-        padding: 60px 0;
+        padding: 40px 0;
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
         color: var(--primary-color);
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         text-align: center;
         font-weight: 700;
     }
 
     .btn-custom {
-        padding: 12px 25px;
+        padding: 10px 20px;
         font-weight: 600;
         text-transform: uppercase;
         border-radius: 30px;
         transition: all 0.3s ease;
+        font-size: 14px;
     }
 
     .btn-primary-custom {
         background-color: var(--primary-color-action);
         color: var(--text-color-action);
-        font-size: 16px;
         letter-spacing: 1px;
         border: none;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -73,19 +73,19 @@
     }
 
     .card-custom:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
 
     .icon-box {
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: var(--accent-color);
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
     .timeline {
         position: relative;
-        padding: 30px 0;
+        padding: 20px 0;
     }
 
     .timeline::before {
@@ -94,42 +94,36 @@
         height: 100%;
         width: 2px;
         background-color: var(--primary-color);
-        left: 50%;
-        transform: translateX(-50%);
+        left: 20px;
+        top: 0;
     }
 
     .timeline-item {
         margin-bottom: 30px;
         position: relative;
+        padding-left: 45px;
     }
 
     .timeline-content {
         background-color: white;
         border-radius: 15px;
-        padding: 20px;
+        padding: 15px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        position: relative;
-        width: 45%;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content {
-        float: right;
     }
 
     .timeline-icon {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         background-color: var(--accent-color);
         position: absolute;
         top: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
 
     .partner-carousel {
@@ -140,64 +134,66 @@
 
     .partner-logos {
         display: flex;
-        animation: scroll 30s linear infinite;
+        animation: scroll 20s linear infinite;
     }
 
     .partner-logo {
         flex: 0 0 auto;
-        height: 40px;
-        margin: 0 15px;
+        height: 30px;
+        margin: 0 10px;
         object-fit: contain;
     }
 
     @keyframes scroll {
         0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-100% - 30px)); }
+        100% { transform: translateX(calc(-100% - 20px)); }
     }
 
-    @media (max-width: 991px) {
+    @media (min-width: 768px) {
+        .section-padding {
+            padding: 60px 0;
+        }
+
         .section-title {
-            font-size: 1.75rem;
+            font-size: 2rem;
         }
+
+        .btn-custom {
+            padding: 12px 25px;
+            font-size: 16px;
+        }
+
         .timeline::before {
-            left: 30px;
+            left: 50%;
+            transform: translateX(-50%);
         }
-        .timeline-content {
-            width: calc(100% - 70px);
-            float: right;
+
+        .timeline-item {
+            padding-left: 0;
+            width: 50%;
+            margin-left: 50%;
         }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 0;
+        }
+
         .timeline-icon {
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
+
+        .timeline-content {
+            width: 90%;
+        }
+
         .timeline-item:nth-child(even) .timeline-content {
             float: right;
         }
-    }
 
-    @media (max-width: 767px) {
-        .section-padding {
-            padding: 40px 0;
-        }
-        .btn-custom {
-            padding: 10px 20px;
-            font-size: 14px;
-        }
         .partner-logo {
-            height: 30px;
-            margin: 0 10px;
-        }
-    }
-
-    @media (max-width: 575px) {
-        .section-title {
-            font-size: 1.5rem;
-        }
-        .timeline-content {
-            padding: 15px;
-        }
-        .partner-logo {
-            height: 25px;
-            margin: 0 5px;
+            height: 40px;
+            margin: 0 15px;
         }
     }
 </style>
@@ -209,10 +205,10 @@
                 <img src="{% static 'img/etudiant-diplome-examens.png' %}" class="img-fluid rounded-lg" alt="Étudiants en informatique au travail">
             </div>
             <div class="col-lg-6 order-lg-1">
-                <h1 class="display-4 mb-4">Faites des économies en donnant de l'expérience aux étudiants </h1>
-                 <p class="lead mb-4">
+                <h1 class="display-4 mb-4">Faites des économies en donnant de l'expérience aux étudiants</h1>
+                <p class="lead mb-4">
                     <a href="https://www.letudiant.fr/jobsstages/pourquou-40-des-etudiants-ont-un-emploi-a-cote-de-leurs-etudes.html" target="_blank" class="text-primary">
-                        <strong>40% des étudiants  en  france</strong>
+                        <strong>40% des étudiants en France</strong>
                     </a>
                     travaillent pendant leurs études. Avec FreeJunior, accédez à ces talents prometteurs et réduisez vos coûts de recrutement de <strong>4000 €</strong> en moyenne.
                 </p>
@@ -222,6 +218,7 @@
     </div>
 </header>
 
+<!-- Le reste du contenu HTML reste identique, mais assurez-vous d'utiliser des classes Bootstrap pour la réactivité, comme col-md-6, col-lg-4, etc. -->
 <section id="pourquoi" class="section-padding">
     <div class="container">
         <h2 class="section-title">Pourquoi FreeJunior révolutionne votre IT ?</h2>
@@ -361,7 +358,6 @@
         <a href="{% url 'contact' %}" class="btn btn-primary-custom btn-lg">Boostez votre IT maintenant</a>
     </div>
 </section>
-
 <script>
 document.addEventListener('DOMContentLoaded', (event) => {
     const logos = document.querySelector('.partner-logos');
