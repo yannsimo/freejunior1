@@ -118,7 +118,7 @@
         background-color: var(--accent-color);
         position: absolute;
         top: 0;
-        left: 0;
+        left: 0%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -164,12 +164,12 @@
         }
 
         .timeline::before {
-            left: 50%;
+            left: 52%;
             transform: translateX(-50%);
         }
 
         .timeline-item {
-            padding-left: 0;
+            padding-left: 5%;
             width: 50%;
             margin-left: 50%;
         }
@@ -179,7 +179,7 @@
         }
 
         .timeline-icon {
-            left: 50%;
+            left: 4%;
             transform: translateX(-50%);
         }
 
@@ -212,7 +212,7 @@
                     </a>
                     travaillent pendant leurs études. Avec FreeJunior, accédez à ces talents prometteurs et réduisez vos coûts de recrutement de <strong>4000 €</strong> en moyenne.
                 </p>
-                <a href="{% url 'submit_mission' %}" class="btn btn-custom btn-primary-custom">Lancez votre projet IT</a>
+                <a href="{% url 'submit_mission' %}" class="btn btn-custom btn-primary-custom">Postez votre mission </a>
             </div>
         </div>
     </div>
@@ -280,7 +280,6 @@
     </div>
 </section>
 
-
 <section id="Comment" class="section-padding bg-light">
     <div class="container">
         <h2 class="section-title">Comment ça marche ?</h2>
@@ -296,7 +295,7 @@
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-icon">
+                <div class="timeline-icon d-lg-none">
                     <i class="fas fa-users"></i>
                 </div>
                 <div class="timeline-content">
@@ -314,7 +313,7 @@
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-icon">
+                <div class="timeline-icon d-lg-none">
                     <i class="fas fa-rocket"></i>
                 </div>
                 <div class="timeline-content">
