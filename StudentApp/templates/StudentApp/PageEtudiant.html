@@ -21,19 +21,19 @@
     }
 
     .section-padding {
-        padding: 80px 0;
+        padding: 60px 0;
     }
 
     .section-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: var(--primary-color);
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         text-align: center;
         font-weight: 700;
     }
 
     .btn-custom {
-        padding: 12px 25px;
+        padding: 10px 20px;
         font-weight: 600;
         text-transform: uppercase;
         border-radius: 30px;
@@ -53,7 +53,6 @@
     .btn-custom:hover {
         transform: translateY(-3px);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card-custom {
@@ -62,6 +61,7 @@
         overflow: hidden;
         transition: all 0.3s ease;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        height: 100%;
     }
 
     .card-custom:hover {
@@ -70,14 +70,14 @@
     }
 
     .icon-box {
-        font-size: 3rem;
+        font-size: 2.5rem;
         color: var(--accent-color);
         margin-bottom: 20px;
     }
 
     .timeline {
         position: relative;
-        padding: 50px 0;
+        padding: 30px 0;
     }
 
     .timeline::before {
@@ -91,7 +91,7 @@
     }
 
     .timeline-item {
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         position: relative;
         opacity: 0;
         animation: fadeInUp 0.6s forwards;
@@ -101,7 +101,7 @@
     .timeline-content {
         background-color: white;
         border-radius: 15px;
-        padding: 30px;
+        padding: 20px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         position: relative;
         width: 45%;
@@ -112,8 +112,8 @@
     }
 
     .timeline-icon {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         background-color: var(--accent-color);
         position: absolute;
@@ -124,7 +124,14 @@
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    .highlight {
+        background-color: rgba(255, 215, 0, 0.2);
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: 600;
     }
 
     @keyframes fadeInUp {
@@ -138,24 +145,42 @@
         }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 991px) {
+        .section-title {
+            font-size: 1.75rem;
+        }
         .timeline::before {
             left: 30px;
         }
         .timeline-content {
-            width: calc(100% - 90px);
+            width: calc(100% - 70px);
             float: right;
         }
         .timeline-icon {
             left: 0;
         }
+        .timeline-item:nth-child(even) .timeline-content {
+            float: right;
+        }
     }
 
-    .highlight {
-        background-color: rgba(255, 215, 0, 0.2);
-        padding: 10px;
-        border-radius: 5px;
-        font-weight: 600;
+    @media (max-width: 767px) {
+        .section-padding {
+            padding: 40px 0;
+        }
+        .btn-custom {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .section-title {
+            font-size: 1.5rem;
+        }
+        .timeline-content {
+            padding: 15px;
+        }
     }
 </style>
 
@@ -165,9 +190,9 @@
             <div class="col-lg-6">
                 <h1 class="display-4 mb-4">Lancez votre carrière avec FreeJunior</h1>
                 <p class="lead mb-4">Développez vos compétences, gagnez de l'expérience et de l'argent tout en étudiant. FreeJunior est la première plateforme de freelance dédiée aux étudiants.</p>
-                <div class="d-flex">
-                    <a href="{% url 'student_form' %}" class="btn btn-custom btn-primary-custom mr-3">S'inscrire</a>
-                    <a href="{% url 'mission_list' %}" class="btn btn-custom btn-secondary-custom">Voir les missions</a>
+                <div class="d-flex flex-wrap">
+                    <a href="{% url 'student_form' %}" class="btn btn-custom btn-primary-custom mr-3 mb-3">S'inscrire</a>
+                    <a href="{% url 'mission_list' %}" class="btn btn-custom btn-secondary-custom mb-3">Voir les missions</a>
                 </div>
             </div>
             <div class="col-lg-6 mt-5 mt-lg-0">
@@ -182,7 +207,7 @@
         <h2 class="section-title">Pourquoi choisir FreeJunior ?</h2>
         <div class="row">
             <div class="col-md-6 mb-4">
-                <div class="card card-custom h-100">
+                <div class="card card-custom">
                     <div class="card-body">
                         <div class="icon-box">
                             <i class="fas fa-project-diagram"></i>
@@ -194,7 +219,7 @@
                 </div>
             </div>
             <div class="col-md-6 mb-4">
-                <div class="card card-custom h-100">
+                <div class="card card-custom">
                     <div class="card-body">
                         <div class="icon-box">
                             <i class="fas fa-wallet"></i>
@@ -206,7 +231,7 @@
                 </div>
             </div>
             <div class="col-md-6 mb-4">
-                <div class="card card-custom h-100">
+                <div class="card card-custom">
                     <div class="card-body">
                         <div class="icon-box">
                             <i class="fas fa-clock"></i>
@@ -218,7 +243,7 @@
                 </div>
             </div>
             <div class="col-md-6 mb-4">
-                <div class="card card-custom h-100">
+                <div class="card card-custom">
                     <div class="card-body">
                         <div class="icon-box">
                             <i class="fas fa-user-check"></i>

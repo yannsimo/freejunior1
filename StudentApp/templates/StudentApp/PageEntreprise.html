@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+ {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Entreprise - FreeJunior{% endblock %}
+{% block title %}Boostez votre IT avec FreeJunior{% endblock %}
 
 {% block content %}
 <style>
@@ -13,9 +13,8 @@
         --light-bg: #f8f9fa;
         --dark-bg: #2c3e50;
         --primary-color-action: #FF6B6B;
-    --primary-color-dark-action: #FF4757;
-    --text-color-action: #FFFFFF;
-
+        --primary-color-dark-action: #FF4757;
+        --text-color-action: #FFFFFF;
     }
 
     body {
@@ -25,13 +24,13 @@
     }
 
     .section-padding {
-        padding: 80px 0;
+        padding: 60px 0;
     }
 
     .section-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: var(--primary-color);
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         text-align: center;
         font-weight: 700;
     }
@@ -44,14 +43,24 @@
         transition: all 0.3s ease;
     }
 
+    .btn-primary-custom {
+        background-color: var(--primary-color-action);
+        color: var(--text-color-action);
+        font-size: 16px;
+        letter-spacing: 1px;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary-custom:hover, .btn-primary-custom:focus {
+        background-color: var(--primary-color-dark-action);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
     .btn-secondary-custom {
         background-color: var(--secondary-color);
         color: white;
-    }
-
-    .btn-custom:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .card-custom {
@@ -60,6 +69,7 @@
         overflow: hidden;
         transition: all 0.3s ease;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        height: 100%;
     }
 
     .card-custom:hover {
@@ -68,14 +78,14 @@
     }
 
     .icon-box {
-        font-size: 3rem;
+        font-size: 2.5rem;
         color: var(--accent-color);
         margin-bottom: 20px;
     }
 
     .timeline {
         position: relative;
-        padding: 50px 0;
+        padding: 30px 0;
     }
 
     .timeline::before {
@@ -89,14 +99,14 @@
     }
 
     .timeline-item {
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         position: relative;
     }
 
     .timeline-content {
         background-color: white;
         border-radius: 15px;
-        padding: 30px;
+        padding: 20px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         position: relative;
         width: 45%;
@@ -107,8 +117,8 @@
     }
 
     .timeline-icon {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         background-color: var(--accent-color);
         position: absolute;
@@ -119,160 +129,94 @@
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
-    .highlight {
-        background-color: rgba(255, 215, 0, 0.2);
-        padding: 10px;
-        border-radius: 5px;
-        font-weight: 600;
+    .partner-carousel {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
     }
 
-    @media (max-width: 768px) {
+    .partner-logos {
+        display: flex;
+        animation: scroll 30s linear infinite;
+    }
+
+    .partner-logo {
+        flex: 0 0 auto;
+        height: 40px;
+        margin: 0 15px;
+        object-fit: contain;
+    }
+
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-100% - 30px)); }
+    }
+
+    @media (max-width: 991px) {
+        .section-title {
+            font-size: 1.75rem;
+        }
         .timeline::before {
             left: 30px;
         }
         .timeline-content {
-            width: calc(100% - 90px);
+            width: calc(100% - 70px);
             float: right;
         }
         .timeline-icon {
             left: 0;
         }
-    }
-    .partner-carousel {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-}
-
-.partner-logos {
-    display: flex;
-    animation: scroll 30s linear infinite;
-}
-
-.partner-logo {
-    flex: 0 0 auto;
-    height: 50px;
-    margin: 0 20px;
-    object-fit: contain;
-}
-
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-100% - 40px));
-    }
-}
-
-.partner-carousel:hover .partner-logos {
-    animation-play-state: paused;
-}
-
-@media (max-width: 768px) {
-    .partner-logo {
-        height: 40px;
-        margin: 0 10px;
-    }
-
-    @keyframes scroll {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(calc(-100% - 20px));
+        .timeline-item:nth-child(even) .timeline-content {
+            float: right;
         }
     }
-}
 
-@media (max-width: 480px) {
-    .partner-logo {
-        height: 30px;
-        margin: 0 5px;
-    }
-
-    @keyframes scroll {
-        0% {
-            transform: translateX(0);
+    @media (max-width: 767px) {
+        .section-padding {
+            padding: 40px 0;
         }
-        100% {
-            transform: translateX(calc(-100% - 10px));
+        .btn-custom {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+        .partner-logo {
+            height: 30px;
+            margin: 0 10px;
         }
     }
-}
 
-.btn-primary-custom {
-    background-color: var(--primary-color-action);
-    color: var(--text-color-action);
-    padding: 12px 24px;
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: none;
-    border-radius: 50px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-primary-custom:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-    );
-    transition: all 0.4s;
-}
-
-.btn-primary-custom:hover {
-    background-color: var(--primary-color-dark-action);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-.btn-primary-custom:hover:before {
-    left: 100%;
-}
-
-.btn-primary-custom:active {
-    transform: translateY(-1px);
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
-}
+    @media (max-width: 575px) {
+        .section-title {
+            font-size: 1.5rem;
+        }
+        .timeline-content {
+            padding: 15px;
+        }
+        .partner-logo {
+            height: 25px;
+            margin: 0 5px;
+        }
+    }
 </style>
-<script>
-document.addEventListener('DOMContentLoaded', (event) => {
-    const logos = document.querySelector('.partner-logos');
-    const clonedLogos = logos.cloneNode(true);
-    logos.parentNode.appendChild(clonedLogos);
-});
-</script>
- <header class="bg-light section-padding">
+
+<header class="bg-light section-padding">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6 order-lg-2">
-                <img src="{% static 'img/etudiant-diplome-examens.png' %}" class="img-fluid rounded-lg" alt="Étudiants au travail">
+            <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+                <img src="{% static 'img/etudiant-diplome-examens.png' %}" class="img-fluid rounded-lg" alt="Étudiants en informatique au travail">
             </div>
             <div class="col-lg-6 order-lg-1">
-                <h1 class="display-4 mb-4">Économisez et formez la relève</h1>
-                <p class="lead mb-4">
+                <h1 class="display-4 mb-4">Faites des économies en donnant de l'expérience aux étudiants </h1>
+                 <p class="lead mb-4">
                     <a href="https://www.letudiant.fr/jobsstages/pourquou-40-des-etudiants-ont-un-emploi-a-cote-de-leurs-etudes.html" target="_blank" class="text-primary">
-                        <strong>40% des étudiants français</strong>
+                        <strong>40% des étudiants  en  france</strong>
                     </a>
-                    travaillent pendant leurs études. Avec FreeJunior, accédez à ces talents prometteurs et réduisez vos coûts de recrutement de <strong>10 000 €</strong> en moyenne.
+                    travaillent pendant leurs études. Avec FreeJunior, accédez à ces talents prometteurs et réduisez vos coûts de recrutement de <strong>4000 €</strong> en moyenne.
                 </p>
-                <a href="{% url 'submit_mission' %}" class="btn btn-custom btn-primary-custom">Poster une mission</a>
+                <a href="{% url 'submit_mission' %}" class="btn btn-custom btn-primary-custom">Lancez votre projet IT</a>
             </div>
         </div>
     </div>
@@ -280,63 +224,65 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 <section id="pourquoi" class="section-padding">
     <div class="container">
-        <h2 class="section-title">Pourquoi choisir FreeJunior ?</h2>
+        <h2 class="section-title">Pourquoi FreeJunior révolutionne votre IT ?</h2>
         <div class="row">
             <div class="col-md-6 mb-4">
-                <div class="card card-custom h-100">
+                <div class="card card-custom">
                     <div class="card-body">
                         <div class="icon-box">
-                            <i class="fas fa-brain"></i>
+                            <i class="fas fa-code"></i>
                         </div>
-                        <h3 class="card-title">Compétences variées et à jour</h3>
-                        <p class="card-text">Nos étudiants viennent des meilleures écoles et maîtrisent les technologies actuelles.</p>
-                        <p><i class="fas fa-laptop-code"></i> Développement web</p>
-                        <p><i class="fas fa-database"></i> Administration de bases de données</p>
-                        <p><i class="fas fa-paint-brush"></i> Design graphique</p>
+                        <h3 class="card-title">Expertise tech de pointe</h3>
+                        <p class="card-text">Nos étudiants maîtrisent les dernières technologies qui feront la différence pour votre entreprise.</p>
+                        <p><i class="fab fa-react"></i> Développement React/Vue.js</p>
+                        <p><i class="fab fa-python"></i> Python & TensorFlow pour l'IA</p>
+                        <p><i class="fas fa-cloud"></i> Cloud computing</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 mb-4">
-                <div class="card card-custom h-100">
+                <div class="card card-custom">
                     <div class="card-body">
                         <div class="icon-box">
-                            <i class="fas fa-wallet"></i>
+                            <i class="fas fa-rocket"></i>
                         </div>
-                        <h3 class="card-title">Solutions économiques et flexibles</h3>
-                        <p class="card-text">Embaucher un étudiant en freelance est économique et adapté aux projets à court terme.</p>
-                        <p><i class="fas fa-lightbulb"></i> Testez de nouvelles idées sans gros investissements</p>
+                        <h3 class="card-title">Accélération de vos projets</h3>
+                        <p class="card-text">Réduisez vos délais de développement de 40% et gagnez en compétitivité.</p>
+                        <p><i class="fas fa-tachometer-alt"></i> Time-to-market optimisé</p>
+                        <p><i class="fas fa-chess"></i> Agilité et flexibilité maximales</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 mb-4">
-                <div class="card card-custom h-100">
+                <div class="card card-custom">
                     <div class="card-body">
                         <div class="icon-box">
-                            <i class="fas fa-chalkboard-teacher"></i>
+                            <i class="fas fa-lightbulb"></i>
                         </div>
-                        <h3 class="card-title">Formation des futurs professionnels</h3>
-                        <p class="card-text">Participez à la formation et au développement de carrières.</p>
-                        <p><i class="fas fa-rocket"></i> Offrez une expérience précieuse</p>
-                        <p><i class="fas fa-lightbulb"></i> Bénéficiez de leur créativité</p>
+                        <h3 class="card-title">Innovation disruptive</h3>
+                        <p class="card-text">Bénéficiez de perspectives fraîches et d'idées novatrices pour transformer votre business.</p>
+                        <p><i class="fas fa-brain"></i> Approches créatives des défis technologiques</p>
+                        <p><i class="fas fa-chart-line"></i> Solutions scalables pour votre croissance</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 mb-4">
-                <div class="card card-custom h-100">
+                <div class="card card-custom">
                     <div class="card-body">
                         <div class="icon-box">
-                            <i class="fas fa-user-check"></i>
+                            <i class="fas fa-coins"></i>
                         </div>
-                        <h3 class="card-title">Recrutement simplifié</h3>
-                        <p class="card-text">Découvrez des talents prometteurs pour le futur.</p>
-                        <p><i class="fas fa-cogs"></i> Évaluez leurs compétences</p>
-                        <p><i class="fas fa-handshake"></i> Testez leur éthique de travail</p>
+                        <h3 class="card-title">ROI exceptionnel</h3>
+                        <p class="card-text">Maximisez votre investissement IT avec des talents de haut niveau à coût réduit.</p>
+                        <p><i class="fas fa-percentage"></i> Jusqu'à 60% d'économies sur vos projets tech</p>
+                        <p><i class="fas fa-handshake"></i> Flexibilité des engagements</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 
 <section id="Comment" class="section-padding bg-light">
     <div class="container">
@@ -394,7 +340,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 <section id="partenaires" class="section-padding bg-light">
     <div class="container">
-        <h2 class="section-title">Ces start up nous ont fait confiance</h2>
+        <h2 class="section-title">Ces leaders tech nous font confiance</h2>
         <div class="partner-carousel">
             <div class="partner-logos">
                 <img src="{% static 'img/partenaire1.svg' %}" alt="Partenaire 1" class="partner-logo">
@@ -402,16 +348,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 <img src="{% static 'img/partenaire3.svg' %}" alt="Partenaire 3" class="partner-logo">
                 <img src="{% static 'img/partenaire4.svg' %}" alt="Partenaire 4" class="partner-logo">
                 <img src="{% static 'img/partenaire5.svg' %}" alt="Partenaire 5" class="partner-logo">
-                <img src="{% static 'img/partenaire6.svg' %}" alt="Partenaire 6" class="partner-logo">
-                <img src="{% static 'img/partenaire7.svg' %}" alt="Partenaire 7" class="partner-logo">
-                <img src="{% static 'img/partenaire8.svg' %}" alt="Partenaire 8" class="partner-logo">
-                <img src="{% static 'img/partenariat9.svg' %}" alt="Partenaire 9" class="partner-logo">
-                <img src="{% static 'img/partenaire10.svg' %}" alt="Partenaire 10" class="partner-logo">
-                <img src="{% static 'img/partenaire11.svg' %}" alt="Partenaire 11" class="partner-logo">
-                <img src="{% static 'img/partenaire12.svg' %}" alt="Partenaire 12" class="partner-logo">
-                <img src="{% static 'img/partenaire13.svg' %}" alt="Partenaire 13" class="partner-logo">
-                <img src="{% static 'img/partenaire14.svg' %}" alt="Partenaire 14" class="partner-logo">
-                <img src="{% static 'img/partenaire15.svg' %}" alt="Partenaire 15" class="partner-logo">
                 <!-- Ajoutez autant de logos que nécessaire -->
             </div>
         </div>
@@ -420,10 +356,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 <section id="Contact" class="section-padding">
     <div class="container text-center">
-        <h2 class="section-title">Besoin d'aide ?</h2>
-        <p class="lead mb-4">Vous avez des questions ou des besoins spécifiques ? Notre équipe est là pour vous aider à trouver le talent idéal pour votre projet.</p>
-        <a href="{% url 'contact' %}" class="btn btn-custom btn-primary-custom btn-lg">Contactez-nous</a>
+        <h2 class="section-title">Prêt à révolutionner votre IT ?</h2>
+        <p class="lead mb-4">Nos experts sont impatients de vous connecter aux talents qui propulseront votre innovation vers de nouveaux sommets.</p>
+        <a href="{% url 'contact' %}" class="btn btn-primary-custom btn-lg">Boostez votre IT maintenant</a>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const logos = document.querySelector('.partner-logos');
+    const clonedLogos = logos.cloneNode(true);
+    logos.parentNode.appendChild(clonedLogos);
+});
+</script>
 
 {% endblock %}
