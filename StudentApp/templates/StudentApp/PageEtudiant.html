@@ -21,23 +21,24 @@
     }
 
     .section-padding {
-        padding: 60px 0;
+        padding: 40px 0;
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
         color: var(--primary-color);
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         text-align: center;
         font-weight: 700;
     }
 
     .btn-custom {
-        padding: 10px 20px;
+        padding: 8px 16px;
         font-weight: 600;
         text-transform: uppercase;
         border-radius: 30px;
         transition: all 0.3s ease;
+        font-size: 14px;
     }
 
     .btn-primary-custom {
@@ -65,19 +66,19 @@
     }
 
     .card-custom:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
 
     .icon-box {
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: var(--accent-color);
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
     .timeline {
         position: relative;
-        padding: 30px 0;
+        padding: 20px 0;
     }
 
     .timeline::before {
@@ -86,13 +87,14 @@
         height: 100%;
         width: 2px;
         background-color: var(--primary-color);
-        left: 50%;
-        transform: translateX(-50%);
+        left: 20px;
+        top: 0;
     }
 
     .timeline-item {
         margin-bottom: 30px;
         position: relative;
+        padding-left: 45px;
         opacity: 0;
         animation: fadeInUp 0.6s forwards;
         animation-delay: 0.3s;
@@ -101,37 +103,31 @@
     .timeline-content {
         background-color: white;
         border-radius: 15px;
-        padding: 20px;
+        padding: 15px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        position: relative;
-        width: 45%;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content {
-        float: right;
     }
 
     .timeline-icon {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         background-color: var(--accent-color);
         position: absolute;
         top: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
 
     .highlight {
         background-color: rgba(255, 215, 0, 0.2);
-        padding: 10px;
+        padding: 8px;
         border-radius: 5px;
         font-weight: 600;
+        font-size: 0.9rem;
     }
 
     @keyframes fadeInUp {
@@ -145,41 +141,52 @@
         }
     }
 
-    @media (max-width: 991px) {
+    @media (min-width: 768px) {
+        .section-padding {
+            padding: 60px 0;
+        }
+
         .section-title {
-            font-size: 1.75rem;
+            font-size: 2rem;
         }
+
+        .btn-custom {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
         .timeline::before {
-            left: 30px;
+            left: 50%;
+            transform: translateX(-50%);
         }
-        .timeline-content {
-            width: calc(100% - 70px);
-            float: right;
+
+        .timeline-item {
+            padding-left: 0;
+            width: 50%;
+            margin-left: 50%;
         }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 0;
+        }
+
         .timeline-icon {
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
+
+        .timeline-content {
+            width: 90%;
+            padding: 20px;
+        }
+
         .timeline-item:nth-child(even) .timeline-content {
             float: right;
         }
-    }
 
-    @media (max-width: 767px) {
-        .section-padding {
-            padding: 40px 0;
-        }
-        .btn-custom {
-            padding: 8px 16px;
-            font-size: 14px;
-        }
-    }
-
-    @media (max-width: 575px) {
-        .section-title {
-            font-size: 1.5rem;
-        }
-        .timeline-content {
-            padding: 15px;
+        .highlight {
+            font-size: 1rem;
+            padding: 10px;
         }
     }
 </style>
@@ -302,4 +309,5 @@
         <a href="{% url 'student_form' %}" class="btn btn-custom btn-primary-custom btn-lg">Inscription Étudiant</a>
     </div>
 </section>
+
 {% endblock %}
