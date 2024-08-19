@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Accounts import  views
+from .views import SSORedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,6 +26,6 @@ urlpatterns = [
     path('login/', views.login_user, name='login'),
     path('logout/',views.logout_user, name='logout'),
     path('edit_profile/', views.edit_student_profile, name='edit_student_profile'),
-
+    path('sso-redirect/',  SSORedirectView.as_view(), name='sso_redirect'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

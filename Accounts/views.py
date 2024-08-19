@@ -141,3 +141,30 @@ def register_student(request):
         'student_form': student_form,
         'step': step
     })
+import jwt
+from django.conf import settings
+from django.shortcuts import redirect
+from django.views import View
+class SSORedirectView(View):
+    def get(self, request):
+        user = request.user
+        if not user.is_authenticated:
+            return redirect('login')  # Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
+
+        # Créer le payload JWT
+        payload = {
+            'external_sso_id': str(user.id),
+            'email': user.email,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            # Ajoutez d'autres champs si nécessaire
+        }
+
+        # Générer le token JWT
+        token = jwt.encode(payload, settings.SSO_SECRET_KEY, algorithm='HS256')
+
+        # Mettre à jour les informations de connexion SSO
+        user.update_sso_login()
+
+        # Rediriger vers votre plateforme avec le token
+        return redirect(f"{settings.YOUR_PLATFORM_SSO_URL}?token={token}")

@@ -13,6 +13,7 @@ class UserManager(BaseUserManager):
         user = self.model(email=email, first_name=first_name, last_name=last_name)
         user.set_password(password)
         user.save(using=self._db)
+
         return user
 
     def create_staffuser(self, email, first_name, last_name, password):
@@ -51,7 +52,9 @@ class User(AbstractBaseUser,  PermissionsMixin):
     is_active = models.BooleanField(default=True)  # L'utilisateur peut se connecter si is_active=True
     staff = models.BooleanField(default=False)  # Un membre du personnel non admin
     admin = models.BooleanField(default=False)  # Un superutilisateur
-
+    external_sso_id = models.CharField(max_length=255, blank=True, null=True, unique=True)
+    last_sso_login = models.DateTimeField(null=True, blank=True)
+    is_sso_user = models.BooleanField(default=False)
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
@@ -97,3 +100,9 @@ class User(AbstractBaseUser,  PermissionsMixin):
         L'utilisateur est-il un administrateur ?
         """
         return self.admin
+
+    def update_sso_login(self):
+        from django.utils import timezone
+        self.last_sso_login = timezone.now()
+        self.is_sso_user = True
+        self.save(update_fields=['last_sso_login', 'is_sso_user'])

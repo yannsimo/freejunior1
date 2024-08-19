@@ -135,6 +135,8 @@ AWS_STORAGE_BUCKET_NAME = 'django-freejunior'
 
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+SSO_SECRET_KEY = 'zR1gzxAGlKur7cHmLCU_3ttN3v96DBIldfRvDqY1p70'
+YOUR_PLATFORM_SSO_URL = 'https://monfocus.fr/sso-login/'
 # Configurations pour les fichiers média
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
