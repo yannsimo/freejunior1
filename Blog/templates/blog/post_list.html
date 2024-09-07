@@ -71,24 +71,35 @@
         color: var(--primary-color);
         text-decoration: none;
     }
+
 </style>
 
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-9 col-md-8">
             {% for post in posts %}
-            <div class="card card-post mb-4">
-                <div class="card-body">
-                    <h3 class="card-title"><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></h3>
-                    <small class="text-muted">Posté le {{ post.created_at }}</small>
-                    <hr>
-                    <p class="card-text">
-                        {{ post.text|linebreaks|safe|truncatewords:100 }}
-                        <a href="{% url 'post-detail' post.pk %}" class="text-info">[Lire la suite]</a>
-                    </p>
-                    <a href="{% url 'post-list' post.category.slug %}" class="badge badge-info">{{ post.category.name|capfirst }}</a>
+                <div class="card card-post mb-4">
+                    <div class="card-body">
+                     {% if post.images.first %}
+                        <img src="{{ post.images.first.image.url }}" alt="{{ post.images.first.caption }}" class="img-fluid mb-3 post-thumbnail">
+                        {% endif %}
+                        <h3 class="card-title"><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></h3>
+                        <small class="text-muted">Posté le {{ post.created_at }}</small>
+                        <hr>
+                        <p class="card-text">
+                            {{ post.introduction|truncatewords:50 }}
+                            <a href="{% url 'post-detail' post.pk %}" class="text-info">[Lire la suite]</a>
+                        </p>
+                        <p>
+                        {% for link in post.links.all %}
+                        <a href="{{ link.url }}" class="btn btn-primary" target="_blank">{{ link.text }}</a>
+                        {% endfor %}
+                        </p>
+                        <a href="{% url 'post-list-category' post.category.name|default:'all' %}" class="badge badge-info">
+                            {{ post.category.name|default:"Non catégorisé"|capfirst }}
+                        </a>
+                    </div>
                 </div>
-            </div>
             {% empty %}
             <div class="text-center">
                 <p class="display-1">:-(</p>
@@ -104,7 +115,7 @@
             <ul class="list-group list-unstyled">
                 {% for cat in categories %}
                 <li class="list-group-item">
-                    <a href="{% url 'post-list' cat.slug %}">{{ cat.name|capfirst }}</a>
+                    <a href="{% url 'post-list-category' cat.name %}">{{ cat.name|capfirst }}</a>
                 </li>
                 {% endfor %}
             </ul>

@@ -5,7 +5,10 @@ from Blog.models import Post, Comment
 from Blog import model_helpers
 from Blog.forms import CreateCommentForm
 
-def post_list(request, category_name=model_helpers.post_category_all.slug()):
+def post_list(request, category_name=None):
+    if category_name is None:
+        category_name = model_helpers.post_category_all.name
+
     categories = model_helpers.get_categories()
     category, posts = model_helpers.get_category_and_posts(category_name)
 

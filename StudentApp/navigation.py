@@ -10,7 +10,7 @@ NAV_ITEMS = [
     (NAV_FormStudent, reverse_lazy('page_etudiant')),
     (NAV_FormCompany, reverse_lazy('page_company')),
     (NAV_FormListMission, reverse_lazy('mission_list')),
-    (NAV_POSTS, reverse_lazy('home')),
+    (NAV_POSTS, reverse_lazy('post_list')),
     (NAV_contact, reverse_lazy('contact')),
 ]
 
