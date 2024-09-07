@@ -2,16 +2,16 @@ from django.urls import reverse_lazy
 
 NAV_FormStudent = 'Etudiant'
 NAV_FormCompany = 'Entreprise'
-
+NAV_POSTS = 'Blog'
 NAV_contact = 'Contact'
 NAV_FormListMission = 'Liste des missions '
+NAV_FormListStudent = 'Liste des étudiants'
 NAV_ITEMS = [
     (NAV_FormStudent, reverse_lazy('page_etudiant')),
     (NAV_FormCompany, reverse_lazy('page_company')),
     (NAV_FormListMission, reverse_lazy('mission_list')),
-
+    (NAV_POSTS, reverse_lazy('home')),
     (NAV_contact, reverse_lazy('contact')),
-
 ]
 
 def navigation_items(selected_item):

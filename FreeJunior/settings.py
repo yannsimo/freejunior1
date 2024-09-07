@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
      'crispy_bootstrap5',
+     'Blog.apps.BlogConfig',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"

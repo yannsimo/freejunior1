@@ -1,0 +1,167 @@
+ {% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<style>
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #2c3e50;
+        --accent-color: #e74c3c;
+        --background-color: #ecf0f1;
+        --text-color: #34495e;
+    }
+
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        background-color: #fff;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .badge-info {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+
+    .comment-list-item {
+        transition: background-color 0.3s ease;
+        border: 1px solid #e9ecef;
+        border-radius: 15px;
+        margin-bottom: 15px;
+    }
+
+    .comment-list-item:hover {
+        background-color: #f8f9fa;
+    }
+
+    .comment-img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+    }
+
+    .comment-header {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .comment-text {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .sidebar-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--secondary-color);
+    }
+
+    .list-group-item {
+        border: none;
+        padding: 10px 0;
+        background-color: transparent;
+    }
+
+    .list-group-item a {
+        color: var(--text-color);
+        transition: all 0.3s ease;
+    }
+
+    .list-group-item a:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-9 col-md-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <small class="text-muted">Posté le {{ post.created_at }}</small>
+                    <hr>
+                    <div class="card-text">
+                        {{ post.text|linebreaks|safe }}
+                    </div>
+                    <a href="{% url 'post-list' post.category.slug %}" class="badge badge-info">{{ post.category.name|capfirst }}</a>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h3 class="card-title">Commentaires</h3>
+
+                    {% if message %}
+                    <div class="alert alert-success alert-dismissible fade show">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    {% endif %}
+
+                    <ul class="list-unstyled">
+                        {% for comment in comments %}
+                        <li class="media comment-list-item p-3">
+                            <img src="{% static 'img/user-placeholder.png' %}" class="mr-3 rounded-circle comment-img" alt="User photo">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1 comment-header">{{ comment.author_name }}</h5>
+                                <p><small class="text-muted">{{ comment.created_at }}</small></p>
+                                <p class="comment-text">
+                                    {% if comment.status == 'moderated' %}
+                                    <span class="font-weight-light font-italic text-muted">
+                                        [[ Commentaire modéré : {{ comment.moderation_text }} ]]
+                                    </span>
+                                    {% else %}
+                                    {{ comment.text }}
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </li>
+                        {% empty %}
+                        <li class="media">Aucun commentaire pour l'instant!</li>
+                        {% endfor %}
+                    </ul>
+
+                    <form action="{% url 'post-detail' post.pk %}" method="post" class="form mt-4">
+                        {% csrf_token %}
+                        {% bootstrap_form comment_form %}
+                        {% buttons %}
+                        <button type="submit" class="btn btn-primary">Poster un commentaire</button>
+                        {% endbuttons %}
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4">
+            <h5 class="sidebar-title">Posts de la même catégorie</h5>
+            <ul class="list-group list-unstyled">
+                {% for post in posts_same_category %}
+                <li class="list-group-item">
+                    <a href="{% url 'post-detail' post.pk %}">{{ post.title|truncatewords:4 }}</a>
+                </li>
+                {% empty %}
+                <li class="list-group-item">C'est le seul post!</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}

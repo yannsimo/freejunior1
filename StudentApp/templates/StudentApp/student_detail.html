@@ -37,8 +37,8 @@
                     </p>
                     <p class="card-text">
                         <strong>Portfolio :</strong>
-                        {% if student.portfolio %}
-                            <a href="{{ student.portfolio.url }}" target="_blank" class="btn btn-outline-success btn-sm mt-2">Voir le Portfolio</a>
+                        {% if student.portfolio_url %}
+                            <a href="{{ student.portfolio_ url }}" target="_blank" class="btn btn-outline-success btn-sm mt-2">Voir le Portfolio</a>
                         {% else %}
                             <span class="text-muted">Non disponible</span>
                         {% endif %}
