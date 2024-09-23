@@ -129,7 +129,7 @@ def mission_detail(request, mission_id):
             subject = f'Nouvelle candidature pour {mission.title}'
             email_message = f"De: {your_name}\nEmail: {your_email}\n\nMessage:\n{message}"
             try:
-                mission.nombre_de_candidature+=mission.nombre_de_candidature
+                mission.nombre_de_candidature=mission.nombre_de_candidature+1
                 send_mail(subject, email_message, your_email, [mission.company.email])
                 send_mail(subject, email_message, your_email, ['yann-junior.simo@grenoble-inp.org'])
                 messages.success(request, "Votre message a été envoyé.")
