@@ -87,14 +87,13 @@ WSGI_APPLICATION = 'FreeJunior.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databa
 DATABASES = {
-
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-         'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT', '5432'),
+        'NAME': 'database_provisoire_yann',  # Nom de la base de données
+        'USER': 'postgres',       # Nom d'utilisateur PostgreSQL
+        'PASSWORD': 'Lavitesse123*',   # Mot de passe de l'utilisateur
+        'HOST': 'localhost',      # Hôte (utilisez 'localhost' si vous êtes en local)
+        'PORT': '5432',           # Port PostgreSQL (5432 par défaut)
     }
 }
 
