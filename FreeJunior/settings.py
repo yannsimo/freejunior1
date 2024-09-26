@@ -83,20 +83,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'FreeJunior.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databa
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'database_provisoire_yann',  # Nom de la base de données
-        'USER': 'postgres',       # Nom d'utilisateur PostgreSQL
-        'PASSWORD': 'Lavitesse123*',   # Mot de passe de l'utilisateur
-        'HOST': 'localhost',      # Hôte (utilisez 'localhost' si vous êtes en local)
-        'PORT': '5432',           # Port PostgreSQL (5432 par défaut)
+        'NAME': os.getenv('DB_NAME'),          # Nom de la base de données
+        'USER': os.getenv('DB_USER'),          # Nom d'utilisateur PostgreSQL
+        'PASSWORD': os.getenv('DB_PASSWORD'),  # Mot de passe de l'utilisateur
+        'HOST': os.getenv('DB_HOST', 'localhost'),  # Hôte (localhost par défaut)
+        'PORT': os.getenv('DB_PORT', '5432'),       # Port PostgreSQL (5432 par défaut)
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -129,9 +125,9 @@ USE_I18N = True
 USE_TZ = True
 
 
-AWS_ACCESS_KEY_ID = 'AKIA4MTWNWMLZ4KXQEUX'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'django-freejunior'
+AWS_ACCESS_KEY_ID = 'AKIAWX2IF3JFBXLJCYOP'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'freejunior-bucket'
 
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
