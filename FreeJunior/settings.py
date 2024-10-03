@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 from decouple import config
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(override=True)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY =  config('SECRET_KEY')
@@ -123,12 +123,13 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
-
-AWS_ACCESS_KEY_ID = 'AKIAWX2IF3JFBXLJCYOP'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'freejunior-bucket'
-
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+print(f"AWS_ACCESS_KEY_ID: {AWS_ACCESS_KEY_ID}")
+print(f"AWS_SECRET_8ACCESS_KEY: {AWS_SECRET_ACCESS_KEY}")
+print(f"AWS_STORAGE_BUCKET_NAME: {AWS_STORAGE_BUCKET_NAME}")
+AWS_S3_REGION_NAME = 'us-east-1'  # par exemple, 'us-east-1'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 SSO_SECRET_KEY = 'zR1gzxAGlKur7cHmLCU_3ttN3v96DBIldfRvDqY1p70'

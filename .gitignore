@@ -1,0 +1,12 @@
+# Ignorer les fichiers sensibles
+.env
+
+# Ignorer l'environnement virtuel Python
+.venv/
+
+# Fichiers Python compilés
+__pycache__/
+*.py[cod]
+
+# Caches et logs
+*.log
