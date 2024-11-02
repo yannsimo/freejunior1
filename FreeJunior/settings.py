@@ -25,7 +25,7 @@ SECRET_KEY =  config('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 #ALLOWED_HOSTS = ['54.87.17.222']
 ALLOWED_HOSTS = ['*']
@@ -126,9 +126,6 @@ USE_TZ = True
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
-print(f"AWS_ACCESS_KEY_ID: {AWS_ACCESS_KEY_ID}")
-print(f"AWS_SECRET_8ACCESS_KEY: {AWS_SECRET_ACCESS_KEY}")
-print(f"AWS_STORAGE_BUCKET_NAME: {AWS_STORAGE_BUCKET_NAME}")
 AWS_S3_REGION_NAME = 'us-east-1'  # par exemple, 'us-east-1'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
@@ -163,8 +160,3 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'yannjuniorsim@gmail.com'
 EMAIL_HOST_PASSWORD = 'vnyranwgtptuhrcm'
-
-
-#Linkedin
-LINKEDIN_EMAIL = 'yannjuniorsim@gmail.com'
-LINKEDIN_PASSWORD = 'Lavitesse123*'
